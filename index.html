@@ -70,4 +70,18 @@
     // Redireciona para a página inicial
     window.location.href = "pages/page.html"; // Troque pela URL desejada
 }
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // Impede o envio do formulário
+    
+    var usuario = document.querySelector("input[placeholder='Usuário']").value;
+    var senha = document.querySelector("input[placeholder='Senha']").value;
+    
+    // Aqui você pode fazer uma verificação simples de usuário e senha
+    if (usuario === "meuUsuario" && senha === "minhaSenha") {
+        alert("Login bem-sucedido!");
+        window.location.href = "/page.html";  // Redireciona para a página inicial
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+});
 
