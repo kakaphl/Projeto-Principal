@@ -32,7 +32,7 @@
             box-sizing: border-box;
         }
         input:focus {
-            border-color: #3498db;
+            border-color: #4ae452;
             outline: nome;
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
@@ -73,7 +73,7 @@
     <div class="login-container">
         <h2>Seja Bem Vindo</h2>
         <form>
-            <input type="text" id="userame" placeholder="Usuário ou Email" required>
+            <input type="text" id="usename" placeholder="Usuário ou Email" required>
             <input type="password" placeholder="Senha" required>
             <button type="submit">Entrar</button>
         </form>
@@ -84,10 +84,10 @@
         function handleCredentialResponse(response) {
     console.log("Token JWT: ", response.credential);
 
-    // Armazena o token no localStorage
+    // Armazena o negocio no localStorage
     localStorage.setItem("userToken", response.credential);
 
-// Aguarda um curto tempo antes de redirecionar
+// Da uma atrasada no redirecionamento
 setTimeout(() => {
     window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; // Troque pela URL desejada
 }, 1000);
