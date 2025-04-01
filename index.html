@@ -31,7 +31,7 @@
             font-size: 14px;
             box-sizing: border-box;
         }
-        .input:focus {
+        input:focus {
             border-color: #3498db;
             outline: nome;
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
@@ -50,6 +50,12 @@
         button:hover {
             background: #218838;
         }
+        form {
+            margin-bottom: 25px;
+        }
+        .g_id_signin {
+            margin-top: 15px;
+        } 
         .google-btn {
             margin-top: 15px;
             padding: 10px;
@@ -66,15 +72,10 @@
 <body>
     <div class="login-container">
         <h2>Seja Bem Vindo</h2>
-        <form id="loginForm">
-            <div class="input-group">
+        <form>
             <input type="text" id="userame" placeholder="Usuário ou Email" required>
             <input type="password" placeholder="Senha" required>
             <button type="submit">Entrar</button>
-        </div>
-        <div class="input-group">
-            <input type="password" id="password" placeholder="Senha" required>
-        </div>
         </form>
         <div id="g_id_onload" data-client_id="1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
         <div class="g_id_signin" data-type="standard"></div>
