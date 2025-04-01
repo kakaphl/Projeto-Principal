@@ -66,10 +66,15 @@
 <body>
     <div class="login-container">
         <h2>Seja Bem Vindo</h2>
-        <form>
-            <input type="text" placeholder="Usuário" required>
+        <form id="loginForm">
+            <div class="input-group">
+            <input type="text" id="userame" placeholder="Usuário ou Email" required>
             <input type="password" placeholder="Senha" required>
             <button type="submit">Entrar</button>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Senha" required>
+        </div>
         </form>
         <div id="g_id_onload" data-client_id="1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
         <div class="g_id_signin" data-type="standard"></div>
