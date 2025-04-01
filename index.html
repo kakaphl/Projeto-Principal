@@ -10,7 +10,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(145deg, #ca5c30, #7a3fbd);
+            background: linear-gradient(145deg, #ca5c30, #7a3fbd);   /*se pa nao ta legal*/
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0; padding: 0;
         }
@@ -81,6 +81,7 @@
         <div class="g_id_signin" data-type="standard"></div>
     </div>
     <script>
+    // Autenticação do Google
         function handleCredentialResponse(response) {
     console.log("Token JWT: ", response.credential);
 
@@ -89,7 +90,7 @@
 
 // Da uma atrasada no redirecionamento
 setTimeout(() => {
-    window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; // Troque pela URL desejada
+    window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; 
 }, 1000);
 }
 </script>
