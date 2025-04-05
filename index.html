@@ -15,7 +15,7 @@
             margin: 0; padding: 0;
         }
         .login-container {
-            background: white;
+            background: #F7F0D8;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 30px 20px rgba(0, 0, 0, 0.2);
@@ -66,11 +66,24 @@
         .google-btn:hover {
             background: #c1351d;
         }
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+            background-color: #F7F0D8;
+        }
+        .logo img {
+            max-width: 150px; /* nao sei se esse tamanho esta bom*/
+            border-radius: 20px;
+            box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div class="login-container">
+        <div class="logo">
+            <img src="c:\Users\Pichau\Downloads\WhatsApp Image 2025-03-31 at 21.20.53.jpeg" alt="logo" width="150">
+        </div>
         <h2>Seja Bem Vindo</h2>
         <form>
             <input type="text" id="usename" placeholder="Usuário ou Email" required>
