@@ -119,7 +119,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
 
     var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+    var password = document.querySelector("input[type='password']").value;
     var errorMessage = document.getElementById("error-message");
 
 
