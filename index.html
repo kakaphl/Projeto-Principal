@@ -116,8 +116,6 @@ setTimeout(() => {
 // Autenticar por usuario e senha
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
-     }
-  );
 
 
     var username = document.getElementById("username").value;
@@ -137,7 +135,11 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
         // Redirecionamento para tela inicial
         window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html";
-    } 
+    }  else {
+        // Mostra a mensagem de erro
+        errorMessage.style.display = "block";
+    }
+});
 
    </script>
 </body>
