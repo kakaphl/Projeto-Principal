@@ -77,6 +77,11 @@
             border-radius: 20px;   /* bordas redondas, talvez precise mudar*/
             box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
         }
+        .error-message {
+            color: #d82000;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -86,9 +91,10 @@
             <img src="WhatsApp Image 2025-03-31 at 21.20.53.jpeg" alt="logo" width="150">
         </div>
         <h2>Seja Bem Vindo</h2>
-        <form>
+        <form id="loginForm">
             <input type="text" id="usename" placeholder="Usuário ou Email" required>
             <input type="password" placeholder="Senha" required>
+            <p id="error-message" class="error-message">Usuario ou senha incorretos!</p>
             <button type="submit">Entrar</button>
         </form>
         <div id="g_id_onload" data-client_id="1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
@@ -107,4 +113,30 @@ setTimeout(() => {
     window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; 
 }, 100);
 }
-</script>
+// Autenticar por usuario e senha
+document.getElementById("loginForm").addEventListener("submit"), function(event) {
+    event.preventDefault();
+
+
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var errorMessage = document.getElementById("error-message");
+
+
+    //apenas para demonstração
+    if (username === "admin" && password === "1234") {
+        // Login deu bom
+        console.log("Login bem sucedido");
+
+        // Faz com que o usuario fique logado
+        localStorage.setItem("userLoggedIn", "true");
+        localStorage.setItem("username", username);
+
+
+        // Redirecionamento para tela inicial
+        window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html";
+    } 
+}
+   </script>
+</body>
+</html>
