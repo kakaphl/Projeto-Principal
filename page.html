@@ -1,48 +1,858 @@
+HTML:
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiauCademy</title>
-    <link rel="stylesheet" href="styles/styles.css">
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="initial-scale=1, width=device-width">
+  	
+  	<link rel="stylesheet"  href="./index.css" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
+  	
+  	
+  	
 </head>
 <body>
-    <header>
-        <h1>MiauCademy</h1>
-        <p>Se divirta estudando para provas e vestibulares!</p>
-    </header>
-
-    <section class="games">
-        <div class="game-card1">
-            <h2>Quiz de História</h2>
-            <p>Teste seus conhecimentos em História com esse quiz interativo. </p>
-            <button onclick="startGame('games/quiz-historia.html')">Jogar</button>
-        </div>
-        <div class="game-card2">
-            <h2>Desafio de Matemática</h2>
-            <p>Resolva equações e melhore suas habilidades matemáticas!</p>
-            <button onclick="startGame('games/desafio-matematica.html')">Jogar</button>
-        </div>
-        <div class="game-card3">
-            <h2>Palavras Cruzadas</h2>
-            <p>Expanda seu vocabulário e aprenda novos conceitos.</p>
-            <button onclick="startGame('games/palavras-cruzadas.html')">Jogar</button>
-        </div>
-        <div class="game-card4">
-            <h2>Desafio de Portugues</h2>
-            <p>Melhore seu conhecimento na lingua portuguesa.</p>
-            <button onclick="startGame('games/desafio-portugues.html')">Jogar</button>
-        </div>
-    </section>
-
-    <section class="ranking">
-        <h2>Ranking de Alunos</h2>
-        <ul id="ranking-list">
-            <!-- O ranking vai ser carregado aqui -->
-        </ul>
-    </section>
-
-    <script src="scripts/main.js"></script>
-    <script src="scripts/ranking.js"></script>
-</body>
+  	
+  	<div class="pgina-inicial">
+    		<div class="bem-vindo-veja">Bem vindo! Veja a pontuação da comunidade</div>
+    		<div class="veja-as-suas">Veja as suas estatísticas</div>
+    		<div class="tabela-de-ranking">
+      			<div class="tabela-de-ranking-child">
+      			</div>
+      			<div class="usurios-no-ranking">
+        				<div class="pontuao-da-robson">
+          					<div class="frame-parent">
+            						<img class="frame-child" alt="">
+            						
+            						<div class="r">
+              							<span>Robson</span>
+              							<span class="span">_</span>
+              							<span>👑 </span>
+              							<span class="span">REI DAS EXATAS</span>
+            						</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span class="c">3º C   </span>
+            						<span class="pts">680 pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-ste">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Stephany</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   500 pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-ksia">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Késia</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   480 pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-davi">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Davi</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   480 pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-letcia">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Letícia</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   360 pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-kau">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Kauã</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   320 pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-lorrane">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Lorrane</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   250pts</span>
+          					</div>
+        				</div>
+        				<div class="pontuao-da-ana-clara">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Ana Clara</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   120 pts</span>
+          					</div>
+        				</div>
+        				<div class="pgina-inicial-pontuao-da-ana-clara">
+          					<div class="frame-parent">
+            						<div class="rectangle-wrapper">
+              							<div class="frame-item">
+              							</div>
+            						</div>
+            						<div class="r">Ana Clara Soares</div>
+          					</div>
+          					<div class="c-680-pts-container">
+            						<span>3º C</span>
+            						<span class="pgina-inicial-pts">   120 pts</span>
+          					</div>
+        				</div>
+      			</div>
+    		</div>
+    		<div class="quadro-roxo">
+      			<div class="bt-veja-suas-estatsticas">
+      			</div>
+    		</div>
+    		<img class="icon" alt="">
+    		
+    		<div class="pgina-inicial-child">
+    		</div>
+    		<img class="removebg-preview-2-icon" alt="">
+    		
+    		<img class="removebg-preview-3-icon" alt="">
+    		
+    		<div class="ei-no-container">
+      			<p class="ei-no">Ei , não esqueça de conferir</p>
+      			<p class="ei-no"> as notificações no seu email ok?</p>
+    		</div>
+    		<img class="pgina-inicial-icon" alt="">
+    		
+    		<img class="icon2" alt="">
+    		
+    		<img class="icon3" alt="">
+    		
+    		<div class="estistica-mat">
+      			<div class="matemtica">Matemática</div>
+      			<img class="estistica-mat-child" alt="">
+      			
+      			<div class="de-acertos">
+        				<p class="ei-no">96.5%</p>
+        				<p class="pgina-inicial-de-acertos">de acertos</p>
+      			</div>
+      			<div class="dados-quest">
+        				<div class="questes-respondidas">64 Questões respondidas</div>
+        				<div class="geo-plana">
+          					<div class="geometria-plana">Geometria Plana</div>
+          					<div class="geo-plana-child">
+          					</div>
+        				</div>
+        				<div class="matriz">
+          					<div class="geometria-plana">Matriz</div>
+          					<div class="matriz-child">
+          					</div>
+        				</div>
+        				<div class="prob">
+          					<div class="geometria-plana">Probabilidade</div>
+          					<div class="prob-child">
+          					</div>
+        				</div>
+        				<div class="num-compl">
+          					<div class="geometria-plana">Números complexos</div>
+          					<div class="num-compl-child">
+          					</div>
+        				</div>
+      			</div>
+    		</div>
+    		<div class="estatistica-port">
+      			<div class="portugus">Português</div>
+      			<img class="estistica-mat-child" alt="">
+      			
+      			<div class="de-acertos2">
+        				<p class="ei-no">42%</p>
+        				<p class="pgina-inicial-de-acertos">de acertos</p>
+      			</div>
+    		</div>
+    		<div class="pgina-inicial-dados-quest">
+      			<div class="questes-respondidas">28 Questões respondidas</div>
+      			<div class="geo-plana">
+        				<div class="geometria-plana">Literatura</div>
+        				<div class="geo-plana-item">
+        				</div>
+      			</div>
+      			<div class="matriz">
+        				<div class="geometria-plana">Pontuação</div>
+        				<div class="matriz-item">
+        				</div>
+      			</div>
+      			<div class="prob">
+        				<div class="geometria-plana">Figuras de Linguagem</div>
+        				<div class="prob-item">
+        				</div>
+      			</div>
+      			<div class="num-compl">
+        				<div class="geometria-plana">
+          					<p class="ei-no">Gramática</p>
+        				</div>
+        				<div class="num-compl-item">
+        				</div>
+      			</div>
+    		</div>
+    		<div class="bt-filtrar">
+      			<div class="r">Fazer questões</div>
+    		</div>
+    		<div class="barra-de-menu">
+      			<div class="barra-de-menu-child">
+      			</div>
+      			<img class="logo-icon" alt="">
+      			
+      			<div class="miaucademy">Miaucademy</div>
+      			<div class="perfil-parent" id="frameContainer">
+        				<div class="perfil">Perfil</div>
+        				<img class="whatsapp-image-2025-03-31-at-0" alt="">
+        				
+      			</div>
+      			<div class="questes" id="questesText">Questões</div>
+      			<div class="nossa-equipe" id="nossaEquipeText">Nossa equipe</div>
+      			<div class="incio" id="incioText">Início</div>
+      			<div class="suporte" id="suporteText">Suporte</div>
+    		</div>
+  	</div>
+  	
+  	
+  	
+  	
+  	<script>
+    		var frameContainer = document.getElementById("frameContainer");
+    		if(frameContainer) {
+      			frameContainer.addEventListener("click", function (e) {
+        				// Add your code here
+      			});
+    		}
+    		
+    		var questesText = document.getElementById("questesText");
+    		if(questesText) {
+      			questesText.addEventListener("click", function (e) {
+        				// Add your code here
+      			});
+    		}
+    		
+    		var nossaEquipeText = document.getElementById("nossaEquipeText");
+    		if(nossaEquipeText) {
+      			nossaEquipeText.addEventListener("click", function (e) {
+        				// Add your code here
+      			});
+    		}
+    		
+    		var incioText = document.getElementById("incioText");
+    		if(incioText) {
+      			incioText.addEventListener("click", function (e) {
+        				window.location.href = "PginaInicial.html"
+      			});
+    		}
+    		
+    		var suporteText = document.getElementById("suporteText");
+    		if(suporteText) {
+      			suporteText.addEventListener("click", function (e) {
+        				// Add your code here
+      			});
+    		}</script></body>
 </html>
+
+CSS:
+.pgina-inicial {
+  	width: 100%;
+  	position: relative;
+  	background: linear-gradient(0deg, #8a3ffc, #bea6ff 74.04%);
+  	height: 3089px;
+  	overflow: hidden;
+  	text-align: left;
+  	font-size: 40px;
+  	color: #2e174d;
+  	font-family: 'Perfectly Vintages';
+}
+.bem-vindo-veja {
+  	position: absolute;
+  	top: 1005px;
+  	left: 80px;
+  	color: #fff2df;
+}
+.veja-as-suas {
+  	position: absolute;
+  	top: 1625px;
+  	left: 277px;
+  	color: #fff2df;
+}
+.tabela-de-ranking {
+  	position: absolute;
+  	top: 1079px;
+  	left: 81px;
+  	box-shadow: 0px 25px 4px rgba(0, 0, 0, 0.05);
+  	border-radius: 25px;
+  	width: 1280px;
+  	height: 466px;
+  	overflow: hidden;
+  	font-size: 21px;
+  	font-family: Inter;
+}
+.tabela-de-ranking-child {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: 25px;
+  	background: linear-gradient(180deg, #fff, #efe8e8);
+  	border: 2px solid #bea6ff;
+  	box-sizing: border-box;
+  	width: 1280px;
+  	height: 460px;
+}
+.usurios-no-ranking {
+  	position: absolute;
+  	top: 19px;
+  	left: 35px;
+  	border-radius: 15px;
+  	width: 1205px;
+  	height: 379px;
+  	overflow-y: auto;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+}
+.pontuao-da-robson {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 729px;
+}
+.frame-parent {
+  	display: flex;
+  	align-items: center;
+  	padding: 0px 0px 1px;
+  	gap: 17px;
+}
+.frame-child {
+  	width: 42px;
+  	height: 42px;
+  	object-fit: cover;
+}
+.r {
+  	position: relative;
+  	font-weight: 800;
+}
+.span {
+  	color: #bea6ff;
+}
+.c-680-pts-container {
+  	position: relative;
+  	font-weight: 800;
+  	color: #bea6ff;
+}
+.c {
+  	white-space: pre-wrap;
+}
+.pts {
+  	color: #2e174d;
+}
+.pontuao-da-ste {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 914px;
+}
+.rectangle-wrapper {
+  	display: flex;
+  	align-items: center;
+}
+.frame-item {
+  	width: 42px;
+  	position: relative;
+  	background-color: #d9d9d9;
+  	height: 42px;
+}
+.pgina-inicial-pts {
+  	color: #2e174d;
+  	white-space: pre-wrap;
+}
+.pontuao-da-ksia {
+  	width: 1205px;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 0px;
+  	box-sizing: border-box;
+  	gap: 956px;
+}
+.pontuao-da-davi {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 966px;
+}
+.pontuao-da-letcia {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 946px;
+}
+.pontuao-da-kau {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 961px;
+}
+.pontuao-da-lorrane {
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 939px;
+}
+.pontuao-da-ana-clara {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 917px;
+}
+.pgina-inicial-pontuao-da-ana-clara {
+  	align-self: stretch;
+  	height: 65px;
+  	flex-shrink: 0;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 10px 10px 0px;
+  	box-sizing: border-box;
+  	gap: 840px;
+}
+.quadro-roxo {
+  	position: absolute;
+  	top: 771px;
+  	left: 184px;
+  	width: 853px;
+  	height: 46px;
+}
+.bt-veja-suas-estatsticas {
+  	position: absolute;
+  	top: 1291px;
+  	left: 7px;
+  	border-radius: 35px;
+  	background: linear-gradient(90deg, #fe9503, #ff6a00);
+  	border: 3px solid #fff2df;
+  	box-sizing: border-box;
+  	width: 410px;
+  	height: 95px;
+  	display: none;
+}
+.icon {
+  	position: absolute;
+  	top: 94px;
+  	left: -46px;
+  	width: 1533px;
+  	height: 828px;
+  	object-fit: cover;
+}
+.pgina-inicial-child {
+  	position: absolute;
+  	top: 1702px;
+  	left: 81px;
+  	border-radius: 25px;
+  	background-color: #bea6ff;
+  	width: 1280px;
+  	height: 1154px;
+}
+.removebg-preview-2-icon {
+  	position: absolute;
+  	top: 880px;
+  	left: 1150px;
+  	width: 190.9px;
+  	height: 268.2px;
+  	object-fit: contain;
+}
+.removebg-preview-3-icon {
+  	position: absolute;
+  	top: 1499px;
+  	left: 96px;
+  	width: 190.9px;
+  	height: 268.2px;
+  	object-fit: contain;
+}
+.ei-no-container {
+  	position: absolute;
+  	top: 184px;
+  	left: 172px;
+  	font-size: 64px;
+  	color: #fff2df;
+  	display: inline-block;
+  	width: 420px;
+  	height: 358px;
+}
+.ei-no {
+  	margin: 0;
+}
+.pgina-inicial-icon {
+  	position: absolute;
+  	top: 417px;
+  	left: 1314px;
+  	width: 91px;
+  	height: 91px;
+  	object-fit: cover;
+}
+.icon2 {
+  	position: absolute;
+  	top: 417px;
+  	left: 49px;
+  	width: 91px;
+  	height: 91px;
+  	object-fit: cover;
+}
+.icon3 {
+  	position: absolute;
+  	top: 2291px;
+  	left: 795px;
+  	width: 565px;
+  	height: 565px;
+  	object-fit: cover;
+  	opacity: 0.3;
+}
+.estistica-mat {
+  	position: absolute;
+  	top: 1751px;
+  	left: 125px;
+  	width: 428px;
+  	height: 465px;
+  	font-family: Inter;
+}
+.matemtica {
+  	position: absolute;
+  	top: 0px;
+  	left: 92px;
+  	font-weight: 800;
+  	display: inline-block;
+  	width: 244px;
+  	height: 44px;
+}
+.estistica-mat-child {
+  	position: absolute;
+  	top: 76px;
+  	left: 0px;
+  	width: 428px;
+  	height: 389px;
+}
+.de-acertos {
+  	position: absolute;
+  	top: 166px;
+  	left: 62px;
+  	font-weight: 800;
+  	color: #fff;
+  	text-align: center;
+  	font-size: 96px;
+}
+.pgina-inicial-de-acertos {
+  	margin: 0;
+  	font-size: 48px;
+}
+.dados-quest {
+  	position: absolute;
+  	top: -3px;
+  	left: 520px;
+  	width: 670px;
+  	height: 441px;
+  	font-size: 20px;
+}
+.questes-respondidas {
+  	position: absolute;
+  	top: 0px;
+  	left: 76px;
+  	font-size: 40px;
+  	font-weight: 800;
+}
+.geo-plana {
+  	position: absolute;
+  	top: 79px;
+  	left: 0px;
+  	width: 670px;
+  	height: 77px;
+}
+.geometria-plana {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	font-weight: 800;
+}
+.geo-plana-child {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #522696;
+  	width: 670px;
+  	height: 53px;
+}
+.matriz {
+  	position: absolute;
+  	top: 174px;
+  	left: 0px;
+  	width: 520px;
+  	height: 77px;
+}
+.matriz-child {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #4b1d89;
+  	width: 520px;
+  	height: 53px;
+}
+.prob {
+  	position: absolute;
+  	top: 269px;
+  	left: 0px;
+  	width: 629px;
+  	height: 77px;
+}
+.prob-child {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #4b1d89;
+  	width: 629px;
+  	height: 53px;
+}
+.num-compl {
+  	position: absolute;
+  	top: 364px;
+  	left: 0px;
+  	width: 203px;
+  	height: 77px;
+}
+.num-compl-child {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #4b1d89;
+  	width: 130px;
+  	height: 53px;
+}
+.estatistica-port {
+  	position: absolute;
+  	top: 2315px;
+  	left: 125px;
+  	width: 428px;
+  	height: 465px;
+  	font-family: Inter;
+}
+.portugus {
+  	position: absolute;
+  	top: 0px;
+  	left: 108px;
+  	font-weight: 800;
+  	display: inline-block;
+  	width: 212px;
+  	height: 44px;
+}
+.de-acertos2 {
+  	position: absolute;
+  	top: 189px;
+  	left: 87px;
+  	font-weight: 800;
+  	color: #fff;
+  	text-align: center;
+  	font-size: 96px;
+}
+.pgina-inicial-dados-quest {
+  	position: absolute;
+  	top: 2315px;
+  	left: 645px;
+  	width: 670px;
+  	height: 441px;
+  	font-size: 20px;
+  	font-family: Inter;
+}
+.geo-plana-item {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #522696;
+  	width: 514px;
+  	height: 53px;
+}
+.matriz-item {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #4b1d89;
+  	width: 212px;
+  	height: 53px;
+}
+.prob-item {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #4b1d89;
+  	width: 338px;
+  	height: 53px;
+}
+.num-compl-item {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	background-color: #4b1d89;
+  	width: 36px;
+  	height: 53px;
+}
+.bt-filtrar {
+  	position: absolute;
+  	top: 2875px;
+  	left: 1006px;
+  	border-radius: 35px;
+  	background: linear-gradient(90deg, #ffe066, #fe9503);
+  	border: 3px solid #fff2df;
+  	box-sizing: border-box;
+  	width: 357px;
+  	height: 61px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 10px;
+  	color: #fff;
+  	font-family: Montserrat;
+}
+.barra-de-menu {
+  	position: absolute;
+  	top: 0px;
+  	left: -1px;
+  	width: 1440px;
+  	height: 94px;
+  	font-size: 24px;
+  	color: #fff;
+}
+.barra-de-menu-child {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	background-color: #8a3ffc;
+  	width: 1440px;
+  	height: 94px;
+}
+.logo-icon {
+  	position: absolute;
+  	top: 20px;
+  	left: 53px;
+  	border-radius: 16px;
+  	width: 53px;
+  	height: 53px;
+  	object-fit: cover;
+}
+.miaucademy {
+  	position: absolute;
+  	top: 26px;
+  	left: 125px;
+  	font-size: 36px;
+}
+.perfil-parent {
+  	position: absolute;
+  	top: 10px;
+  	left: 1275px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 10px;
+  	gap: 3px;
+  	cursor: pointer;
+}
+.perfil {
+  	position: relative;
+}
+.whatsapp-image-2025-03-31-at-0 {
+  	width: 53px;
+  	position: relative;
+  	border-radius: 512px;
+  	max-height: 100%;
+  	object-fit: cover;
+}
+.questes {
+  	position: absolute;
+  	top: 33px;
+  	left: 896px;
+  	cursor: pointer;
+}
+.nossa-equipe {
+  	position: absolute;
+  	top: 33px;
+  	left: 1012px;
+  	cursor: pointer;
+}
+.incio {
+  	position: absolute;
+  	top: 33px;
+  	left: 817px;
+  	cursor: pointer;
+}
+.suporte {
+  	position: absolute;
+  	top: 33px;
+  	left: 1172px;
+  	color: #fff2df;
+  	cursor: pointer;
+}
+
+
