@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(145deg, #4f10a1, #fbfbfc);   /*se pa nao ta legal*/
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0; padding: 0;
+        }
+        .login-container {
+            background: #F7F0D8;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 30px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 320px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            border-color: #4ae452;
+            outline: nome;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #702fad;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #702fad;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        .g_id_signin {
+            margin-top: 15px;
+        } 
+        .google-btn {
+            margin-top: 15px;
+            padding: 10px;
+            background: #db4437;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;           
+        }
+        .google-btn:hover {
+            background: #c1351d;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #F7F0D8;
+        }
+        .logo img {
+            max-width: 150px;
+            border-radius: 20px;   /* bordas redondas, talvez precise mudar*/
+            box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+        }
+        .error-message {
+            color: #d82000;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="WhatsApp Image 2025-03-31 at 21.20.53.jpeg" alt="logo" width="150">
+        </div>
+        <h2>Seja Bem Vindo</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuario ou Email" required>
+            <input type="password" placeholder="Senha" required>
+            <p id="error-message" class="error-message">Usuario ou senha incorretos!</p>
+            <button type="submit">Entrar</button>
+        </form>
+        <div id="g_id_onload" data-client_id="1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+        <div class="g_id_signin" data-type="standard"></div>
+    </div>
+    <script>
+    // Autenticação do Google
+        function handleCredentialResponse(response) {
+    console.log("Token JWT: ", response.credential);
+
+    // Armazena o negocio no localStorage
+    localStorage.setItem("userToken", response.credential);
+
+// Da uma atrasada no redirecionamento
+setTimeout(() => {
+    window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; 
+}, 100);
+}
+
+// Autenticar por usuario e senha
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+
+    var username = document.getElementById("username").value;
+    var password = document.querySelector("input[type='password']").value;
+    var errorMessage = document.getElementById("error-message");
+
+
+    //apenas para demonstração
+    if (username === "adm" && password === "1234") {
+        // Login deu bom
+        console.log("Login bem sucedido");
+
+        // Faz com que o usuario fique logado
+        localStorage.setItem("userLoggedIn", "true");
+        localStorage.setItem("username", username);
+
+
+        // Redirecionamento para tela inicial
+        window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html";
+    }  else {
+        // Mostra a mensagem de erro
+        errorMessage.style.display = "block";
+    }
+});
+
+   </script>
+</body>
+</html>
