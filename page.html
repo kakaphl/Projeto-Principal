@@ -1,770 +1,799 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  	<meta charset="utf-8">
-  	<meta name="viewport" content="initial-scale=1, width=device-width">
-  	
-  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" />
-  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" />
-  	
-  	<style>
-body {
-  	margin: 0;
-  	line-height: normal;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiauCademy - Ranking</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --roxo-claro: #bea6ff;
+            --roxo-escuro: #8a3ffc;
+            --roxo-mais-escuro: #2e174d;
+            --laranja: #fe9503;
+            --laranja-escuro: #ff6a00;
+            --creme: #fff2df;
+        }
 
-.pgina-inicial {
-  	width: 100%;
-  	position: relative;
-  	background: linear-gradient(0deg, #8a3ffc, #bea6ff 74.04%);
-  	height: 3089px;
-  	overflow: hidden;
-  	text-align: left;
-  	font-size: 40px;
-  	color: #2e174d;
-  	font-family: 'Perfectly Vintages', sans-serif;
-}
-.bem-vindo-veja {
-  	position: absolute;
-  	top: 1005px;
-  	left: 80px;
-  	color: #fff2df;
-}
-.veja-as-suas {
-  	position: absolute;
-  	top: 1625px;
-  	left: 277px;
-  	color: #fff2df;
-}
-.tabela-de-ranking {
-  	position: absolute;
-  	top: 1079px;
-  	left: 81px;
-  	box-shadow: 0px 25px 4px rgba(0, 0, 0, 0.05);
-  	border-radius: 25px;
-  	width: 1280px;
-  	height: 466px;
-  	overflow: hidden;
-  	font-size: 21px;
-  	font-family: Inter;
-}
-.tabela-de-ranking-child {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	border-radius: 25px;
-  	background: linear-gradient(180deg, #fff, #efe8e8);
-  	border: 2px solid #bea6ff;
-  	box-sizing: border-box;
-  	width: 1280px;
-  	height: 460px;
-}
-.usurios-no-ranking {
-  	position: absolute;
-  	top: 19px;
-  	left: 35px;
-  	border-radius: 15px;
-  	width: 1205px;
-  	height: 379px;
-  	overflow-y: auto;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: flex-start;
-}
-.pontuao-da-robson {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 729px;
-}
-.frame-parent {
-  	display: flex;
-  	align-items: center;
-  	padding: 0px 0px 1px;
-  	gap: 17px;
-}
-.frame-child {
-  	width: 42px;
-  	height: 42px;
-  	object-fit: cover;
-  	border-radius: 50%;
-  	background-color: #bea6ff;
-}
-.r {
-  	position: relative;
-  	font-weight: 800;
-}
-.span {
-  	color: #bea6ff;
-}
-.c-680-pts-container {
-  	position: relative;
-  	font-weight: 800;
-  	color: #bea6ff;
-}
-.c {
-  	white-space: pre-wrap;
-}
-.pts {
-  	color: #2e174d;
-}
-.pontuao-da-ste {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 914px;
-}
-.rectangle-wrapper {
-  	display: flex;
-  	align-items: center;
-}
-.frame-item {
-  	width: 42px;
-  	position: relative;
-  	background-color: #d9d9d9;
-  	height: 42px;
-  	border-radius: 50%;
-}
-.pgina-inicial-pts {
-  	color: #2e174d;
-  	white-space: pre-wrap;
-}
-.pontuao-da-ksia {
-  	width: 1205px;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 0px;
-  	box-sizing: border-box;
-  	gap: 956px;
-}
-.pontuao-da-davi {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 966px;
-}
-.pontuao-da-letcia {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 946px;
-}
-.pontuao-da-kau {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 961px;
-}
-.pontuao-da-lorrane {
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 939px;
-}
-.pontuao-da-ana-clara {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 917px;
-}
-.pgina-inicial-pontuao-da-ana-clara {
-  	align-self: stretch;
-  	height: 65px;
-  	flex-shrink: 0;
-  	display: flex;
-  	align-items: center;
-  	padding: 10px 10px 10px 0px;
-  	box-sizing: border-box;
-  	gap: 840px;
-}
-.quadro-roxo {
-  	position: absolute;
-  	top: 771px;
-  	left: 184px;
-  	width: 853px;
-  	height: 46px;
-}
-.bt-veja-suas-estatsticas {
-  	position: absolute;
-  	top: 1291px;
-  	left: 7px;
-  	border-radius: 35px;
-  	background: linear-gradient(90deg, #fe9503, #ff6a00);
-  	border: 3px solid #fff2df;
-  	box-sizing: border-box;
-  	width: 410px;
-  	height: 95px;
-  	display: none;
-}
-.icon {
-  	position: absolute;
-  	top: 94px;
-  	left: -46px;
-  	width: 1533px;
-  	height: 828px;
-  	object-fit: cover;
-}
-.pgina-inicial-child {
-  	position: absolute;
-  	top: 1702px;
-  	left: 81px;
-  	border-radius: 25px;
-  	background-color: #bea6ff;
-  	width: 1280px;
-  	height: 1154px;
-}
-.removebg-preview-2-icon {
-  	position: absolute;
-  	top: 880px;
-  	left: 1150px;
-  	width: 190.9px;
-  	height: 268.2px;
-  	object-fit: contain;
-}
-.removebg-preview-3-icon {
-  	position: absolute;
-  	top: 1499px;
-  	left: 96px;
-  	width: 190.9px;
-  	height: 268.2px;
-  	object-fit: contain;
-}
-.ei-no-container {
-  	position: absolute;
-  	top: 184px;
-  	left: 172px;
-  	font-size: 64px;
-  	color: #fff2df;
-  	display: inline-block;
-  	width: 420px;
-  	height: 358px;
-}
-.ei-no {
-  	margin: 0;
-}
-.pgina-inicial-icon {
-  	position: absolute;
-  	top: 417px;
-  	left: 1314px;
-  	width: 91px;
-  	height: 91px;
-  	object-fit: cover;
-}
-.icon2 {
-  	position: absolute;
-  	top: 417px;
-  	left: 49px;
-  	width: 91px;
-  	height: 91px;
-  	object-fit: cover;
-}
-.icon3 {
-  	position: absolute;
-  	top: 2291px;
-  	left: 795px;
-  	width: 565px;
-  	height: 565px;
-  	object-fit: cover;
-  	opacity: 0.3;
-}
-.estistica-mat {
-  	position: absolute;
-  	top: 1751px;
-  	left: 125px;
-  	width: 428px;
-  	height: 465px;
-  	font-family: Inter;
-}
-.matemtica {
-  	position: absolute;
-  	top: 0px;
-  	left: 92px;
-  	font-weight: 800;
-  	display: inline-block;
-  	width: 244px;
-  	height: 44px;
-}
-.estistica-mat-child {
-  	position: absolute;
-  	top: 76px;
-  	left: 0px;
-  	width: 428px;
-  	height: 389px;
-  	border-radius: 20px;
-  	background: linear-gradient(135deg, #8a3ffc, #bea6ff);
-}
-.de-acertos {
-  	position: absolute;
-  	top: 166px;
-  	left: 62px;
-  	font-weight: 800;
-  	color: #fff;
-  	text-align: center;
-  	font-size: 96px;
-}
-.pgina-inicial-de-acertos {
-  	margin: 0;
-  	font-size: 48px;
-}
-.dados-quest {
-  	position: absolute;
-  	top: -3px;
-  	left: 520px;
-  	width: 670px;
-  	height: 441px;
-  	font-size: 20px;
-}
-.questes-respondidas {
-  	position: absolute;
-  	top: 0px;
-  	left: 76px;
-  	font-size: 40px;
-  	font-weight: 800;
-}
-.geo-plana {
-  	position: absolute;
-  	top: 79px;
-  	left: 0px;
-  	width: 670px;
-  	height: 77px;
-}
-.geometria-plana {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	font-weight: 800;
-}
-.geo-plana-child {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #522696;
-  	width: 670px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.matriz {
-  	position: absolute;
-  	top: 174px;
-  	left: 0px;
-  	width: 520px;
-  	height: 77px;
-}
-.matriz-child {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #4b1d89;
-  	width: 520px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.prob {
-  	position: absolute;
-  	top: 269px;
-  	left: 0px;
-  	width: 629px;
-  	height: 77px;
-}
-.prob-child {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #4b1d89;
-  	width: 629px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.num-compl {
-  	position: absolute;
-  	top: 364px;
-  	left: 0px;
-  	width: 203px;
-  	height: 77px;
-}
-.num-compl-child {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #4b1d89;
-  	width: 130px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.estatistica-port {
-  	position: absolute;
-  	top: 2315px;
-  	left: 125px;
-  	width: 428px;
-  	height: 465px;
-  	font-family: Inter;
-}
-.portugus {
-  	position: absolute;
-  	top: 0px;
-  	left: 108px;
-  	font-weight: 800;
-  	display: inline-block;
-  	width: 212px;
-  	height: 44px;
-}
-.de-acertos2 {
-  	position: absolute;
-  	top: 189px;
-  	left: 87px;
-  	font-weight: 800;
-  	color: #fff;
-  	text-align: center;
-  	font-size: 96px;
-}
-.pgina-inicial-dados-quest {
-  	position: absolute;
-  	top: 2315px;
-  	left: 645px;
-  	width: 670px;
-  	height: 441px;
-  	font-size: 20px;
-  	font-family: Inter;
-}
-.geo-plana-item {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #522696;
-  	width: 514px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.matriz-item {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #4b1d89;
-  	width: 212px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.prob-item {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #4b1d89;
-  	width: 338px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.num-compl-item {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	background-color: #4b1d89;
-  	width: 36px;
-  	height: 53px;
-  	border-radius: 8px;
-}
-.bt-filtrar {
-  	position: absolute;
-  	top: 2875px;
-  	left: 1006px;
-  	border-radius: 35px;
-  	background: linear-gradient(90deg, #ffe066, #fe9503);
-  	border: 3px solid #fff2df;
-  	box-sizing: border-box;
-  	width: 357px;
-  	height: 61px;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 10px;
-  	color: #fff;
-  	font-family: Montserrat;
-  	cursor: pointer;
-  	transition: transform 0.2s ease;
-}
-.bt-filtrar:hover {
-  	transform: translateY(-2px);
-}
-.barra-de-menu {
-  	position: absolute;
-  	top: 0px;
-  	left: -1px;
-  	width: 1440px;
-  	height: 94px;
-  	font-size: 24px;
-  	color: #fff;
-}
-.barra-de-menu-child {
-  	position: absolute;
-  	top: 0px;
-  	left: 0px;
-  	background-color: #8a3ffc;
-  	width: 1440px;
-  	height: 94px;
-}
-.logo-icon {
-  	position: absolute;
-  	top: 20px;
-  	left: 53px;
-  	border-radius: 16px;
-  	width: 53px;
-  	height: 53px;
-  	object-fit: cover;
-  	background: linear-gradient(45deg, #bea6ff, #8a3ffc);
-}
-.miaucademy {
-  	position: absolute;
-  	top: 26px;
-  	left: 125px;
-  	font-size: 36px;
-}
-.perfil-parent {
-  	position: absolute;
-  	top: 10px;
-  	left: 1275px;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 10px;
-  	gap: 3px;
-  	cursor: pointer;
-  	transition: opacity 0.2s ease;
-}
-.perfil-parent:hover {
-  	opacity: 0.8;
-}
-.perfil {
-  	position: relative;
-}
-.whatsapp-image-2025-03-31-at-0 {
-  	width: 53px;
-  	position: relative;
-  	border-radius: 512px;
-  	max-height: 100%;
-  	object-fit: cover;
-  	background-color: #bea6ff;
-}
-.questes {
-  	position: absolute;
-  	top: 33px;
-  	left: 896px;
-  	cursor: pointer;
-  	transition: opacity 0.2s ease;
-}
-.questes:hover {
-  	opacity: 0.8;
-}
-.nossa-equipe {
-  	position: absolute;
-  	top: 33px;
-  	left: 1012px;
-  	cursor: pointer;
-  	transition: opacity 0.2s ease;
-}
-.nossa-equipe:hover {
-  	opacity: 0.8;
-}
-.incio {
-  	position: absolute;
-  	top: 33px;
-  	left: 817px;
-  	cursor: pointer;
-  	transition: opacity 0.2s ease;
-}
-.incio:hover {
-  	opacity: 0.8;
-}
-.suporte {
-  	position: absolute;
-  	top: 33px;
-  	left: 1172px;
-  	color: #fff2df;
-  	cursor: pointer;
-  	transition: opacity 0.2s ease;
-}
-.suporte:hover {
-  	opacity: 0.8;
-}
-  	</style>
-  	
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(0deg, var(--roxo-escuro), var(--roxo-claro) 74.04%);
+            color: var(--roxo-mais-escuro);
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--creme);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ranking-section {
+            background: linear-gradient(180deg, #fff, #efe8e8);
+            border-radius: 25px;
+            border: 2px solid var(--roxo-claro);
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .ranking-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--roxo-escuro);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ranking-table tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.3s;
+        }
+
+        .ranking-table tr:hover {
+            background-color: rgba(190, 166, 255, 0.1);
+        }
+
+        .ranking-table td {
+            padding: 15px 10px;
+            text-align: left;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--roxo-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .user-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .user-title {
+            color: var(--roxo-claro);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .user-points {
+            text-align: right;
+            font-weight: 800;
+            color: var(--roxo-escuro);
+        }
+
+        .user-class {
+            color: var(--roxo-mais-escuro);
+        }
+
+        .first-place {
+            background: linear-gradient(90deg, rgba(254, 149, 3, 0.1), rgba(255, 106, 0, 0.1));
+            border-radius: 10px;
+        }
+
+        .second-place {
+            background: linear-gradient(90deg, rgba(190, 166, 255, 0.1), rgba(138, 63, 252, 0.1));
+            border-radius: 10px;
+        }
+
+        .stats-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
+            border-radius: 20px;
+            padding: 25px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+
+        .stats-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .stats-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .percentage {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .percentage-desc {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .progress-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .progress-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--roxo-mais-escuro);
+            font-weight: 800;
+        }
+
+        .progress-item {
+            margin-bottom: 20px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--roxo-mais-escuro);
+        }
+
+        .progress-bar {
+            height: 25px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .math-fill {
+            background-color: #522696;
+        }
+
+        .portuguese-fill {
+            background-color: #4b1d89;
+        }
+
+        .notification {
+            text-align: center;
+            background-color: var(--roxo-claro);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification p {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .email-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .email-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--roxo-escuro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 15px 40px;
+            border-radius: 35px;
+            background: linear-gradient(90deg, #ffe066, var(--laranja));
+            border: 3px solid var(--creme);
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .mascots {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .mascot {
+            font-size: 5rem;
+            z-index: 2;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: var(--roxo-escuro);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(45deg, var(--roxo-claro), var(--roxo-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background: var(--laranja);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .profile-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--roxo-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Modal de questões */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--roxo-escuro);
+            background: none;
+            border: none;
+            font-weight: bold;
+        }
+
+        .modal-title {
+            text-align: center;
+            color: var(--roxo-escuro);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .questao {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+
+        .enunciado {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .alternativa {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .alternativa:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn-responder {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 25px;
+            background: var(--roxo-escuro);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-section {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mascots {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .email-icons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-  	
-  	<div class="pgina-inicial">
-    		<div class="bem-vindo-veja">Bem vindo! Veja a pontuação da comunidade</div>
-    		<div class="veja-as-suas">Veja as suas estatísticas</div>
-    		<div class="tabela-de-ranking">
-      			<div class="tabela-de-ranking-child">
-      			</div>
-      			<div class="usurios-no-ranking">
-        				<div class="pontuao-da-robson">
-          					<div class="frame-parent">
-            						<img class="frame-child" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Ccircle cx='21' cy='21' r='21' fill='%23bea6ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3ER%3C/text%3E%3C/svg%3E">
-            						
-            						<div class="r">
-              							<span>Robson</span>
-              							<span class="span">_</span>
-              							<span>👑 </span>
-              							<span class="span">REI DAS EXATAS</span>
-            						</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span class="c">3º C   </span>
-            						<span class="pts">680 pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-ste">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Stephany</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   500 pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-ksia">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Késia</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   480 pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-davi">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Davi</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   480 pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-letcia">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Letícia</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   360 pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-kau">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Kauã</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   320 pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-lorrane">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Lorrane</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   250pts</span>
-          					</div>
-        				</div>
-        				<div class="pontuao-da-ana-clara">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Ana Clara</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   120 pts</span>
-          					</div>
-        				</div>
-        				<div class="pgina-inicial-pontuao-da-ana-clara">
-          					<div class="frame-parent">
-            						<div class="rectangle-wrapper">
-              							<div class="frame-item">
-              							</div>
-            						</div>
-            						<div class="r">Ana Clara Soares</div>
-          					</div>
-          					<div class="c-680-pts-container">
-            						<span>3º C</span>
-            						<span class="pgina-inicial-pts">   120 pts</span>
-          					</div>
-        				</div>
-      			</div>
-    		</div>
-    		<div class="quadro-roxo">
-      			<div class="bt-veja-suas-estatsticas">
-      			</div>
-    		</div>
-    		<img class="icon" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1533' height='828' viewBox='0 0 1533 828'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238a3ffc;stop-opacity:0.1'/%3E%3Cstop offset='100%25' style='stop-color:%23ca148e;stop-opacity:0.1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1533' height='828' fill='url(%23grad)'/%3E%3C/svg%3E">
-    		
-    		<div class="pgina-inicial-child">
-    		</div>
-    		<img class="removebg-preview-2-icon" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='191' height='268' viewBox='0 0 191 268'%3E%3Cellipse cx='95' cy='200' rx='80' ry='50' fill='%23bea6ff' opacity='0.3'/%3E%3Ctext x='50%25' y='30%25' dominant-baseline='central' text-anchor='middle' fill='%234b1d89' font-size='16' font-weight='bold'%3EMascote%3C/text%3E%3C/svg%3E">
-    		
-    		<img class="removebg-preview-3-icon" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='191' height='268' viewBox='0 0 191 268'%3E%3Cellipse cx='95' cy='200' rx='80' ry='50' fill='%23bea6ff' opacity='0.3'/%3E%3Ctext x='50%25' y='30%25' dominant-baseline='central' text-anchor='middle' fill='%234b1d89' font-size='16' font-weight='bold'%3EMascote%3C/text%3E%3C/svg%3E">
-    		
-    		<div class="ei-no-container">
-      			<p class="ei-no">Ei , não esqueça de conferir</p>
-      			<p class="ei-no"> as notificações no seu email ok?</p>
-    		</div>
-    		<img class="pgina-inicial-icon" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='91' height='91' viewBox='0 0 91 91'%3E%3Ccircle cx='45.5' cy='45.5' r='45.5' fill='%23bea6ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='20'%3E📧%3C/text%3E%3C/svg%3E">
-    		
-    		<img class="icon2" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='91' height='91' viewBox='0 0 91 91'%3E%3Ccircle cx='45.5' cy='45.5' r='45.5' fill='%23bea6ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='20'%3E📧%3C/text%3E%3C/svg%3E">
-    		
-    		<img class="icon3" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='565' height='565' viewBox='0 0 565 565'%3E%3Ccircle cx='282.5' cy='282.5' r='250' fill='%23bea6ff' opacity='0.1'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='%234b1
+    <nav class="nav-bar">
+        <div class="logo">
+            <div class="logo-icon">M</div>
+            <span>MiauCademy</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Início</a>
+            <a href="#" id="link-questoes">Questões</a>
+            <a href="#">Nossa Equipe</a>
+            <a href="#">Suporte</a>
+        </div>
+        <div class="profile">
+            <span>Perfil</span>
+            <div class="profile-avatar">U</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Ei, não esqueça de conferir</h1>
+            <p>as notificações no seu email ok?</p>
+        </div>
+
+        <section class="ranking-section">
+            <h2 class="ranking-title">Bem vindo! Veja a pontuação da comunidade</h2>
+            <table class="ranking-table">
+                <tr class="first-place">
+                    <td>
+                        <div class="user-info">
+                            <div class="avatar">R</div>
+                            <div>
+                                <div class="user-name">Robson 👑 REI DAS EXATAS</div>
+                                <div class="user-title">3º C</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="user-points">680 pts</td>
+                </tr>
+                <tr class="second-place">
+                    <td>
+                        <div class="user-info">
+                            <div class="avatar">S</div>
+                            <div>
+                                <div class="user-name">Stephany</div>
+                                <div class="user-title">3º C</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="user-points">500 pts</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <div class="avatar">K</div>
+                            <div>
+                                <div class="user-name">Késia</div>
+                                <div class="user-title">3º C</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="user-points">480 pts</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <div class="avatar">D</div>
+                            <div>
+                                <div class="user-name">Davi</div>
+                                <div class="user-title">3º C</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="user-points">480 pts</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <div class="avatar">L</div>
+                            <div>
+                                <div class="user-name">Letícia</div>
+                                <div class="user-title">3º C</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="user-points">360 pts</td>
+                </tr>
+            </table>
+        </section>
+
+        <div class="mascots">
+            <div class="mascot">😺</div>
+            <div class="mascot">😺</div>
+        </div>
+
+        <section class="notification">
+            <p>Veja as suas estatísticas</p>
+            <div class="email-icons">
+                <div class="email-icon">📧</div>
+                <div class="email-icon">📧</div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-card">
+                <h3 class="stats-title">Matemática</h3>
+                <div class="stats-content">
+                    <div class="percentage">75%</div>
+                    <div class="percentage-desc">de acertos</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3 class="progress-title">Questões respondidas</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Geometria Plana</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill math-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Matriz</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill math-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Probabilidade</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill math-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Números Complexos</span>
+                        <span>40%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill math-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-card">
+                <h3 class="stats-title">Português</h3>
+                <div class="stats-content">
+                    <div class="percentage">62%</div>
+                    <div class="percentage-desc">de acertos</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3 class="progress-title">Questões respondidas</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Interpretação de Texto</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill portuguese-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Gramática</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill portuguese-fill" style="width: 65%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Literatura</span>
+                        <span>50%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill portuguese-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Redação</span>
+                        <span>30%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill portuguese-fill" style="width: 30%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button class="filter-btn" id="btn-questoes">Ver Todas as Questões</button>
+    </div>
+
+    <!-- janela de Questões -->
+    <div class="modal" id="modal-questoes">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <h2 class="modal-title">Questões de Matemática</h2>
+            
+            <div class="questao">
+                <div class="enunciado">1. Qual é o valor de x na equação 2x + 5 = 15?</div>
+                <div class="alternativas">
+                    <div class="alternativa">a) x = 5</div>
+                    <div class="alternativa">b) x = 10</div>
+                    <div class="alternativa">c) x = 7.5</div>
+                    <div class="alternativa">d) x = 5.5</div>
+                </div>
+            </div>
+            
+            <div class="questao">
+                <div class="enunciado">2. Qual é a fórmula de Bhaskara?</div>
+                <div class="alternativas">
+                    <div class="alternativa">a) x = -b ± √(b² - 4ac) / 2a</div>
+                    <div class="alternativa">b) x = b ± √(b² - 4ac) / 2a</div>
+                    <div class="alternativa">c) x = -b ± √(b² + 4ac) / 2a</div>
+                    <div class="alternativa">d) x = b ± √(b² + 4ac) / 2a</div>
+                </div>
+            </div>
+            
+            <button class="btn-responder">Responder Questões</button>
+        </div>
+    </div>
+
+    <script>
+        // Efeito de digitação no título
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.header h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            typeWriter();
+            
+            // Configurar redirecionamento para questões
+            const linkQuestoes = document.getElementById('link-questoes');
+            const btnQuestoes = document.getElementById('btn-questoes');
+            const modalQuestoes = document.getElementById('modal-questoes');
+            const closeModal = document.getElementById('close-modal');
+            
+            // Método 1: Redirecionamento para outra página
+            linkQuestoes.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Simulação: em um caso real, isso redirecionaria para outra página
+                window.location.href = "questoes.html";
+            });
+            
+            // Método 2: Abrir janela com questões
+            btnQuestoes.addEventListener('click', function() {
+                modalQuestoes.style.display = 'flex';
+            });
+            
+            // Fechar janela
+            closeModal.addEventListener('click', function() {
+                modalQuestoes.style.display = 'none';
+            });
+            
+            // Fechar janela clicando fora dele
+            window.addEventListener('click', function(e) {
+                if (e.target === modalQuestoes) {
+                    modalQuestoes.style.display = 'none';
+                }
+            });
+            
+            // Adicionar interação às alternativas
+            const alternativas = document.querySelectorAll('.alternativa');
+            alternativas.forEach(alt => {
+                alt.addEventListener('click', function() {
+                    // Remover seleção anterior
+                    alternativas.forEach(a => a.style.background = '');
+                    // Selecionar esta alternativa
+                    this.style.background = 'rgba(138, 63, 252, 0.2)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
