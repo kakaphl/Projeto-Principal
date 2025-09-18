@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 // Conexão com MongoDB Atlas
-const MONGODB_URI = 'mongodb+srv://db_santanastephany220_db_user:22190309@miaucademy.4mngdrk.mongodb.net/miaucademy?retryWrites=true&w=majority';
+const MONGODB_URI = 'mongodb+srv://santanastephany220_db_user:22190309@miaucademy.4mngdrk.mongodb.net/miaucademy?retryWrites=true&w=majority'
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
