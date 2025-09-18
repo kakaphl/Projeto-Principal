@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta charset="UTF-8">
+    <!-- Configura a viewport para responsividade em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página que aparece na aba do navegador -->
+    <title>Perfil do Usuário - Miaucademy</title>
+    <!-- Importa a fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Importa o Font Awesome para usar ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Remove margens e preenchimentos padrão de todos os elementos */
+        * {
+            margin: 0;
+            padding: 0;
+            /* Faz com que padding e border sejam incluídos no cálculo de width/height */
+            box-sizing: border-box;
+        }
+        
+        /* Estilos para o corpo da página */
+        body {
+            /* Define a fonte principal */
+            font-family: 'Poppins', sans-serif;
+            /* Cria um gradiente de fundo roxo-azul */
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            /* Cor do texto branco */
+            color: #fff;
+            /* Altura da linha para melhor legibilidade */
+            line-height: 1.6;
+            /* Espaçamento interno ao redor do conteúdo */
+            padding: 20px;
+            /* Garante que o body ocupe pelo menos toda a altura da tela */
+            min-height: 100vh;
+        }
+        
+        /* Container principal que centraliza o conteúdo */
+        .container {
+            /* Largura máxima do conteúdo */
+            max-width: 800px;
+            /* Centraliza o container na página */
+            margin: 0 auto;
+        }
+        
+        /* Estilos para o cabeçalho */
+        .header {
+            /* Centraliza o texto */
+            text-align: center;
+            /* Espaçamento abaixo do cabeçalho */
+            margin-bottom: 30px;
+            /* Espaçamento interno */
+            padding: 20px;
+        }
+        
+        /* Estilos para o título principal */
+        .header h1 {
+            /* Tamanho da fonte */
+            font-size: 2rem;
+            /* Cor do texto branco */
+            color: #ffffff;
+            /* Espaçamento abaixo do título */
+            margin-bottom: 10px;
+        }
+        
+        /* Estilos para o parágrafo do cabeçalho */
+        .header p {
+            /* Cor do texto com transparência */
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Estilos para o cartão de perfil */
+        .profile-card {
+            /* Fundo semi-transparente */
+            background: rgba(255, 255, 255, 0.1);
+            /* Bordas arredondadas */
+            border-radius: 15px;
+            /* Espaçamento interno */
+            padding: 25px;
+            /* Espaçamento abaixo do cartão */
+            margin-bottom: 25px;
+            /* Borda sutil */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Estilos para o nome do perfil */
+        .profile-name {
+            /* Tamanho da fonte */
+            font-size: 1.8rem;
+            /* Espaçamento abaixo do nome */
+            margin-bottom: 5px;
+            /* Usa flexbox para alinhar ícone e texto */
+            display: flex;
+            /* Centraliza verticalmente */
+            align-items: center;
+        }
+        
+        /* Estilos para o ícone dentro do nome */
+        .profile-name i {
+            /* Espaçamento à direita do ícone */
+            margin-right: 10px;
+            /* Tamanho do ícone */
+            font-size: 1.5rem;
+        }
+        
+        /* Estilos para o cargo/função */
+        .profile-role {
+            /* Cor do texto com transparência */
+            color: rgba(255, 255, 255, 0.8);
+            /* Espaçamento abaixo do cargo */
+            margin-bottom: 20px;
+            /* Recuo à esquerda para alinhar com o nome */
+            padding-left: 35px;
+        }
+        
+        /* Estilos para o divisor visual */
+        .divider {
+            /* Altura da linha */
+            height: 1px;
+            /* Cor de fundo com transparência */
+            background: rgba(255, 255, 255, 0.2);
+            /* Espaçamento acima e abaixo */
+            margin: 15px 0;
+        }
+        
+        /* Estilos para cada grupo de informações */
+        .info-group {
+            /* Espaçamento abaixo de cada grupo */
+            margin-bottom: 20px;
+        }
+        
+        /* Estilos para o título de cada grupo de informações */
+        .info-title {
+            /* Texto em negrito */
+            font-weight: 600;
+            /* Espaçamento abaixo do título */
+            margin-bottom: 8px;
+            /* Usa flexbox para alinhar ícone e texto */
+            display: flex;
+            /* Centraliza verticalmente */
+            align-items: center;
+        }
+        
+        /* Estilos para o ícone dentro do título */
+        .info-title i {
+            /* Espaçamento à direita do ícone */
+            margin-right: 10px;
+        }
+        
+        /* Estilos para o conteúdo de cada grupo de informações */
+        .info-content {
+            /* Recuo à esquerda para alinhar com o título */
+            padding-left: 25px;
+        }
+        
+        /* Estilos para a lista de informações */
+        .info-list {
+            /* Remove os marcadores padrão da lista */
+            list-style-type: none;
+        }
+        
+        /* Estilos para cada item da lista */
+        .info-list li {
+            /* Espaçamento abaixo de cada item */
+            margin-bottom: 8px;
+            /* Usa flexbox para alinhar ícone e texto */
+            display: flex;
+            /* Centraliza verticalmente */
+            align-items: center;
+        }
+        
+        /* Estilos para os ícones dentro da lista */
+        .info-list i {
+            /* Espaçamento à direita do ícone */
+            margin-right: 8px;
+            /* Largura fixa para alinhamento consistente */
+            width: 16px;
+        }
+        
+        /* Estilos para o container de estatísticas */
+        .stats {
+            /* Usa CSS Grid para layout */
+            display: grid;
+            /* Cria 2 colunas de tamanho igual */
+            grid-template-columns: repeat(2, 1fr);
+            /* Espaçamento entre os itens do grid */
+            gap: 15px;
+            /* Espaçamento acima e abaixo */
+            margin: 20px 0;
+        }
+        
+        /* Estilos para cada item de estatística */
+        .stat {
+            /* Fundo semi-transparente */
+            background: rgba(255, 255, 255, 0.05);
+            /* Bordas arredondadas */
+            border-radius: 10px;
+            /* Espaçamento interno */
+            padding: 15px;
+            /* Centraliza o texto */
+            text-align: center;
+        }
+        
+        /* Estilos para o valor da estatística */
+        .stat-value {
+            /* Tamanho maior da fonte */
+            font-size: 1.5rem;
+            /* Texto em negrito */
+            font-weight: 700;
+            /* Espaçamento abaixo do valor */
+            margin-bottom: 5px;
+        }
+        
+        /* Estilos para o rótulo da estatística */
+        .stat-label {
+            /* Tamanho menor da fonte */
+            font-size: 0.9rem;
+            /* Cor do texto com transparência */
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Estilos para o container de botões de ação */
+        .actions {
+            /* Usa flexbox para layout */
+            display: flex;
+            /* Centraliza os botões horizontalmente */
+            justify-content: center;
+            /* Espaçamento entre os botões */
+            gap: 15px;
+            /* Espaçamento acima */
+            margin-top: 25px;
+            /* Permite que os botões quebrem para linha seguinte em telas pequenas */
+            flex-wrap: wrap;
+        }
+        
+        /* Estilos base para os botões */
+        .btn {
+            /* Usa flexbox para alinhar ícone e texto */
+            display: inline-flex;
+            /* Centraliza verticalmente */
+            align-items: center;
+            /* Fundo semi-transparente */
+            background: rgba(255, 255, 255, 0.1);
+            /* Cor do texto branco */
+            color: #ffffff;
+            /* Espaçamento interno */
+            padding: 10px 20px;
+            /* Bordas completamente arredondadas */
+            border-radius: 30px;
+            /* Remove sublinhado padrão */
+            text-decoration: none;
+            /* Peso da fonte */
+            font-weight: 500;
+            /* Transição suave para efeitos hover */
+            transition: all 0.3s;
+            /* Borda sutil */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para o estado hover dos botões */
+        .btn:hover {
+            /* Muda a cor de fundo ao passar o mouse */
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para ícones dentro dos botões */
+        .btn i {
+            /* Espaçamento à direita do ícone */
+            margin-right: 8px;
+        }
+        
+        /* Estilos para o rodapé */
+        .footer {
+            /* Centraliza o texto */
+            text-align: center;
+            /* Espaçamento acima */
+            margin-top: 40px;
+            /* Cor do texto com transparência */
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Media query para telas com largura máxima de 768px (tablets e celulares) */
+        @media (max-width: 768px) {
+            /* Muda o layout das estatísticas para uma coluna */
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Muda a direção dos botões para coluna */
+            .actions {
+                flex-direction: column;
+            }
+            
+            /* Faz os botões ocuparem toda a largura disponível */
+            .btn {
+                width: 100%;
+                /* Centraliza o conteúdo dos botões */
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal que envolve todo o conteúdo -->
+    <div class="container">
+        <!-- Cabeçalho com título e descrição -->
+        <div class="header">
+            <h1>Meu Perfil - Miaucademy</h1>
+            <p>Gerencie suas informações e preferências</p>
+        </div>
+        
+        <!-- Cartão principal com informações do perfil -->
+        <div class="profile-card">
+            <!-- Nome do usuário com ícone -->
+            <h2 class="profile-name"><i class="fas fa-user"></i>Ana Silva</h2>
+            <!-- Cargo/função do usuário -->
+            <p class="profile-role">Líder de Projeto & Desenvolvedora Sênior</p>
+            
+            <!-- Divisor visual para separar seções -->
+            <div class="divider"></div>
+            
+            <!-- Seção de informações de contato -->
+            <div class="info-group">
+                <h3 class="info-title"><i class="fas fa-address-card"></i>Informações de Contato</h3>
+                <div class="info-content">
+                    <ul class="info-list">
+                        <li><i class="fas fa-envelope"></i>ana.silva@miaucademy.com</li>
+                        <li><i class="fas fa-phone"></i>(61) 98220-6144</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Brasília, DF</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Seção de informações profissionais -->
+            <div class="info-group">
+                <h3 class="info-title"><i class="fas fa-briefcase"></i>Informações Profissionais</h3>
+                <div class="info-content">
+                    <ul class="info-list">
+                        <li><i class="fas fa-building"></i>Miaucademy Ltda.</li>
+                        <li><i class="fas fa-clock"></i>Integral (40h semanais)</li>
+                        <li><i class="fas fa-calendar-alt"></i>Desde: 10/03/2020</li>
+                        <li><i class="fas fa-id-badge"></i>ID: MA-78942</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Seção de estatísticas -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Projetos Concluídos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Avaliação</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Anos de Experiência</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">127</div>
+                    <div class="stat-label">Tasks Concluídas</div>
+                </div>
+            </div>
+            
+            <!-- Seção de botões de ação -->
+            <div class="actions">
+                <a href="#" class="btn"><i class="fas fa-edit"></i>Editar Perfil</a>
+                <a href="#" class="btn"><i class="fas fa-cog"></i>Configurações</a>
+                <a href="#" class="btn"><i class="fas fa-share-alt"></i>Compartilhar</a>
+            </div>
+        </div>
+        
+        <!-- Rodapé da página -->
+        <div class="footer">
+            <p>Miaucademy &copy; 2023 - Todos os direitos reservados</p>
+        </div>
+    </div>
+</body>
+</html>

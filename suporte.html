@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe Miaucademy</title>
+    <!-- Importação da fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== ESTILOS GERAIS ===== */
+        /* Reset básico para remover margens e paddings padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Inclui padding e border no cálculo de width/height */
+        }
+        
+        /* Estilos do corpo da página */
+        body {
+            font-family: 'Poppins', sans-serif; /* Define a fonte principal */
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Fundo com gradiente roxo-azul */
+            color: #fff; /* Texto em branco */
+            line-height: 1.6; /* Altura da linha para melhor legibilidade */
+            padding: 20px; /* Espaçamento interno */
+            min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+        }
+        
+        /* Container principal para centralizar o conteúdo */
+        .container {
+            max-width: 1000px; /* Largura máxima do conteúdo */
+            margin: 0 auto; /* Centraliza o container na página */
+        }
+        
+        /* ===== CABEÇALHO ===== */
+        .header {
+            text-align: center; /* Centraliza o texto */
+            margin-bottom: 40px; /* Espaçamento inferior */
+            padding: 20px; /* Espaçamento interno */
+        }
+        
+        /* Título principal */
+        .header h1 {
+            font-size: 2.5rem; /* Tamanho da fonte */
+            font-weight: 700; /* Peso da fonte (negrito) */
+            color: #ffffff; /* Cor do texto (branco) */
+            margin-bottom: 10px; /* Espaçamento inferior */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra de texto para melhor contraste */
+        }
+        
+        /* Subtítulo */
+        .header p {
+            font-size: 1.2rem; /* Tamanho da fonte */
+            color: rgba(255, 255, 255, 0.9); /* Cor do texto com transparência */
+        }
+        
+        /* ===== LISTA DE MEMBROS ===== */
+        .team-list {
+            display: flex; /* Ativa o flexbox */
+            flex-direction: column; /* Organiza os itens em coluna */
+            gap: 30px; /* Espaçamento entre os itens */
+            margin-bottom: 50px; /* Espaçamento inferior */
+        }
+        
+        /* ===== ITEM DE MEMBRO INDIVIDUAL ===== */
+        .member-item {
+            display: flex; /* Ativa o flexbox */
+            align-items: center; /* Centraliza verticalmente os itens */
+            background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+            backdrop-filter: blur(10px); /* Efeito de desfoque no fundo (glassmorphism) */
+            border-radius: 15px; /* Bordas arredondadas */
+            overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            transition: transform 0.3s, box-shadow 0.3s; /* Transições suaves para hover */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+        }
+        
+        /* Efeito ao passar o mouse sobre um membro */
+        .member-item:hover {
+            transform: translateY(-5px); /* Move o card para cima */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+            background: rgba(255, 255, 255, 0.15); /* Torna o fundo um pouco mais visível */
+        }
+        
+        /* Alterna a direção dos itens (ímpar: esquerda, par: direita) */
+        .member-item:nth-child(odd) {
+            flex-direction: row; /* Imagem à esquerda, texto à direita */
+        }
+        
+        .member-item:nth-child(even) {
+            flex-direction: row-reverse; /* Imagem à direita, texto à esquerda */
+        }
+        
+        /* ===== FOTO DO MEMBRO ===== */
+        .member-photo {
+            flex: 0 0 200px; /* Largura fixa (não cresce, não encolhe) */
+            height: 200px; /* Altura fixa */
+            display: flex; /* Ativa flexbox para centralização */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            font-size: 3rem; /* Tamanho da letra inicial */
+            font-weight: bold; /* Peso da fonte */
+            color: white; /* Cor do texto */
+            margin: 20px; /* Espaçamento externo */
+            border-radius: 10px; /* Bordas arredondadas */
+        }
+        
+        /* Fundos para as fotos dos membros (todas com o mesmo estilo) */
+        .member-item:nth-child(1) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        .member-item:nth-child(2) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        .member-item:nth-child(3) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        .member-item:nth-child(4) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        .member-item:nth-child(5) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        .member-item:nth-child(6) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        .member-item:nth-child(7) .member-photo {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        /* ===== INFORMAÇÕES DO MEMBRO ===== */
+        .member-info {
+            flex: 1; /* Ocupa o espaço restante */
+            padding: 25px; /* Espaçamento interno */
+        }
+        
+        /* Nome do membro */
+        .member-name {
+            font-size: 1.8rem; /* Tamanho da fonte */
+            font-weight: 600; /* Peso da fonte */
+            margin-bottom: 5px; /* Espaçamento inferior */
+            color: #ffffff; /* Cor do texto */
+        }
+        
+        /* Cargo/função do membro */
+        .member-role {
+            font-size: 1.1rem; /* Tamanho da fonte */
+            color: rgba(255, 255, 255, 0.8); /* Cor do texto com transparência */
+            margin-bottom: 15px; /* Espaçamento inferior */
+            font-weight: 500; /* Peso da fonte */
+        }
+        
+        /* Descrição do membro */
+        .member-info p {
+            color: rgba(255, 255, 255, 0.9); /* Cor do texto com transparência */
+        }
+        
+        /* ===== SEÇÃO DE CONTATO ===== */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+            backdrop-filter: blur(10px); /* Efeito de desfoque (glassmorphism) */
+            border-radius: 15px; /* Bordas arredondadas */
+            padding: 30px; /* Espaçamento interno */
+            text-align: center; /* Centraliza o texto */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            margin-top: 40px; /* Espaçamento superior */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+        }
+        
+        /* Título da seção de contato */
+        .contact-section h2 {
+            font-size: 1.8rem; /* Tamanho da fonte */
+            margin-bottom: 15px; /* Espaçamento inferior */
+            color: #ffffff; /* Cor do texto */
+        }
+        
+        /* Texto da seção de contato */
+        .contact-section p {
+            font-size: 1.1rem; /* Tamanho da fonte */
+            margin-bottom: 20px; /* Espaçamento inferior */
+            color: rgba(255, 255, 255, 0.9); /* Cor do texto com transparência */
+        }
+        
+        /* ===== BOTÕES DE CONTATO ===== */
+        .contact-btn {
+            display: inline-block; /* Exibição em linha com propriedades de bloco */
+            background: #ffffff; /* Fundo branco */
+            color: #6a11cb; /* Texto na cor roxa */
+            padding: 12px 25px; /* Espaçamento interno */
+            border-radius: 30px; /* Bordas completamente arredondadas */
+            text-decoration: none; /* Remove sublinhado padrão */
+            font-weight: 500; /* Peso da fonte */
+            transition: all 0.3s; /* Transição suave para todas as propriedades */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            margin: 10px 5px; /* Espaçamento externo */
+        }
+        
+        /* Efeito ao passar o mouse sobre os botões */
+        .contact-btn:hover {
+            background: #f0f0f0; /* Muda a cor de fundo */
+            transform: translateY(-2px); /* Move o botão para cima */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+        }
+        
+        /* ===== RODAPÉ ===== */
+        .footer {
+            text-align: center; /* Centraliza o texto */
+            margin-top: 50px; /* Espaçamento superior */
+            padding: 20px; /* Espaçamento interno */
+            color: rgba(255, 255, 255, 0.7); /* Cor do texto com transparência */
+            font-size: 0.9rem; /* Tamanho da fonte reduzido */
+        }
+        
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            /* Em dispositivos móveis, os membros ficam em coluna */
+            .member-item {
+                flex-direction: column !important; /* Força direção colunar */
+            }
+            
+            /* Ajusta o tamanho das fotos em mobile */
+            .member-photo {
+                width: 150px; /* Largura reduzida */
+                height: 150px; /* Altura reduzida */
+                margin: 20px auto; /* Centraliza e mantém espaçamento */
+            }
+            
+            /* Reduz o tamanho do título em mobile */
+            .header h1 {
+                font-size: 2rem; /* Tamanho de fonte menor */
+            }
+            
+            /* Organiza os botões em coluna em mobile */
+            .contact-buttons {
+                display: flex; /* Ativa flexbox */
+                flex-direction: column; /* Organiza em coluna */
+            }
+            
+            /* Ajusta os botões para ocupar toda a largura em mobile */
+            .contact-btn {
+                width: 100%; /* Largura total */
+                margin: 5px 0; /* Ajusta o espaçamento */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Cabeçalho com título -->
+        <div class="header">
+            <h1>Venha conhecer a equipe que criou e desenvolveu o Miaucademy</h1>
+            <p>Nossa equipe de especialistas pronta para te ajudar</p>
+        </div>
+        
+        <!-- Lista de membros da equipe -->
+        <div class="team-list">
+            <!-- Membro 1 - Ana -->
+            <div class="member-item">
+                <div class="member-photo">A</div>
+                <div class="member-info">
+                    <h2 class="member-name">Ana</h2>
+                    <p class="member-role">Líder de Projeto</p>
+                    <p>Responsável pela coordenação geral do projeto e tomada de decisões estratégicas.</p>
+                </div>
+            </div>
+            
+            <!-- Membro 2 - Davi (Programador de Front-end) -->
+            <div class="member-item">
+                <div class="member-photo">D</div>
+                <div class="member-info">
+                    <h2 class="member-name">Davi</h2>
+                    <p class="member-role">Programador de Front-end</p>
+                    <p>Especialista em criar interfaces bonitas, responsivas e com ótima experiência do usuário.</p>
+                </div>
+            </div>
+            
+            <!-- Membro 3 - Kaua (Programador de Back-end) -->
+            <div class="member-item">
+                <div class="member-photo">K</div>
+                <div class="member-info">
+                    <h2 class="member-name">Kaua</h2>
+                    <p class="member-role">Programador de Back-end</p>
+                    <p>Responsável pela lógica de servidor, banco de dados e integrações do sistema.</p>
+                </div>
+            </div>
+            
+            <!-- Membro 4 - Kesia (Programadora de Front-end) -->
+            <div class="member-item">
+                <div class="member-photo">K</div>
+                <div class="member-info">
+                    <h2 class="member-name">Kesia</h2>
+                    <p class="member-role">Programadora de Front-end</p>
+                    <p>Desenvolve interfaces modernas e interativas para melhor experiência do usuário.</p>
+                </div>
+            </div>
+            
+            <!-- Membro 5 - Lorrane (Banco de Pesquisa) -->
+            <div class="member-item">
+                <div class="member-photo">L</div>
+                <div class="member-info">
+                    <h2 class="member-name">Lorrane</h2>
+                    <p class="member-role">Banco de Pesquisa</p>
+                    <p>Responsável pela pesquisa e organização de dados e informações para o projeto.</p>
+                </div>
+            </div>
+            
+            <!-- Membro 6 - Stephany (Marketing e Programadora de Back-end) -->
+            <div class="member-item">
+                <div class="member-photo">S</div>
+                <div class="member-info">
+                    <h2 class="member-name">Stephany</h2>
+                    <p class="member-role">Marketing e Programadora de Back-end</p>
+                    <p>Combina habilidades técnicas com estratégias de marketing para promover o projeto.</p>
+                </div>
+            </div>
+            
+            <!-- Membro 7 - Leticia (Banco de Pesquisa) -->
+            <div class="member-item">
+                <div class="member-photo">L</div>
+                <div class="member-info">
+                    <h2 class="member-name">Leticia</h2>
+                    <p class="member-role">Banco de Pesquisa</p>
+                    <p>Especialista em coleta, análise e organização de dados para fundamentar as decisões do projeto.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção de contato geral -->
+        <div class="contact-section">
+            <h2>Quer saber mais sobre nosso trabalho ou entrar em contato?</h2>
+            <p>Acesse nossos links ou entre em contato conosco</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/5561981843569" class="contact-btn">Contatar via WhatsApp</a>
+                <a href="https://linktr.ee/miaucademy" class="contact-btn">Acesse nosso Linktree</a>
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+        <div class="footer">
+            <p>Miaucademy &copy; 2023 - Todos os direitos reservados</p>
+        </div>
+    </div>
+</body>
+</html>

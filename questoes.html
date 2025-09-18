@@ -1,682 +1,556 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Define a codificação de caracteres como UTF-8 para suportar caracteres especiais em português -->
     <meta charset="utf-8">
-    <!-- Configura a viewport para responsividade em dispositivos móveis -->
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <!-- Título da página que aparece na aba do navegador -->
     <title>Questões - Miaucademy</title>
     
-    <!-- Importação de folhas de estilo externas -->
-    <!-- Link para o arquivo CSS local (não fornecido no código original) -->
-    <link rel="stylesheet" href="./index.css" />
-    <!-- Links para fontes do Google (com placeholders [object Object] que precisariam ser corrigidos) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
+    <!-- Corrigindo os links das fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Importação do Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Estilos CSS incorporados diretamente no documento -->
     <style>
-        /* Reset básico para remover margens e paddings padrão dos navegadores */
         * {
-            margin: 0; /* Remove todas as margens padrão */
-            padding: 0; /* Remove todos os paddings padrão */
-            box-sizing: border-box; /* Inclui padding e border na largura/altura total dos elementos */
-            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a família de fontes padrão */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Estilização do corpo da página */
         body {
-            background-color: linear-gradient(145deg #4f10a1, #fbfbfc ); /* Cor de fundo azul muito claro */
-            color: #333; /* Cor do texto escuro */
-            line-height: 1.6; /* Altura da linha para melhor legibilidade */
-            min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+            background: linear-gradient(145deg, #4f10a1, #fbfbfc);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
         }
         
-        /* Container principal da página de questões */
         .pgina-de-questes {
-            max-width: 1200px; /* Largura máxima do conteúdo */
-            margin: 0 auto; /* Centraliza o container na página */
-            padding: 90px 20px 20px 20px; /* Espaçamento interno: topo, direita, inferior, esquerda */
-            display: grid; /* Usa CSS Grid para layout */
-            grid-template-columns: 300px 1fr; /* Duas colunas com larguras fixa e flexível */
-            gap: 25px; /* Espaçamento entre as colunas */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 20px 20px 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
         }
         
-        /* Container do quadro de questões (lado direito) */
         .quadro-das-questes {
-            background-color: white; /* Fundo branco */
-            border-radius: 15px; /* Bordas arredondadas */
-            padding: 25px; /* Espaçamento interno */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Sombra suave */
-            position: relative; /* Define posicionamento relativo para elementos filhos */
-            overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Retângulo roxo decorativo no topo do quadro de questões */
         .rectangle-roxo {
-            position: absolute; /* Posicionamento absoluto em relação ao quadro */
-            top: 0; /* Alinha ao topo */
-            left: 0; /* Alinha à esquerda */
-            right: 0; /* Alinha à direita */
-            height: 8px; /* Altura do elemento */
-            background: linear-gradient(to right, #6e8efb, #a777e3); /* Gradiente de cores azul e roxo */
-            border-radius: 15px 15px 0 0; /* Bordas arredondadas apenas no topo */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(to right, #6e8efb, #a777e3);
+            border-radius: 15px 15px 0 0;
         }
         
-        /* Retângulo branco para conteúdo da questão */
         .rectangle-branco {
-            background-color: white; /* Fundo branco */
-            border-radius: 10px; /* Bordas arredondadas */
-            padding: 20px; /* Espaçamento interno */
-            margin-top: 15px; /* Espaçamento superior */
-            border: 1px solid #e0e0e0; /* Borda cinza clara */
-            min-height: 200px; /* Altura mínima para a área da questão */
-            display: flex; /* Usa flexbox para alinhar conteúdo */
-            align-items: center; /* Centraliza verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
-            color: #888; /* Cor do texto cinza */
-            font-style: italic; /* Texto em itálico */
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid #e0e0e0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
         }
         
-        /* Container das alternativas da questão */
         .aa-partir-da-container {
-            background-color: #f9f9ff; /* Cor de fundo azul muito claro */
-            border-radius: 10px; /* Bordas arredondadas */
-            padding: 20px; /* Espaçamento interno */
-            margin-top: 20px; /* Espaçamento superior */
-            border-left: 4px solid #6e8efb; /* Borda lateral esquerda azul */
+            background-color: #f9f9ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #6e8efb;
         }
         
-        /* Parágrafo dentro do container de alternativas */
         .aa-partir-da {
-            margin-bottom: 15px; /* Espaçamento inferior entre parágrafos */
-            padding-left: 25px; /* Recuo à esquerda */
-            position: relative; /* Posicionamento relativo para pseudo-elementos */
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
         }
         
-        /* Adiciona marcador personalizado antes de cada alternativa */
         .aa-partir-da::before {
-            content: ""; /* Conteúdo vazio para o pseudo-elemento */
-            position: absolute; /* Posicionamento absoluto */
-            left: 0; /* Alinha à esquerda */
-            top: 8px; /* Posiciona verticalmente ao centro */
-            width: 12px; /* Largura do marcador */
-            height: 12px; /* Altura do marcador */
-            border-radius: 50%; /* Forma circular */
-            border: 2px solid #6e8efb; /* Borda azul */
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #6e8efb;
         }
         
-        /* Container de paginação (ex: < 2/100 >) */
         .div {
-            text-align: center; /* Alinhamento centralizado */
-            margin-top: 25px; /* Espaçamento superior */
-            font-weight: bold; /* Texto em negrito */
-            color: #6e8efb; /* Cor do texto azul */
-            font-size: 18px; /* Tamanho da fonte */
+            text-align: center;
+            margin-top: 25px;
+            font-weight: bold;
+            color: #6e8efb;
+            font-size: 18px;
         }
         
-        /* Texto do enunciado da questão */
         .considerando-a-figura {
-            font-size: 18px; /* Tamanho da fonte */
-            line-height: 1.6; /* Altura da linha para melhor legibilidade */
-            margin-bottom: 20px; /* Espaçamento inferior */
-            color: #444; /* Cor do texto cinza escuro */
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #444;
         }
         
-        /* Título "Questões" */
         .questes {
-            font-size: 28px; /* Tamanho da fonte */
-            font-weight: 800; /* Peso da fonte (extra negrito) */
-            color: #4a4a4a; /* Cor do texto cinza escuro */
-            margin-bottom: 20px; /* Espaçamento inferior */
-            grid-column: 1 / -1; /* Ocupa todas as colunas */
-            text-align: center; /* Alinhamento centralizado */
-            position: relative; /* Posicionamento relativo para pseudo-elementos */
-            padding-bottom: 10px; /* Espaçamento inferior */
+            font-size: 28px;
+            font-weight: 800;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            grid-column: 1 / -1;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
         }
         
-        /* Linha decorativa abaixo do título */
         .questes::after {
-            content: ""; /* Conteúdo vazio para o pseudo-elemento */
-            position: absolute; /* Posicionamento absoluto */
-            bottom: 0; /* Alinha na parte inferior */
-            left: 50%; /* Centraliza horizontalmente */
-            transform: translateX(-50%); /* Ajusta a centralização */
-            width: 100px; /* Largura da linha */
-            height: 4px; /* Altura da linha */
-            background: linear-gradient(to right, #6e8efb, #a777e3); /* Gradiente de cores */
-            border-radius: 2px; /* Bordas arredondadas */
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #6e8efb, #a777e3);
+            border-radius: 2px;
         }
         
-        /* Container do filtro de questões (lado esquerdo) */
         .qadro-filtrar-questes {
-            background-color: white; /* Fundo branco */
-            border-radius: 15px; /* Bordas arredondadas */
-            padding: 20px; /* Espaçamento interno */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Sombra suave */
-            align-self: start; /* Alinha ao topo do grid cell */
-            position: sticky; /* Mantém a posição durante a rolagem */
-            top: 100px; /* Distância do topo quando fixado */
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            align-self: start;
+            position: sticky;
+            top: 100px;
         }
         
-        /* Retângulo roxo decorativo no quadro de filtrar questões */
         .pgina-de-questes-rectangle-roxo {
-            height: 6px; /* Altura do elemento */
-            background: linear-gradient(to right, #6e8efb, #a777e3); /* Gradiente de cores */
-            border-radius: 3px; /* Bordas arredondadas */
-            margin-bottom: 20px; /* Espaçamento inferior */
+            height: 6px;
+            background: linear-gradient(to right, #6e8efb, #a777e3);
+            border-radius: 3px;
+            margin-bottom: 20px;
         }
         
-        /* Botão de filtrar */
         .bt-filtrar {
-            background: linear-gradient(to right, #6e8efb, #a777e3); /* Gradiente de cores */
-            padding: 12px 20px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            text-align: center; /* Alinhamento centralizado */
-            margin-bottom: 25px; /* Espaçamento inferior */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            transition: all 0.3s; /* Transição suave para todas as propriedades */
-            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3); /* Sombra azul */
+            background: linear-gradient(to right, #6e8efb, #a777e3);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3);
         }
         
-        /* Efeito hover no botão de filtrar */
         .bt-filtrar:hover {
-            transform: translateY(-2px); /* Move o botão ligeiramente para cima */
-            box-shadow: 0 6px 15px rgba(110, 142, 251, 0.4); /* Aumenta a sombra */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(110, 142, 251, 0.4);
         }
         
-        /* Texto dentro do botão de filtrar */
         .filtrar {
-            color: white; /* Cor do texto branco */
-            font-weight: bold; /* Texto em negrito */
-            font-size: 16px; /* Tamanho da fonte */
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
         }
         
-        /* Container de bancas */
         .conj-banca {
-            margin-bottom: 20px; /* Espaçamento inferior */
+            margin-bottom: 20px;
         }
         
-        /* Botão de banca */
         .bt-banca {
-            position: relative; /* Posicionamento relativo para elementos filhos */
-            background-color: #f5f7ff; /* Cor de fundo azul muito claro */
-            padding: 10px 15px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            border: 1px solid #dde1f7; /* Borda azul clara */
-            margin-bottom: 5px; /* Espaçamento inferior */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            transition: all 0.2s; /* Transição suave para todas as propriedades */
+            position: relative;
+            background-color: #f5f7ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #dde1f7;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
         
-        /* Efeito hover no botão de banca */
         .bt-banca:hover {
-            background-color: #e8ecff; /* Muda a cor de fundo ao passar o mouse */
+            background-color: #e8ecff;
         }
         
-        /* Elemento filho do botão de banca (seta) */
         .bt-banca-child {
-            position: absolute; /* Posicionamento absoluto */
-            right: 15px; /* Alinha à direita */
-            top: 50%; /* Centraliza verticalmente */
-            transform: translateY(-50%); /* Ajusta a centralização */
-            width: 12px; /* Largura da seta */
-            height: 12px; /* Altura da seta */
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
         }
         
-        /* Texto "Assunto" */
         .assunto {
-            font-size: 14px; /* Tamanho da fonte */
-            color: #6a6a6a; /* Cor do texto cinza médio */
-            margin-bottom: 8px; /* Espaçamento inferior */
-            font-weight: 600; /* Peso da fonte (semi-negrito) */
+            font-size: 14px;
+            color: #6a6a6a;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
-        /* Container de bancas  */
         .pgina-de-questes-conj-banca {
-            margin-bottom: 20px; /* Espaçamento inferior */
+            margin-bottom: 20px;
         }
         
-        /* Botão de banca (segunda instância) */
         .pgina-de-questes-bt-banca {
-            position: relative; /* Posicionamento relativo para elementos filhos */
-            background-color: #f5f7ff; /* Cor de fundo azul muito claro */
-            padding: 10px 15px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            border: 1px solid #dde1f7; /* Borda azul clara */
-            margin-bottom: 5px; /* Espaçamento inferior */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            transition: all 0.2s; /* Transição suave para todas as propriedades */
+            position: relative;
+            background-color: #f5f7ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #dde1f7;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
         
-        /* Efeito hover no botão de banca (segunda instância) */
         .pgina-de-questes-bt-banca:hover {
-            background-color: #e8ecff; /* Muda a cor de fundo ao passar o mouse */
+            background-color: #e8ecff;
         }
         
-        /* Container de tipo */
         .conj-tipo {
-            margin-bottom: 20px; /* Espaçamento inferior */
+            margin-bottom: 20px;
         }
         
-        /* Botão de tipo */
         .bt-tipo {
-            position: relative; /* Posicionamento relativo para elementos filhos */
-            background-color: #f5f7ff; /* Cor de fundo azul muito claro */
-            padding: 10px 15px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            border: 1px solid #dde1f7; /* Borda azul clara */
-            margin-bottom: 5px; /* Espaçamento inferior */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            transition: all 0.2s; /* Transição suave para todas as propriedades */
+            position: relative;
+            background-color: #f5f7ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #dde1f7;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
         
-        /* Efeito hover no botão de tipo */
         .bt-tipo:hover {
-            background-color: #e8ecff; /* Muda a cor de fundo ao passar o mouse */
+            background-color: #e8ecff;
         }
         
-        /* Texto "Tipo" */
         .tipo {
-            font-size: 14px; /* Tamanho da fonte */
-            color: #6a6a6a; /* Cor do texto cinza médio */
-            margin-bottom: 8px; /* Espaçamento inferior */
-            font-weight: 600; /* Peso da fonte (semi-negrito) */
+            font-size: 14px;
+            color: #6a6a6a;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
-        /* Container de disciplina */
         .conj-disciplina {
-            margin-bottom: 20px; /* Espaçamento inferior */
+            margin-bottom: 20px;
         }
         
-        /* Botão de disciplina */
         .bt-disciplina {
-            position: relative; /* Posicionamento relativo para elementos filhos */
-            background-color: #f5f7ff; /* Cor de fundo azul muito claro */
-            padding: 10px 15px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            border: 1px solid #dde1f7; /* Borda azul clara */
-            margin-bottom: 5px; /* Espaçamento inferior */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            transition: all 0.2s; /* Transição suave para todas as propriedades */
+            position: relative;
+            background-color: #f5f7ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #dde1f7;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
         
-        /* Efeito hover no botão de disciplina */
         .bt-disciplina:hover {
-            background-color: #e8ecff; /* Muda a cor de fundo ao passar o mouse */
+            background-color: #e8ecff;
         }
         
-        /* Título "Filtrar questões" */
         .filtrar-questes {
-            font-size: 20px; /* Tamanho da fonte */
-            font-weight: 700; /* Peso da fonte (negrito) */
-            color: #4a4a4a; /* Cor do texto cinza escuro */
-            margin-bottom: 20px; /* Espaçamento inferior */
-            text-align: center; /* Alinhamento centralizado */
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            text-align: center;
         }
         
-        /* Imagem de screenshot (ilustrativa) */
         .captura-de-tela-2025-06-21-001 {
-            display: none; /* Oculta a imagem por padrão */
+            display: none;
         }
         
-        /* Barra de menu */
         .barra-de-menu {
-            background-color: white; /* Fundo branco */
-            padding: 15px 30px; /* Espaçamento interno */
-            border-radius: 10px; /* Bordas arredondadas */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
-            display: flex; /* Usa flexbox para layout */
-            justify-content: space-between; /* Distribui o espaço entre os elementos */
-            align-items: center; /* Alinha os elementos verticalmente ao centro */
-            position: fixed; /* Posicionamento fixo na tela */
-            top: 20px; /* Distância do topo */
-            left: 50%; /* Centraliza horizontalmente */
-            transform: translateX(-50%); /* Ajusta a centralização */
-            width: calc(100% - 40px); /* Largura considerando o padding do body */
-            max-width: 1200px; /* Largura máxima */
-            z-index: 1000; /* Garante que fique acima de outros elementos */
+            background-color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            z-index: 1000;
         }
         
-        /* Elemento filho da barra de menu */
         .barra-de-menu-child {
-            flex-grow: 1; /* Ocupa o espaço disponível restante */
+            flex-grow: 1;
         }
         
-        /* Logo na barra de menu */
         .logo-icon {
-            width: 40px; /* Largura do logo */
-            height: 40px; /* Altura do logo */
-            margin-right: 10px; /* Espaçamento à direita */
-            background-color: #6e8efb; /* Cor de fundo azul (placeholder) */
-            border-radius: 8px; /* Bordas arredondadas */
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background-color: #6e8efb;
+            border-radius: 8px;
         }
         
-        /* Texto "Miaucademy" na barra de menu */
         .miaucademy {
-            font-size: 24px; /* Tamanho da fonte */
-            font-weight: 800; /* Peso da fonte (extra negrito) */
-            color: #6e8efb; /* Cor do texto azul */
-            margin-right: auto; /* Empurra os elementos seguintes para a direita */
+            font-size: 24px;
+            font-weight: 800;
+            color: #6e8efb;
+            margin-right: auto;
         }
         
-        /* Container do perfil */
         .perfil-parent {
-            display: flex; /* Usa flexbox para layout */
-            align-items: center; /* Alinha os elementos verticalmente ao centro */
-            gap: 8px; /* Espaçamento entre os elementos */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            padding: 8px 15px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            transition: background-color 0.3s; /* Transição suave para cor de fundo */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
         }
         
-        /* Efeito hover no container do perfil */
         .perfil-parent:hover {
-            background-color: #f5f7ff; /* Muda a cor de fundo ao passar o mouse */
+            background-color: #f5f7ff;
         }
         
-        /* Texto "Perfil" */
         .perfil {
-            font-size: 16px; /* Tamanho da fonte */
-            font-weight: 600; /* Peso da fonte (semi-negrito) */
+            font-size: 16px;
+            font-weight: 600;
         }
         
-        /* Imagem do perfil */
         .whatsapp-image-2025-03-31-at-0 {
-            width: 32px; /* Largura da imagem */
-            height: 32px; /* Altura da imagem */
-            border-radius: 50%; /* Torna a imagem circular */
-            object-fit: cover; /* Mantém a proporção da imagem */
-            background-color: #e0e0e0; /* Cor de fundo cinza (placeholder) */
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e0e0e0;
         }
         
-        /* Itens do menu */
         .questes2,
         .nossa-equipe,
         .incio,
         .suporte {
-            padding: 8px 15px; /* Espaçamento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-            transition: all 0.3s; /* Transição suave para todas as propriedades */
-            font-weight: 600; /* Peso da fonte (semi-negrito) */
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
         }
         
-        /* Efeito hover nos itens do menu */
         .questes2:hover,
         .nossa-equipe:hover,
         .incio:hover,
         .suporte:hover {
-            background-color: #f5f7ff; /* Muda a cor de fundo ao passar o mouse */
-            color: #6e8efb; /* Muda a cor do texto para azul */
+            background-color: #f5f7ff;
+            color: #6e8efb;
         }
         
-        /* Estilo específico para o item de menu ativo (Questões) */
         .questes2 {
-            background-color: #6e8efb; /* Cor de fundo azul */
-            color: white; /* Cor do texto branco */
+            background-color: #6e8efb;
+            color: white;
         }
         
-        /* Media queries para responsividade */
         @media (max-width: 900px) {
-            /* Layout de uma coluna em telas menores */
             .pgina-de-questes {
-                grid-template-columns: 1fr; /* Uma única coluna */
-                padding-top: 80px; /* Reduz o padding superior */
+                grid-template-columns: 1fr;
+                padding-top: 80px;
             }
             
-            /* Ajusta a ordem dos elementos no grid */
             .qadro-filtrar-questes {
-                grid-row: 2; /* Move para a segunda linha */
-                position: static; /* Remove o posicionamento sticky */
+                grid-row: 2;
+                position: static;
             }
             
-            /* Ajusta a ordem dos elementos no grid */
             .quadro-das-questes {
-                grid-row: 3; /* Move para a terceira linha */
+                grid-row: 3;
             }
             
-            /* Ajusta o padding da barra de menu */
             .barra-de-menu {
-                padding: 10px 15px; /* Reduz o espaçamento interno */
+                padding: 10px 15px;
             }
             
-            /* Esconde alguns itens do menu em telas menores */
             .nossa-equipe,
             .suporte {
-                display: none; /* Oculta elementos */
+                display: none;
             }
         }
         
         @media (max-width: 600px) {
-            /* Layout de uma coluna em telas muito pequenas */
             .pgina-de-questes {
-                padding-top: 70px; /* Reduz o padding superior */
-                padding-left: 15px; /* Reduz o padding esquerdo */
-                padding-right: 15px; /* Reduz o padding direito */
+                padding-top: 70px;
+                padding-left: 15px;
+                padding-right: 15px;
             }
             
-            /* Ajusta o padding do quadro de questões */
             .quadro-das-questes {
-                padding: 15px; /* Reduz o espaçamento interno */
+                padding: 15px;
             }
             
-            /* Ajusta o padding do container de alternativas */
             .aa-partir-da-container {
-                padding: 15px; /* Reduz o espaçamento interno */
+                padding: 15px;
             }
             
-            /* Ajusta a direção do flexbox na barra de menu */
             .barra-de-menu {
-                flex-wrap: wrap; /* Permite quebra de linha */
-                justify-content: center; /* Centraliza os elementos */
-                padding: 10px; /* Reduz o espaçamento interno */
-                top: 10px; /* Reduz a distância do topo */
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+                top: 10px;
             }
             
-            /* Ajusta a margem do texto Miaucademy */
             .miaucademy {
-                margin-right: 0; /* Remove a margem direita */
-                order: -1; /* Move para o início */
-                width: 100%; /* Largura total */
-                text-align: center; /* Alinhamento centralizado */
-                margin-bottom: 10px; /* Espaçamento inferior */
+                margin-right: 0;
+                order: -1;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
             }
             
-            /* Esconde o perfil em telas muito pequenas */
             .perfil-parent {
-                display: none; /* Oculta elemento */
+                display: none;
             }
             
-            /* Ajusta o tamanho da fonte do título */
             .questes {
-                font-size: 24px; /* Reduz o tamanho da fonte */
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Container principal da página de questões -->
     <div class="pgina-de-questes">
-        <!-- Título "Questões" -->
         <div class="questes">Questões</div>
         
-        <!-- Container do filtro de questões (lado esquerdo) -->
         <div class="qadro-filtrar-questes">
-            <!-- Retângulo roxo decorativo -->
             <div class="pgina-de-questes-rectangle-roxo"></div>
-            <!-- Título "Filtrar questões" -->
             <div class="filtrar-questes">Filtrar questões</div>
             
-            <!-- Container de disciplina -->
             <div class="conj-disciplina">
-                <!-- Texto "Disciplina" -->
                 <div class="tipo">Disciplina</div>
-                <!-- Botão de disciplina -->
                 <div class="bt-disciplina">
                     <div class="filtrar">Selecionar</div>
-                    <!-- Ícone de seta (seria substituído por imagem real) -->
                     <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
-            <!-- Container de assunto -->
             <div class="conj-banca">
-                <!-- Texto "Assunto" -->
                 <div class="assunto">Assunto</div>
-                <!-- Botão de assunto -->
                 <div class="bt-banca">
                     <div class="filtrar">Selecionar</div>
-                    <!-- Ícone de seta (seria substituído por imagem real) -->
                     <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
-            <!-- Container de banca -->
             <div class="pgina-de-questes-conj-banca">
-                <!-- Texto "Banca" -->
                 <div class="assunto">Banca</div>
-                <!-- Botão de banca -->
                 <div class="pgina-de-questes-bt-banca">
                     <div class="filtrar">Selecionar</div>
-                    <!-- Ícone de seta (seria substituído por imagem real) -->
                     <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
-            <!-- Container de tipo -->
             <div class="conj-tipo">
-                <!-- Texto "Tipo" -->
                 <div class="tipo">Tipo</div>
-                <!-- Botão de tipo -->
                 <div class="bt-tipo">
                     <div class="filtrar">Selecionar</div>
-                    <!-- Ícone de seta (seria substituído por imagem real) -->
                     <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
-            <!-- Botão de filtrar -->
             <div class="bt-filtrar">
                 <div class="filtrar">Filtrar</div>
             </div>
         </div>
         
-        <!-- Container do quadro de questões (lado direito) -->
         <div class="quadro-das-questes">
-            <!-- Retângulo roxo decorativo no topo -->
             <div class="rectangle-roxo"></div>
             
-            <!-- Texto do enunciado da questão -->
             <div class="considerando-a-figura">Considerando a figura abaixo, que ilustra um losango de lado l inscrito em um retângulo cujos lados medem 16 cm e 12 cm, julgue os itens a seguir:</div>
             
-            <!-- Retângulo branco para conteúdo da questão (área da figura) -->
             <div class="rectangle-branco">Área para a figura da questão</div>
             
-            <!-- Container das alternativas da questão -->
             <div class="aa-partir-da-container">
-                <!-- Alternativa A -->
                 <p class="aa-partir-da">a) A partir da figura, conclui-se que senβ = cos(α).</p>
-                <!-- Alternativa B -->
                 <p class="aa-partir-da">b) A área do losango é inferior a 95 cm²</p>
-                <!-- Alternativa C -->
                 <p class="aa-partir-da">c) O perímetro do retângulo é 40% maior que o perímetro do losango.</p>
             </div>
             
-            <!-- Container de paginação -->
             <div class="div">&lt; 2/100 &gt;</div>
         </div>
         
-        <!-- Imagem de screenshot (ilustrativa) - oculta por padrão -->
         <img class="captura-de-tela-2025-06-21-001" alt="">
     </div>
     
-    <!-- Barra de menu -->
     <div class="barra-de-menu">
-        <!-- Elemento filho da barra de menu -->
         <div class="barra-de-menu-child"></div>
-        <!-- Logo (placeholder) -->
         <img class="logo-icon" alt="">
-        <!-- Texto "Miaucademy" -->
         <div class="miaucademy">Miaucademy</div>
-        <!-- Container do perfil -->
         <div class="perfil-parent" id="frameContainer">
             <div class="perfil">Perfil</div>
-            <!-- Imagem do perfil (placeholder) -->
             <img class="whatsapp-image-2025-03-31-at-0" alt="">
         </div>
-        <!-- Item de menu "Questões" -->
         <div class="questes2" id="questesText">Questões</div>
-        <!-- Item de menu "Nossa equipe" -->
         <div class="nossa-equipe" id="nossaEquipeText">Nossa equipe</div>
-        <!-- Item de menu "Início" -->
         <div class="incio" id="incioText">Início</div>
-        <!-- Item de menu "Suporte" -->
         <div class="suporte" id="suporteText">Suporte</div>
     </div>
     
-    <!-- Script JavaScript para funcionalidade de clique nos elementos do menu -->
     <script>
-        // Obtém referência ao container do perfil
+        // Redirecionamento para a página de perfil
         var frameContainer = document.getElementById("frameContainer");
-        // Verifica se o elemento existe antes de adicionar o event listener
         if(frameContainer) {
-            // Adiciona um listener de evento de clique ao container do perfil
             frameContainer.addEventListener("click", function (e) {
-                // Add your code here - código para manipular o clique será adicionado aqui
-                // Exemplo: redirecionar para a página de perfil
-                // window.location.href = "perfil.html";
+                window.location.href = "perfil.html";
             });
         }
         
-        // Obtém referência ao texto "Questões"
+        // Redirecionamento para a página de questões
         var questesText = document.getElementById("questesText");
-        // Verifica se o elemento existe antes de adicionar o event listener
         if(questesText) {
-            // Adiciona um listener de evento de clique ao texto "Questões"
             questesText.addEventListener("click", function (e) {
-                // Redireciona para a página de questões (atual)
                 window.location.href = "PginaDeQuestes.html";
             });
         }
         
-        // Obtém referência ao texto "Nossa equipe"
+        // Redirecionamento para a página da equipe
         var nossaEquipeText = document.getElementById("nossaEquipeText");
-        // Verifica se o elemento existe antes de adicionar o event listener
         if(nossaEquipeText) {
-            // Adiciona um listener de evento de clique ao texto "Nossa equipe"
             nossaEquipeText.addEventListener("click", function (e) {
-                // Add your code here - código para manipular o clique será adicionado aqui
-                // Exemplo: redirecionar para a página da equipe
-                // window.location.href = "equipe.html";
+                window.location.href = "equipe.html";
             });
         }
         
-        // Obtém referência ao texto "Início"
+        // Redirecionamento para a página inicial
         var incioText = document.getElementById("incioText");
-        // Verifica se o elemento existe antes de adicionar o event listener
         if(incioText) {
-            // Adiciona um listener de evento de clique ao texto "Início"
             incioText.addEventListener("click", function (e) {
-                // Add your code here - código para manipular o clique será adicionado aqui
-                // Exemplo: redirecionar para a página inicial
-                // window.location.href = "index.html";
+                window.location.href = "page.html";
             });
         }
         
-        // Obtém referência ao texto "Suporte"
+        // Redirecionamento para a página de suporte
         var suporteText = document.getElementById("suporteText");
-        // Verifica se o elemento existe antes de adicionar o event listener
         if(suporteText) {
-            // Adiciona um listener de evento de clique ao texto "Suporte"
             suporteText.addEventListener("click", function (e) {
-                // Exemplo: redirecionar para a página de suporte
+                window.location.href = "suporte.html";
             });
         }
     </script>

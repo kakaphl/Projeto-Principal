@@ -3,25 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login e Cadastro</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(145deg, #4f10a1, #fbfbfc);   /*se pa nao ta legal*/
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0; padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #4f10a1, #fbfbfc);
+            padding: 20px;
         }
-        .login-container {
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
             background: #F7F0D8;
-            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 30px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 320px;
+            overflow: hidden;
         }
+        
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: #702fad;
+            color: white;
+        }
+        
+        .logo {
+            margin-bottom: 15px;
+        }
+        
+        .logo img {
+            max-width: 150px;
+            border-radius: 20px;
+            box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tabs {
+            display: flex;
+            background: #5e2590;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: #5e2590;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .tab-button.active {
+            background: #702fad;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 30px;
+        }
+        
+        .form-container {
+            display: none;
+        }
+        
+        .form-container.active {
+            display: block;
+        }
+        
         input {
             width: 100%;
             padding: 12px;
@@ -29,13 +90,14 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 14px;
-            box-sizing: border-box;
         }
+        
         input:focus {
             border-color: #4ae452;
-            outline: nome;
+            outline: none;
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
+        
         button {
             width: 100%;
             padding: 12px;
@@ -47,15 +109,11 @@
             font-size: 16px;
             margin-top: 10px;
         }
+        
         button:hover {
-            background: #702fad;
+            background: #8a3cc9;
         }
-        form {
-            margin-bottom: 30px;
-        }
-        .g_id_signin {
-            margin-top: 15px;
-        } 
+        
         .google-btn {
             margin-top: 15px;
             padding: 10px;
@@ -64,84 +122,255 @@
             border: 1px solid #ddd;
             border-radius: 10px;           
         }
+        
         .google-btn:hover {
             background: #c1351d;
         }
-        .logo {
+        
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
             text-align: center;
-            margin-bottom: 30px;
-            background-color: #F7F0D8;
-        }
-        .logo img {
-            max-width: 150px;
-            border-radius: 20px;   /* bordas redondas, talvez precise mudar*/
-            box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
-        }
-        .error-message {
-            color: #d82000;
-            margin-top: 10px;
             display: none;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #d82000;
+        }
+        
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .g_id_signin {
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
         }
     </style>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo">
-            <img src="WhatsApp Image 2025-03-31 at 21.20.53.jpeg" alt="logo" width="150">
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="WhatsApp Image 2025-03-31 at 21.20.53.jpeg" alt="logo" width="150">
+            </div>
+            <h2>Seja Bem Vindo</h2>
         </div>
-        <h2>Seja Bem Vindo</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Usuario ou Email" required>
-            <input type="password" placeholder="Senha" required>
-            <p id="error-message" class="error-message">Usuario ou senha incorretos!</p>
-            <button type="submit">Entrar</button>
-        </form>
-        <div id="g_id_onload" data-client_id="1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
-        <div class="g_id_signin" data-type="standard"></div>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('login')">Login</button>
+            <button class="tab-button" onclick="showTab('register')">Cadastro</button>
+        </div>
+        
+        <div class="tab-content">
+            <!-- Formulário de Login -->
+            <div id="login-form" class="form-container active">
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="Usuário ou Email" required>
+                    <input type="password" id="password" placeholder="Senha" required>
+                    <div id="login-message" class="message"></div>
+                    <button type="submit">Entrar</button>
+                </form>
+                
+                <div id="g_id_onload" 
+                     data-client_id="1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com" 
+                     data-context="signin" 
+                     data-ux_mode="popup" 
+                     data-callback="handleCredentialResponse" 
+                     data-auto_prompt="false">
+                </div>
+                
+                <div class="g_id_signin" data-type="standard"></div>
+            </div>
+            
+            <!-- Formulário de Cadastro -->
+            <div id="register-form" class="form-container">
+                <form id="registerForm">
+                    <input type="text" id="reg-name" placeholder="Nome completo" required>
+                    <input type="text" id="reg-username" placeholder="Nome de usuário" required>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Senha" required>
+                    <input type="password" id="reg-confirm-password" placeholder="Confirmar senha" required>
+                    <div id="register-message" class="message"></div>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
     </div>
+
     <script>
-    // Autenticação do Google
+        // Variáveis globais
+        const API_URL = 'https://sua-api.com'; // Substitua pela URL da sua API
+        
+        // Funções de interface
+        function showTab(tabName) {
+            // Esconder todos os formulários
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Mostrar o formulário selecionado
+            document.getElementById(`${tabName}-form`).classList.add('active');
+            
+            // Ativar o botão selecionado
+            event.target.classList.add('active');
+        }
+        
+        // Função para exibir mensagens
+        function showMessage(elementId, message, type) {
+            const messageElement = document.getElementById(elementId);
+            messageElement.textContent = message;
+            messageElement.className = `message ${type}`;
+            messageElement.style.display = 'block';
+            
+            // Esconder a mensagem após 5 segundos
+            setTimeout(() => {
+                messageElement.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Autenticação do Google
         function handleCredentialResponse(response) {
-    console.log("Token JWT: ", response.credential);
-
-    // Armazena o negocio no localStorage
-    localStorage.setItem("userToken", response.credential);
-
-// Da uma atrasada no redirecionamento
-setTimeout(() => {
-    window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; 
-}, 100);
-}
-
-// Autenticar por usuario e senha
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-
-    var username = document.getElementById("username").value;
-    var password = document.querySelector("input[type='password']").value;
-    var errorMessage = document.getElementById("error-message");
-
-
-    //apenas para demonstração
-    if (username === "adm" && password === "1234") {
-        // Login deu bom
-        console.log("Login bem sucedido");
-
-        // Faz com que o usuario fique logado
-        localStorage.setItem("userLoggedIn", "true");
-        localStorage.setItem("username", username);
-
-
-        // Redirecionamento para tela inicial
-        window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html";
-    }  else {
-        // Mostra a mensagem de erro
-        errorMessage.style.display = "block";
-    }
-});
-
-   </script>
+            console.log("Token JWT: ", response.credential);
+            
+            // Enviar token para o backend para verificação
+            axios.post(`${API_URL}/auth/google`, {
+                token: response.credential
+            })
+            .then(res => {
+                // Armazena o token no localStorage
+                localStorage.setItem("userToken", res.data.token);
+                localStorage.setItem("userLoggedIn", "true");
+                localStorage.setItem("username", res.data.username);
+                
+                // Redirecionamento para tela inicial
+                setTimeout(() => {
+                    window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html"; 
+                }, 100);
+            })
+            .catch(error => {
+                console.error("Erro na autenticação Google:", error);
+                showMessage('login-message', 'Falha na autenticação com Google', 'error');
+            });
+        }
+        
+        // Autenticar por usuário e senha
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            // Fazer requisição para a API de login
+            axios.post(`${API_URL}/auth/login`, {
+                username,
+                password
+            })
+            .then(response => {
+                // Login bem sucedido
+                localStorage.setItem("userToken", response.data.token);
+                localStorage.setItem("userLoggedIn", "true");
+                localStorage.setItem("username", response.data.username);
+                
+                // Redirecionamento para tela inicial
+                window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html";
+            })
+            .catch(error => {
+                console.error("Erro no login:", error);
+                showMessage('login-message', 'Usuário ou senha incorretos!', 'error');
+            });
+        });
+        
+        // Cadastro de novo usuário
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("reg-name").value;
+            const username = document.getElementById("reg-username").value;
+            const email = document.getElementById("reg-email").value;
+            const password = document.getElementById("reg-password").value;
+            const confirmPassword = document.getElementById("reg-confirm-password").value;
+            
+            // Validação básica
+            if (password !== confirmPassword) {
+                showMessage('register-message', 'As senhas não coincidem!', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage('register-message', 'A senha deve ter pelo menos 6 caracteres!', 'error');
+                return;
+            }
+            
+            // Fazer requisição para a API de cadastro
+            axios.post(`${API_URL}/auth/register`, {
+                name,
+                username,
+                email,
+                password
+            })
+            .then(response => {
+                showMessage('register-message', 'Cadastro realizado com sucesso! Você já pode fazer login.', 'success');
+                
+                // Limpar o formulário
+                document.getElementById("registerForm").reset();
+                
+                // Mudar para a aba de login após 2 segundos
+                setTimeout(() => {
+                    showTab('login');
+                }, 2000);
+            })
+            .catch(error => {
+                console.error("Erro no cadastro:", error);
+                const errorMsg = error.response?.data?.message || 'Erro ao realizar cadastro';
+                showMessage('register-message', errorMsg, 'error');
+            });
+        });
+        
+        // Verificar se o usuário já está logado
+        window.addEventListener('DOMContentLoaded', () => {
+            const userToken = localStorage.getItem("userToken");
+            if (userToken) {
+                // Verificar se o token ainda é válido
+                axios.get(`${API_URL}/auth/verify`, {
+                    headers: { 'Authorization': `Bearer ${userToken}` }
+                })
+                .then(response => {
+                    // Se o token for válido, redirecionar para a página principal
+                    window.location.href = "https://kakaphl.github.io/Projeto-Principal/page.html";
+                })
+                .catch(error => {
+                    // Token inválido, remover do localStorage
+                    localStorage.removeItem("userToken");
+                    localStorage.removeItem("userLoggedIn");
+                    localStorage.removeItem("username");
+                });
+            }
+        });
+    </script>
 </body>
 </html>
