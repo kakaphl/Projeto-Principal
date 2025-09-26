@@ -13,7 +13,292 @@ body {
 }
 
 .desktop-pgina-de-boas-vinda {
-  	width: 100%;
+  	width: 100%;<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta charset="UTF-8">
+    <!-- Configura a viewport para responsividade em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página exibido na aba do navegador -->
+    <title>MiauCademy - Bem-vindo</title>
+    
+    <!-- Importa a fonte Montserrat do Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800;900&display=swap">
+    
+    <!-- Estilos CSS para a página -->
+    <style>
+        /* Remove margens e padding padrão do navegador e define a altura mínima da página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Define estilos básicos para o corpo da página */
+        body {
+            font-family: 'Montserrat', sans-serif; /* Define a fonte padrão */
+            line-height: 1.6; /* Define o espaçamento entre linhas */
+            color: #fff2df; /* Define a cor do texto */
+            background: linear-gradient(180deg, #8a3ffc 26.44%, #2e174d 56.25%, #ca148e); /* Gradiente de fundo */
+            min-height: 100vh; /* Garante que o fundo ocupe pelo menos toda a altura da tela */
+            overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+        }
+        
+        /* Container principal que centraliza o conteúdo */
+        .container {
+            max-width: 1200px; /* Largura máxima do conteúdo */
+            margin: 0 auto; /* Centraliza horizontalmente */
+            padding: 20px; /* Espaçamento interno */
+        }
+        
+        /* Estilo para o cabeçalho da página */
+        .header {
+            text-align: center; /* Centraliza o texto */
+            padding: 50px 0; /* Espaçamento vertical */
+        }
+        
+        /* Estilo para o título principal */
+        .main-title {
+            font-size: 48px; /* Tamanho da fonte */
+            font-weight: 900; /* Peso da fonte (negrito) */
+            margin-bottom: 30px; /* Espaçamento inferior */
+            text-shadow: 0px 10px 15px rgba(79, 17, 172, 0.36); /* Sombra do texto */
+        }
+        
+        /* Estilo para o subtítulo */
+        .subtitle {
+            font-size: 36px; /* Tamanho da fonte */
+            font-weight: 800; /* Peso da fonte */
+            margin-bottom: 40px; /* Espaçamento inferior */
+        }
+        
+        /* Container para os botões de ação */
+        .button-container {
+            display: flex; /* Usa flexbox para layout */
+            justify-content: center; /* Centraliza os botões horizontalmente */
+            gap: 20px; /* Espaçamento entre os botões */
+            margin: 40px 0; /* Espaçamento vertical */
+            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+        }
+        
+        /* Estilo base para os botões */
+        .btn {
+            padding: 20px 40px; /* Espaçamento interno */
+            border-radius: 30px; /* Bordas arredondadas */
+            font-size: 24px; /* Tamanho da fonte */
+            font-weight: 800; /* Peso da fonte */
+            cursor: pointer; /* Muda o cursor para indicar que é clicável */
+            transition: all 0.3s ease; /* Transição suave para efeitos hover */
+            text-decoration: none; /* Remove sublinhado de links */
+            display: inline-block; /* Permite definir largura e altura */
+            text-align: center; /* Centraliza o texto dentro do botão */
+            min-width: 200px; /* Largura mínima dos botões */
+            box-shadow: 0px 10px 20px rgba(52, 23, 97, 0.84); /* Sombra do botão */
+        }
+        
+        /* Estilo específico para o botão de cadastro */
+        .btn-primary {
+            background-color: #bea6ff; /* Cor de fundo */
+            color: #fdfdfd; /* Cor do texto */
+        }
+        
+        /* Estilo específico para o botão de entrar */
+        .btn-secondary {
+            background-color: #f6f6f6; /* Cor de fundo */
+            color: #8a3ffc; /* Cor do texto */
+        }
+        
+        /* Efeito hover para os botões */
+        .btn:hover {
+            transform: translateY(-5px); /* Move o botão para cima ao passar o mouse */
+            box-shadow: 0px 15px 25px rgba(52, 23, 97, 0.94); /* Aumenta a sombra ao passar o mouse */
+        }
+        
+        /* Estilo para as seções de conteúdo */
+        .section {
+            padding: 80px 0; /* Espaçamento vertical */
+            text-align: center; /* Centraliza o texto */
+        }
+        
+        /* Estilo para os títulos das seções */
+        .section-title {
+            font-size: 40px; /* Tamanho da fonte */
+            font-weight: 900; /* Peso da fonte */
+            margin-bottom: 30px; /* Espaçamento inferior */
+            text-shadow: 0px 10px 15px rgba(79, 17, 172, 0.36); /* Sombra do texto */
+        }
+        
+        /* Estilo para o texto das seções */
+        .section-text {
+            font-size: 24px; /* Tamanho da fonte */
+            margin-bottom: 30px; /* Espaçamento inferior */
+            max-width: 800px; /* Largura máxima do texto */
+            margin-left: auto; /* Centraliza horizontalmente */
+            margin-right: auto; /* Centraliza horizontalmente */
+            line-height: 1.8; /* Espaçamento entre linhas */
+        }
+        
+        /* Estilo para as imagens */
+        .section-image {
+            max-width: 100%; /* Garante que a imagem não ultrapasse a largura do container */
+            height: auto; /* Mantém a proporção da imagem */
+            border-radius: 15px; /* Bordas arredondadas */
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); /* Sombra da imagem */
+            margin: 30px 0; /* Espaçamento vertical */
+        }
+        
+        /* Estilo para o rodapé */
+        .footer {
+            text-align: center; /* Centraliza o texto */
+            padding: 40px 0; /* Espaçamento vertical */
+            margin-top: 50px; /* Espaçamento superior */
+            border-top: 2px solid rgba(255, 255, 255, 0.2); /* Linha superior decorativa */
+        }
+        
+        /* Estilo para o texto do rodapé */
+        .footer-text {
+            font-size: 18px; /* Tamanho da fonte */
+            opacity: 0.8; /* Transparência do texto */
+        }
+        
+        /* Media query para telas menores (tablets) */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 36px; /* Reduz o tamanho da fonte do título principal */
+            }
+            
+            .subtitle {
+                font-size: 28px; /* Reduz o tamanho da fonte do subtítulo */
+            }
+            
+            .btn {
+                font-size: 20px; /* Reduz o tamanho da fonte dos botões */
+                padding: 15px 30px; /* Reduz o espaçamento interno dos botões */
+            }
+            
+            .section-title {
+                font-size: 32px; /* Reduz o tamanho da fonte dos títulos das seções */
+            }
+            
+            .section-text {
+                font-size: 20px; /* Reduz o tamanho da fonte dos textos das seções */
+            }
+        }
+        
+        /* Media query para telas muito pequenas (celulares) */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 28px; /* Reduz ainda mais o tamanho da fonte do título principal */
+            }
+            
+            .subtitle {
+                font-size: 22px; /* Reduz ainda mais o tamanho da fonte do subtítulo */
+            }
+            
+            .btn {
+                font-size: 18px; /* Reduz ainda mais o tamanho da fonte dos botões */
+                padding: 12px 25px; /* Reduz ainda mais o espaçamento interno dos botões */
+                min-width: 160px; /* Reduz a largura mínima dos botões */
+            }
+            
+            .button-container {
+                flex-direction: column; /* Alinha os botões verticalmente */
+                align-items: center; /* Centraliza os botões */
+            }
+            
+            .section-title {
+                font-size: 26px; /* Reduz ainda mais o tamanho da fonte dos títulos das seções */
+            }
+            
+            .section-text {
+                font-size: 18px; /* Reduz ainda mais o tamanho da fonte dos textos das seções */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal que envolve todo o conteúdo -->
+    <div class="container">
+        <!-- Cabeçalho da página com título e subtítulo -->
+        <header class="header">
+            <!-- Título principal da página -->
+            <h1 class="main-title">MiauCademy</h1>
+            <!-- Subtítulo da página -->
+            <h2 class="subtitle">Ambiente e Estudos Divertido</h2>
+            
+            <!-- Container para os botões de ação -->
+            <div class="button-container">
+                <!-- Botão para cadastro (leva para a página de cadastro) -->
+                <a href="page.html" class="btn btn-primary">COMEÇAR AGORA</a>
+                <!-- Botão para login (leva para a página de login) -->
+                <a href="login.html" class="btn btn-secondary">ENTRAR</a>
+            </div>
+        </header>
+        
+        <!-- Primeira seção de conteúdo -->
+        <section class="section">
+            <!-- Título da seção -->
+            <h2 class="section-title">Desafie seus amigos</h2>
+            <!-- Texto descritivo da seção -->
+            <p class="section-text">Seu ambiente de estudos nunca foi tão divertido! Aprenda de forma interativa e desafie seus amigos em quizzes educativos.</p>
+            <!-- Imagem ilustrativa da seção -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%238a3ffc' opacity='0.7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='24'%3EImagem Ilustrativa 1%3C/text%3E%3C/svg%3E" alt="Ambiente de estudos divertido" class="section-image">
+        </section>
+        
+        <!-- Segunda seção de conteúdo -->
+        <section class="section">
+            <!-- Título da seção -->
+            <h2 class="section-title">Aprender nunca foi tão fácil</h2>
+            <!-- Texto descritivo da seção -->
+            <p class="section-text">Com a MiauCademy, você tem acesso a conteúdos educativos de forma divertida e interativa. Aprenda no seu próprio ritmo!</p>
+            <!-- Imagem ilustrativa da seção -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%232e174d' opacity='0.7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='24'%3EImagem Ilustrativa 2%3C/text%3E%3C/svg%3E" alt="Aprender de forma fácil" class="section-image">
+        </section>
+        
+        <!-- Terceira seção de conteúdo -->
+        <section class="section">
+            <!-- Título da seção -->
+            <h2 class="section-title">Afinal, quem nós somos?</h2>
+            <!-- Texto descritivo da seção -->
+            <p class="section-text">Somos um grupo de educadores e desenvolvedores apaixonados por criar experiências de aprendizagem inovadoras e envolventes.</p>
+            <!-- Imagem ilustrativa da seção -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23ca148e' opacity='0.7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='24'%3EImagem Ilustrativa 3%3C/text%3E%3C/svg%3E" alt="Quem somos" class="section-image">
+        </section>
+        
+        <!-- Quarta seção de conteúdo -->
+        <section class="section">
+            <!-- Título da seção -->
+            <h2 class="section-title">Venha, vamos nos divertir!</h2>
+            <!-- Texto descritivo da seção -->
+            <p class="section-text">Junte-se à nossa comunidade e descubra uma nova forma de aprender. A diversão e o conhecimento andam juntos na MiauCademy!</p>
+            <!-- Imagem ilustrativa da seção -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23bea6ff' opacity='0.7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='24'%3EImagem Ilustrativa 4%3C/text%3E%3C/svg%3E" alt="Vamos nos divertir" class="section-image">
+        </section>
+        
+        <!-- Quinta seção de conteúdo -->
+        <section class="section">
+            <!-- Título da seção -->
+            <h2 class="section-title">Crie sua conta agora!</h2>
+            <!-- Texto descritivo da seção -->
+            <p class="section-text">É rápido, fácil e gratuito! Além disso, postamos dicas diárias de estudos e novidades sobre a plataforma em nossas redes sociais.</p>
+            <!-- Container para os botões de ação no final da página -->
+            <div class="button-container">
+                <!-- Botão para cadastro (leva para a página de cadastro) -->
+                <a href="page.html" class="btn btn-primary">CRIAR CONTA</a>
+                <!-- Botão para login (leva para a página de login) -->
+                <a href="login.html" class="btn btn-secondary">JÁ TENHO CONTA</a>
+            </div>
+        </section>
+        
+        <!-- Rodapé da página -->
+        <footer class="footer">
+            <!-- Texto do rodapé -->
+            <p class="footer-text">MiauCademy &copy; 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>
   	position: relative;
   	background: linear-gradient(180deg, #8a3ffc 26.44%, #2e174d 56.25%, #ca148e);
   	height: 5137px;
