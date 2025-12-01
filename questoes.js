@@ -360,7 +360,7 @@ app.get('/auth/verify', async (req, res) => {
 // Rota para Questões 
 
 //Buscar questões 
-app.get('/api/questions', authenticateToken, async (req, res) => {
+app.get('/api/questions',  async (req, res) => {
     try{
         const { Ano, Prova, areaConteudo, limit = 10, page = 1} = req.query;
         let filter = {};

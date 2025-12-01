@@ -5,12 +5,9 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>Questões - Miaucademy</title>
     
-    <!-- Corrigindo os links das fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Importação do Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -56,18 +53,12 @@
             border-radius: 15px 15px 0 0;
         }
         
-        .rectangle-branco {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
+        .considerando-a-figura {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #444;
             margin-top: 15px;
-            border: 1px solid #e0e0e0;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-style: italic;
         }
         
         .aa-partir-da-container {
@@ -78,36 +69,178 @@
             border-left: 4px solid #6e8efb;
         }
         
-        .aa-partir-da {
+        .alternativa-item {
             margin-bottom: 15px;
-            padding-left: 25px;
+            padding: 15px;
             position: relative;
+            background-color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
         
-        .aa-partir-da::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 2px solid #6e8efb;
+        .alternativa-item:hover {
+            background-color: #f0f2ff;
+            transform: translateX(5px);
         }
         
-        .div {
-            text-align: center;
-            margin-top: 25px;
-            font-weight: bold;
+        .alternativa-item input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        
+        .alternativa-item label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .alternativa-item.correta {
+            background-color: #d4edda;
+            border-color: #28a745;
+        }
+        
+        .alternativa-item.incorreta {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+        }
+        
+        .questao-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .questao-numero {
+            font-weight: 700;
             color: #6e8efb;
-            font-size: 18px;
+            font-size: 16px;
         }
         
-        .considerando-a-figura {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #444;
+        .botoes-acao {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-acao {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-verificar {
+            background: linear-gradient(to right, #28a745, #20c997);
+            color: white;
+        }
+        
+        .btn-verificar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        }
+        
+        .btn-explicacao {
+            background: linear-gradient(to right, #17a2b8, #00c9ff);
+            color: white;
+        }
+        
+        .btn-explicacao:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(23, 162, 184, 0.3);
+        }
+        
+        .btn-proxima {
+            background: linear-gradient(to right, #6e8efb, #a777e3);
+            color: white;
+        }
+        
+        .btn-proxima:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3);
+        }
+        
+        .explicacao-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(to right, #e7f3ff, #f0e7ff);
+            border-left: 4px solid #2196F3;
+            border-radius: 8px;
+        }
+        
+        .explicacao-box.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .explicacao-box h4 {
+            color: #2196F3;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .resultado-feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+        
+        .resultado-feedback.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .resultado-feedback.acertou {
+            background: linear-gradient(to right, #d4edda, #c3e6cb);
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+        
+        .resultado-feedback.errou {
+            background: linear-gradient(to right, #f8d7da, #f5c6cb);
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+        
+        #loading {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            padding: 40px;
+            grid-column: 1 / -1;
         }
         
         .questes {
@@ -155,7 +288,7 @@
             padding: 12px 20px;
             border-radius: 8px;
             text-align: center;
-            margin-bottom: 25px;
+            margin-top: 20px;
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3);
@@ -172,103 +305,29 @@
             font-size: 16px;
         }
         
-        .conj-banca {
+        .conj-banca, .pgina-de-questes-conj-banca, .conj-tipo, .conj-disciplina {
             margin-bottom: 20px;
         }
         
-        .bt-banca {
+        .bt-banca, .pgina-de-questes-bt-banca, .bt-tipo, .bt-disciplina {
             position: relative;
             background-color: #f5f7ff;
             padding: 10px 15px;
             border-radius: 8px;
             border: 1px solid #dde1f7;
-            margin-bottom: 5px;
             cursor: pointer;
             transition: all 0.2s;
         }
         
-        .bt-banca:hover {
+        .bt-banca:hover, .pgina-de-questes-bt-banca:hover, .bt-tipo:hover, .bt-disciplina:hover {
             background-color: #e8ecff;
         }
         
-        .bt-banca-child {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
-        }
-        
-        .assunto {
+        .assunto, .tipo {
             font-size: 14px;
             color: #6a6a6a;
             margin-bottom: 8px;
             font-weight: 600;
-        }
-        
-        .pgina-de-questes-conj-banca {
-            margin-bottom: 20px;
-        }
-        
-        .pgina-de-questes-bt-banca {
-            position: relative;
-            background-color: #f5f7ff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #dde1f7;
-            margin-bottom: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .pgina-de-questes-bt-banca:hover {
-            background-color: #e8ecff;
-        }
-        
-        .conj-tipo {
-            margin-bottom: 20px;
-        }
-        
-        .bt-tipo {
-            position: relative;
-            background-color: #f5f7ff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #dde1f7;
-            margin-bottom: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .bt-tipo:hover {
-            background-color: #e8ecff;
-        }
-        
-        .tipo {
-            font-size: 14px;
-            color: #6a6a6a;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .conj-disciplina {
-            margin-bottom: 20px;
-        }
-        
-        .bt-disciplina {
-            position: relative;
-            background-color: #f5f7ff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #dde1f7;
-            margin-bottom: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .bt-disciplina:hover {
-            background-color: #e8ecff;
         }
         
         .filtrar-questes {
@@ -277,10 +336,6 @@
             color: #4a4a4a;
             margin-bottom: 20px;
             text-align: center;
-        }
-        
-        .captura-de-tela-2025-06-21-001 {
-            display: none;
         }
         
         .barra-de-menu {
@@ -298,10 +353,6 @@
             width: calc(100% - 40px);
             max-width: 1200px;
             z-index: 1000;
-        }
-        
-        .barra-de-menu-child {
-            flex-grow: 1;
         }
         
         .logo-icon {
@@ -346,10 +397,7 @@
             background-color: #e0e0e0;
         }
         
-        .questes2,
-        .nossa-equipe,
-        .incio,
-        .suporte {
+        .questes2, .nossa-equipe, .incio, .suporte {
             padding: 8px 15px;
             border-radius: 8px;
             cursor: pointer;
@@ -357,10 +405,7 @@
             font-weight: 600;
         }
         
-        .questes2:hover,
-        .nossa-equipe:hover,
-        .incio:hover,
-        .suporte:hover {
+        .questes2:hover, .nossa-equipe:hover, .incio:hover, .suporte:hover {
             background-color: #f5f7ff;
             color: #6e8efb;
         }
@@ -370,6 +415,87 @@
             color: white;
         }
         
+        /* Estilos para dropdowns de filtro */
+        .dropdown-filtro {
+            position: fixed;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 15px;
+            z-index: 9999;
+            max-height: 300px;
+            overflow-y: auto;
+            min-width: 200px;
+            border: 1px solid #e0e0e0;
+            animation: slideDown 0.2s ease;
+        }
+        
+        .dropdown-filtro div {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 5px 0;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-filtro div:hover {
+            background-color: #f0f2ff;
+            transform: translateX(5px);
+        }
+        
+        /* Scrollbar personalizada para dropdown */
+        .dropdown-filtro::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .dropdown-filtro::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .dropdown-filtro::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        
+        .dropdown-filtro::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Estilos para tags das questões */
+        .questao-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .questao-tag {
+            background: #e8ecff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .questao-tag.ano {
+            background: #e8f4ff;
+        }
+        
+        .questao-tag.disciplina {
+            background: #f0e7ff;
+        }
+        
+        .questao-tag.nivel {
+            background: #e7f7e7;
+        }
+        
+        .questao-tag.banca {
+            background: #fff2e8;
+        }
+        
         @media (max-width: 900px) {
             .pgina-de-questes {
                 grid-template-columns: 1fr;
@@ -377,20 +503,14 @@
             }
             
             .qadro-filtrar-questes {
-                grid-row: 2;
                 position: static;
-            }
-            
-            .quadro-das-questes {
-                grid-row: 3;
             }
             
             .barra-de-menu {
                 padding: 10px 15px;
             }
             
-            .nossa-equipe,
-            .suporte {
+            .nossa-equipe, .suporte {
                 display: none;
             }
         }
@@ -403,10 +523,6 @@
             }
             
             .quadro-das-questes {
-                padding: 15px;
-            }
-            
-            .aa-partir-da-container {
                 padding: 15px;
             }
             
@@ -447,7 +563,6 @@
                 <div class="tipo">Disciplina</div>
                 <div class="bt-disciplina">
                     <div class="filtrar">Selecionar</div>
-                    <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
@@ -455,7 +570,6 @@
                 <div class="assunto">Assunto</div>
                 <div class="bt-banca">
                     <div class="filtrar">Selecionar</div>
-                    <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
@@ -463,7 +577,6 @@
                 <div class="assunto">Banca</div>
                 <div class="pgina-de-questes-bt-banca">
                     <div class="filtrar">Selecionar</div>
-                    <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
@@ -471,36 +584,19 @@
                 <div class="tipo">Tipo</div>
                 <div class="bt-tipo">
                     <div class="filtrar">Selecionar</div>
-                    <img class="bt-banca-child" alt="">
                 </div>
             </div>
             
-            <div class="bt-filtrar">
-                <div class="filtrar">Filtrar</div>
+            <div class="bt-filtrar" onclick="carregarQuestoes()">
+                <div class="filtrar">Carregar Questões</div>
             </div>
         </div>
         
-        <div class="quadro-das-questes">
-            <div class="rectangle-roxo"></div>
-            
-            <div class="considerando-a-figura">Considerando a figura abaixo, que ilustra um losango de lado l inscrito em um retângulo cujos lados medem 16 cm e 12 cm, julgue os itens a seguir:</div>
-            
-            <div class="rectangle-branco">Área para a figura da questão</div>
-            
-            <div class="aa-partir-da-container">
-                <p class="aa-partir-da">a) A partir da figura, conclui-se que senβ = cos(α).</p>
-                <p class="aa-partir-da">b) A área do losango é inferior a 95 cm²</p>
-                <p class="aa-partir-da">c) O perímetro do retângulo é 40% maior que o perímetro do losango.</p>
-            </div>
-            
-            <div class="div">&lt; 2/100 &gt;</div>
-        </div>
-        
-        <img class="captura-de-tela-2025-06-21-001" alt="">
+        <div id="loading">Carregando questões...</div>
+        <div id="questoes-container"></div>
     </div>
     
     <div class="barra-de-menu">
-        <div class="barra-de-menu-child"></div>
         <img class="logo-icon" alt="">
         <div class="miaucademy">Miaucademy</div>
         <div class="perfil-parent" id="frameContainer">
@@ -514,45 +610,411 @@
     </div>
     
     <script>
-        // Redirecionamento para a página de perfil
-        var frameContainer = document.getElementById("frameContainer");
-        if(frameContainer) {
-            frameContainer.addEventListener("click", function (e) {
-                window.location.href = "perfil.html";
-            });
+        let questoesAtuais = [];
+        let indiceQuestaoAtual = 0;
+
+        // Função para carregar questões do servidor
+        async function carregarQuestoes() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('questoes-container').innerHTML = '';
+
+                // Obter valores dos filtros
+                const disciplina = document.querySelector('.bt-disciplina .filtrar').textContent;
+                const assunto = document.querySelector('.bt-banca .filtrar').textContent;
+                const banca = document.querySelector('.pgina-de-questes-bt-banca .filtrar').textContent;
+                const tipo = document.querySelector('.bt-tipo .filtrar').textContent;
+                
+                // Construir URL com filtros
+                let url = '/api/questions/filter?';
+                const params = [];
+                
+                if (disciplina !== 'Selecionar') params.push(`disciplina=${encodeURIComponent(disciplina)}`);
+                if (assunto !== 'Selecionar') params.push(`assunto=${encodeURIComponent(assunto)}`);
+                if (banca !== 'Selecionar') params.push(`banca=${encodeURIComponent(banca)}`);
+                if (tipo !== 'Selecionar') params.push(`tipo=${encodeURIComponent(tipo)}`);
+                
+                if (params.length > 0) {
+                    url += params.join('&');
+                } else {
+                    url = '/api/questions'; // Buscar todas se nenhum filtro
+                }
+
+                console.log('Buscando questões da URL:', url);
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
+                const questoes = await response.json();
+                console.log('Questões recebidas:', questoes.length);
+                
+                questoesAtuais = questoes;
+                indiceQuestaoAtual = 0;
+                
+                if (questoes.length > 0) {
+                    exibirQuestao(0);
+                } else {
+                    document.getElementById('questoes-container').innerHTML = 
+                        '<div class="quadro-das-questes">' +
+                        '<div class="rectangle-roxo"></div>' +
+                        '<h3 style="text-align: center; color: #666; padding: 40px 20px;">' +
+                        '🔍 Nenhuma questão encontrada com os filtros selecionados.' +
+                        '</h3>' +
+                        '</div>';
+                }
+                
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Erro ao carregar questões:', error);
+                document.getElementById('loading').innerHTML = 
+                    '<div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">' +
+                    '<h3 style="color: #dc3545;">❌ Erro ao conectar com o servidor</h3>' +
+                    '<p style="color: #666;">Verifique se o servidor Node.js está rodando na porta 3000</p>' +
+                    '<p style="color: #666; font-size: 14px;">' + error.message + '</p>' +
+                    '<p style="color: #666; font-size: 12px; margin-top: 10px;">URL tentada: ' + url + '</p>' +
+                    '</div>';
+                document.getElementById('loading').style.display = 'block';
+            }
         }
+
+        // Exibir uma questão específica
+        function exibirQuestao(indice) {
+            if (indice >= questoesAtuais.length) {
+                document.getElementById('questoes-container').innerHTML = 
+                    '<div class="quadro-das-questes">' +
+                    '<div class="rectangle-roxo"></div>' +
+                    '<div style="padding: 40px; text-align: center;">' +
+                    '<h2 style="color: #6e8efb; margin-bottom: 15px;">🎉 Parabéns!</h2>' +
+                    '<p style="font-size: 18px; color: #666;">Você completou todas as questões!</p>' +
+                    '<button class="btn-acao btn-proxima" onclick="reiniciarQuestoes()" style="margin-top: 20px;">🔄 Recomeçar</button>' +
+                    '</div>' +
+                    '</div>';
+                return;
+            }
+
+            const questao = questoesAtuais[indice];
+            const container = document.getElementById('questoes-container');
+            
+            // Criar tags dinamicamente
+            let tagsHTML = '<div class="questao-tags">';
+            if (questao['Banca']) tagsHTML += `<span class="questao-tag banca">${questao['Banca']}</span>`;
+            if (questao['Ano']) tagsHTML += `<span class="questao-tag ano">Ano: ${questao['Ano']}</span>`;
+            if (questao['Area/Conteúdo']) tagsHTML += `<span class="questao-tag disciplina">${questao['Area/Conteúdo']}</span>`;
+            if (questao['Nível']) tagsHTML += `<span class="questao-tag nivel">${questao['Nível']}</span>`;
+            if (questao['Prova']) tagsHTML += `<span class="questao-tag">${questao['Prova']}</span>`;
+            tagsHTML += '</div>';
+            
+            container.innerHTML = `
+                <div class="quadro-das-questes">
+                    <div class="rectangle-roxo"></div>
+                    
+                    <div class="questao-info">
+                        <span class="questao-numero">Questão ${questao['Numero da Questão'] || (indice + 1)} de ${questoesAtuais.length}</span>
+                        <span>${questao['Prova'] || ''} ${questao['Ano'] ? ' - ' + questao['Ano'] : ''}</span>
+                    </div>
+                    
+                    ${tagsHTML}
+                    
+                    <div class="considerando-a-figura">
+                        ${questao['Enunciado Completo'] || questao['Enunciado'] || 'Enunciado não disponível.'}
+                    </div>
+                    
+                    <div class="aa-partir-da-container">
+                        <div class="alternativa-item" onclick="selecionarAlternativa(${indice}, 'A')">
+                            <label>
+                                <input type="radio" name="questao${indice}" value="A" id="q${indice}a">
+                                <strong>A)</strong> ${questao['Alternativa A'] || 'Alternativa A não disponível'}
+                            </label>
+                        </div>
+                        
+                        <div class="alternativa-item" onclick="selecionarAlternativa(${indice}, 'B')">
+                            <label>
+                                <input type="radio" name="questao${indice}" value="B" id="q${indice}b">
+                                <strong>B)</strong> ${questao['Alternativa B'] || 'Alternativa B não disponível'}
+                            </label>
+                        </div>
+                        
+                        <div class="alternativa-item" onclick="selecionarAlternativa(${indice}, 'C')">
+                            <label>
+                                <input type="radio" name="questao${indice}" value="C" id="q${indice}c">
+                                <strong>C)</strong> ${questao['Alternativa C'] || 'Alternativa C não disponível'}
+                            </label>
+                        </div>
+                        
+                        <div class="alternativa-item" onclick="selecionarAlternativa(${indice}, 'D')">
+                            <label>
+                                <input type="radio" name="questao${indice}" value="D" id="q${indice}d">
+                                <strong>D)</strong> ${questao['Alternativa D'] || 'Alternativa D não disponível'}
+                            </label>
+                        </div>
+                        
+                        <div class="alternativa-item" onclick="selecionarAlternativa(${indice}, 'E')">
+                            <label>
+                                <input type="radio" name="questao${indice}" value="E" id="q${indice}e">
+                                <strong>E)</strong> ${questao['Alternativa E'] || 'Alternativa E não disponível'}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="botoes-acao">
+                        <button class="btn-acao btn-verificar" onclick="verificarResposta(${indice})">
+                            <i class="fas fa-check"></i> Verificar Resposta
+                        </button>
+                        <button class="btn-acao btn-explicacao" onclick="toggleExplicacao(${indice})">
+                            <i class="fas fa-lightbulb"></i> Ver Explicação
+                        </button>
+                        <button class="btn-acao btn-proxima" onclick="proximaQuestao()">
+                            Próxima <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="resultado-${indice}" class="resultado-feedback"></div>
+                    
+                    <div class="explicacao-box" id="explicacao-${indice}">
+                        <h4><i class="fas fa-book"></i> Explicação Passo a Passo:</h4>
+                        <p>${questao['Explicação (Passo a Passo)'] || questao['Explicacao'] || 'Explicação não disponível.'}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Selecionar alternativa
+        function selecionarAlternativa(indice, letra) {
+            const radio = document.getElementById(`q${indice}${letra.toLowerCase()}`);
+            if (radio) {
+                radio.checked = true;
+            }
+        }
+
+        // Verificar resposta
+        function verificarResposta(indice) {
+            const questao = questoesAtuais[indice];
+            const respostaSelecionada = document.querySelector(`input[name="questao${indice}"]:checked`);
+            
+            if (!respostaSelecionada) {
+                alert('Por favor, selecione uma alternativa!');
+                return;
+            }
+            
+            const gabarito = questao['Gabarito'] ? questao['Gabarito'].toUpperCase().trim() : '';
+            const resposta = respostaSelecionada.value.toUpperCase();
+            
+            if (!gabarito) {
+                alert('Gabarito não disponível para esta questão!');
+                return;
+            }
+            
+            // Remover marcações anteriores
+            document.querySelectorAll('.alternativa-item').forEach(alt => {
+                alt.classList.remove('correta', 'incorreta');
+            });
+            
+            // Marcar a alternativa correta
+            const alternativaCorreta = document.querySelector(`#q${indice}${gabarito.toLowerCase()}`);
+            if (alternativaCorreta) {
+                alternativaCorreta.closest('.alternativa-item').classList.add('correta');
+            }
+            
+            // Se errou, marcar a alternativa escolhida
+            if (resposta !== gabarito) {
+                const alternativaErrada = document.querySelector(`#q${indice}${resposta.toLowerCase()}`);
+                if (alternativaErrada) {
+                    alternativaErrada.closest('.alternativa-item').classList.add('incorreta');
+                }
+            }
+            
+            // Mostrar resultado
+            const resultadoDiv = document.getElementById(`resultado-${indice}`);
+            resultadoDiv.classList.add('show');
+            
+            if (resposta === gabarito) {
+                resultadoDiv.className = 'resultado-feedback acertou show';
+                resultadoDiv.innerHTML = '<i class="fas fa-trophy"></i> 🎉 Parabéns! Você acertou!';
+            } else {
+                resultadoDiv.className = 'resultado-feedback errou show';
+                resultadoDiv.innerHTML = `<i class="fas fa-times-circle"></i> ❌ Resposta incorreta. A alternativa correta é: <strong>${gabarito}</strong>`;
+            }
+            
+            // Mostrar explicação automaticamente
+            document.getElementById(`explicacao-${indice}`).classList.add('show');
+        }
+
+        // Toggle explicação
+        function toggleExplicacao(indice) {
+            const explicacao = document.getElementById(`explicacao-${indice}`);
+            explicacao.classList.toggle('show');
+        }
+
+        // Próxima questão
+        function proximaQuestao() {
+            indiceQuestaoAtual++;
+            exibirQuestao(indiceQuestaoAtual);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Reiniciar questões
+        function reiniciarQuestoes() {
+            indiceQuestaoAtual = 0;
+            exibirQuestao(0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Inicializar filtros com dropdowns
+        function inicializarFiltros() {
+            // Dados para os filtros (você pode personalizar)
+            const disciplinas = [
+                "Matemática", "Português", "História", "Geografia", 
+                "Física", "Química", "Biologia", "Inglês", "Literatura",
+                "Filosofia", "Sociologia", "Artes", "Educação Física"
+            ];
+            
+            const assuntos = [
+                "Álgebra", "Geometria", "Trigonometria", "Aritmética",
+                "Gramática", "Interpretação de Texto", "Redação",
+                "História do Brasil", "História Geral", "Geografia Física",
+                "Geografia Humana", "Mecânica", "Óptica", "Termodinâmica",
+                "Química Orgânica", "Química Inorgânica", "Biologia Celular",
+                "Genética", "Ecologia"
+            ];
+            
+            const bancas = [
+                "ENEM", "FUVEST", "UNICAMP", "VUNESP", 
+                "CESGRANRIO", "CESPE", "FCC", "CONSULPLAN",
+                "IBFC", "INSTITUTO AOCP", "QUADRIX", "FUNDATEC"
+            ];
+            
+            const tipos = [
+                "Múltipla Escolha", "Discursiva", "Verdadeiro/Falso",
+                "Asserção-Razão", "Certo/Errado"
+            ];
+
+            // Função para criar dropdown
+            function criarDropdown(botao, opcoes, titulo) {
+                botao.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // Fechar dropdown existente
+                    const dropdownExistente = document.getElementById('dropdown-filtro-atual');
+                    if (dropdownExistente) dropdownExistente.remove();
+                    
+                    // Criar container do dropdown
+                    const dropdown = document.createElement('div');
+                    dropdown.id = 'dropdown-filtro-atual';
+                    dropdown.className = 'dropdown-filtro';
+                    
+                    // Adicionar título
+                    const tituloEl = document.createElement('div');
+                    tituloEl.textContent = `Selecione ${titulo}`;
+                    tituloEl.style.cssText = `
+                        font-weight: 600;
+                        color: #6e8efb;
+                        margin-bottom: 10px;
+                        padding-bottom: 8px;
+                        border-bottom: 2px solid #f0f0f0;
+                    `;
+                    dropdown.appendChild(tituloEl);
+                    
+                    // Adicionar opção "Todos"
+                    const opcaoTodos = document.createElement('div');
+                    opcaoTodos.textContent = 'Selecionar';
+                    opcaoTodos.style.cssText = `
+                        padding: 10px 15px;
+                        cursor: pointer;
+                        border-radius: 6px;
+                        margin: 5px 0;
+                        transition: all 0.2s;
+                        background: #f8f9ff;
+                        border: 1px solid #e0e7ff;
+                    `;
+                    opcaoTodos.onmouseover = () => opcaoTodos.style.background = '#e8ecff';
+                    opcaoTodos.onmouseout = () => opcaoTodos.style.background = '#f8f9ff';
+                    opcaoTodos.onclick = () => {
+                        botao.querySelector('.filtrar').textContent = 'Selecionar';
+                        dropdown.remove();
+                    };
+                    dropdown.appendChild(opcaoTodos);
+                    
+                    // Adicionar opções
+                    opcoes.forEach(opcao => {
+                        const div = document.createElement('div');
+                        div.textContent = opcao;
+                        div.style.cssText = `
+                            padding: 10px 15px;
+                            cursor: pointer;
+                            border-radius: 6px;
+                            margin: 5px 0;
+                            transition: all 0.2s;
+                        `;
+                        div.onmouseover = () => {
+                            div.style.background = '#f0f2ff';
+                            div.style.transform = 'translateX(5px)';
+                        };
+                        div.onmouseout = () => {
+                            div.style.background = '';
+                            div.style.transform = '';
+                        };
+                        div.onclick = () => {
+                            botao.querySelector('.filtrar').textContent = opcao;
+                            dropdown.remove();
+                        };
+                        dropdown.appendChild(div);
+                    });
+                    
+                    // Posicionar dropdown
+                    const rect = botao.getBoundingClientRect();
+                    dropdown.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+                    dropdown.style.left = (rect.left + window.scrollX) + 'px';
+                    
+                    document.body.appendChild(dropdown);
+                    
+                    // Fechar ao clicar fora
+                    setTimeout(() => {
+                        document.addEventListener('click', function fecharDropdown(e) {
+                            if (!dropdown.contains(e.target) && !botao.contains(e.target)) {
+                                dropdown.remove();
+                                document.removeEventListener('click', fecharDropdown);
+                            }
+                        });
+                    }, 10);
+                });
+            }
+            
+            // Inicializar dropdowns para cada filtro
+            criarDropdown(document.querySelector('.bt-disciplina'), disciplinas, 'disciplina');
+            criarDropdown(document.querySelector('.bt-banca'), assuntos, 'assunto');
+            criarDropdown(document.querySelector('.pgina-de-questes-bt-banca'), bancas, 'banca');
+            criarDropdown(document.querySelector('.bt-tipo'), tipos, 'tipo de questão');
+        }
+
+        // Navegação do menu
+        document.getElementById("frameContainer")?.addEventListener("click", function (e) {
+            window.location.href = "perfil.html";
+        });
         
-        // Redirecionamento para a página de questões
-        var questesText = document.getElementById("questesText");
-        if(questesText) {
-            questesText.addEventListener("click", function (e) {
-                window.location.href = "PginaDeQuestes.html";
-            });
-        }
+        document.getElementById("questesText")?.addEventListener("click", function (e) {
+            window.location.href = "PginaDeQuestes.html";
+        });
         
-        // Redirecionamento para a página da equipe
-        var nossaEquipeText = document.getElementById("nossaEquipeText");
-        if(nossaEquipeText) {
-            nossaEquipeText.addEventListener("click", function (e) {
-                window.location.href = "equipe.html";
-            });
-        }
+        document.getElementById("nossaEquipeText")?.addEventListener("click", function (e) {
+            window.location.href = "equipe.html";
+        });
         
-        // Redirecionamento para a página inicial
-        var incioText = document.getElementById("incioText");
-        if(incioText) {
-            incioText.addEventListener("click", function (e) {
-                window.location.href = "page.html";
-            });
-        }
+        document.getElementById("incioText")?.addEventListener("click", function (e) {
+            window.location.href = "page.html";
+        });
         
-        // Redirecionamento para a página de suporte
-        var suporteText = document.getElementById("suporteText");
-        if(suporteText) {
-            suporteText.addEventListener("click", function (e) {
-                window.location.href = "suporte.html";
-            });
-        }
+        document.getElementById("suporteText")?.addEventListener("click", function (e) {
+            window.location.href = "suporte.html";
+        });
+
+        // Inicializar quando a página carregar
+        window.onload = function() {
+            inicializarFiltros();
+            carregarQuestoes();
+        };
     </script>
 </body>
 </html>
