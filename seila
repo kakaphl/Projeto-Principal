@@ -1,0 +1,18 @@
+        // Gerar token JWT
+        const jwtToken = jwt.sign(
+            { userId: user._id, username: user.username },
+            process.env.JWT_SECRET || 'seu_jwt_secreto_super_seguro',
+            { expiresIn: '24h' }
+        );
+
+
+        res.json({
+            message: 'Login com Google bem-sucedido',
+            token: jwtToken,
+            username: user.username
+        });
+    } catch (error) {
+        console.error('Erro na autenticação Google:', error);
+        res.status(500).json({ message: 'Erro na autenticação Google' });
+    }
+});
