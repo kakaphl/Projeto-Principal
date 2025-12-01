@@ -1,9 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const { OAuth2Client } = require('google-auth-library');
+const mongoose = require('mongoose'); // Banco de dados na nuvem
+const bcrypt = require('bcryptjs'); // Criptografia de senhas
+const jwt = require('jsonwebtoken'); // Sistema de autenticação seguro
+const cors = require('cors');  //  Comunicação entre front-end e back-end
+const { OAuth2Client } = require('google-auth-library'); // Login com Google
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,7 +13,7 @@ const googleClient = new OAuth2Client('1060653026266-ddgvefd4hrrs7hgmojrkba198ul
 app.use(express.json());
 app.use(cors());
 
-// Conexão com MongoDB Atlas
+// Conexão com MongoDB Atlas 
 const MONGODB_URI = 'mongodb+srv://santanastephany220_db_user:22190309@miaucademy.4mngdrk.mongodb.net/miaucademy?retryWrites=true&w=majority'
 
 mongoose.connect(MONGODB_URI, {
@@ -134,7 +134,7 @@ app.post('/auth/google', async (req, res) => {
     try {
         const { token } = req.body;
         
-        // Verificar token do Google
+        // verificar token do Google
         const ticket = await googleClient.verifyIdToken({
             idToken: token,
             audience: '1060653026266-ddgvefd4hrrs7hgmojrkba198ulljmn2.apps.googleusercontent.com'
@@ -143,16 +143,16 @@ app.post('/auth/google', async (req, res) => {
         const payload = ticket.getPayload();
         const { sub: googleId, name, email } = payload;
 
-        // Verificar se usuário já existe
+        // verificar se usuário já existe ou Cria usuario
         let user = await User.findOne({ 
             $or: [{ googleId }, { email }] 
         });
 
         if (!user) {
-            // Criar username a partir do email
+            // gerar username a partir do email
             const username = email.split('@')[0];
             
-            // Verificar se username já existe
+            // verificar se username já existe
             let uniqueUsername = username;
             let counter = 1;
             
@@ -161,7 +161,7 @@ app.post('/auth/google', async (req, res) => {
                 counter++;
             }
 
-            // Criar novo usuário
+            // criar novo usuário
             user = new User({
                 name,
                 username: uniqueUsername,
