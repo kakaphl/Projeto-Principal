@@ -642,7 +642,7 @@
 
                 console.log('Buscando questões da URL:', url);
                 
-                const response = await fetch(url);
+                const response = await fetch('http://localhost:3001/api/questions');
                 
                 if (!response.ok) {
                     throw new Error(`Erro HTTP: ${response.status}`);

@@ -18,5 +18,16 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
-}     
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kakaphl/Projeto-Principal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kakaphl/Projeto-Principal/issues"
+  },
+  "homepage": "https://github.com/kakaphl/Projeto-Principal#readme"
+}
