@@ -6,345 +6,807 @@
     <title>Equipe Miaucademy</title>
     <!-- Importação da fonte Poppins do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fontes adicionais do MiauCademy -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;800&display=swap" rel="stylesheet">
+    <!-- Ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== VARIÁVEIS CSS ===== */
+        :root {
+            --primary-color: #702fad;
+            --secondary-color: #5e2590;
+            --accent-color: #4ae452;
+            --text-light: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+            
+            /* Variáveis do MiauCademy */
+            --roxo-claro: #bea6ff;
+            --roxo-escuro: #8a3ffc;
+            --roxo-mais-escuro: #2e174d;
+            --laranja: #fe9503;
+            --laranja-escuro: #ff6a00;
+            --creme: #fff2df;
+        }
+
         /* ===== ESTILOS GERAIS ===== */
-        /* Reset básico para remover margens e paddings padrão */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box; /* Inclui padding e border no cálculo de width/height */
         }
-        
-        /* Estilos do corpo da página */
-        body {
-            font-family: 'Poppins', sans-serif; /* Define a fonte principal */
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Fundo com gradiente roxo-azul */
-            color: #fff; /* Texto em branco */
-            line-height: 1.6; /* Altura da linha para melhor legibilidade */
-            padding: 20px; /* Espaçamento interno */
-            min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+
+        html {
+            scroll-behavior: smooth; /* Rolagem suave para âncoras */
         }
-        
+
+        body {
+            font-family: 'Montserrat', sans-serif; /* Define a fonte principal do MiauCademy */
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Fundo com gradiente roxo-azul */
+            color: var(--text-light); /* Texto em branco */
+            line-height: 1.6; /* Altura da linha para melhor legibilidade */
+            min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+            overflow-x: hidden; /* Remove barra de rolagem horizontal */
+            padding-top: 80px; /* Espaço para a nav-bar fixa */
+        }
+
+        /* ===== CABEÇALHO DO MIAUCADEMY ===== */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: var(--roxo-escuro);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(45deg, var(--roxo-claro), var(--roxo-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background: var(--laranja);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .profile-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--roxo-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
         /* Container principal para centralizar o conteúdo */
         .container {
-            max-width: 1000px; /* Largura máxima do conteúdo */
+            max-width: 1200px; /* Largura máxima aumentada para acomodar mais conteúdo */
             margin: 0 auto; /* Centraliza o container na página */
+            padding: 0 15px; /* Adiciona padding nas laterais para espaçamento */
         }
-        
-        /* ===== CABEÇALHO ===== */
-        .header {
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            padding: 40px 0; /* Espaçamento interno */
+        }
+
+        /* Seção de introdução */
+        .intro-section {
             text-align: center; /* Centraliza o texto */
-            margin-bottom: 40px; /* Espaçamento inferior */
+            margin-bottom: 50px; /* Espaçamento inferior */
             padding: 20px; /* Espaçamento interno */
         }
-        
+
         /* Título principal */
-        .header h1 {
+        .intro-section h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem; /* Tamanho da fonte */
             font-weight: 700; /* Peso da fonte (negrito) */
-            color: #ffffff; /* Cor do texto (branco) */
-            margin-bottom: 10px; /* Espaçamento inferior */
+            color: var(--text-light); /* Cor do texto (branco) */
+            margin-bottom: 15px; /* Espaçamento inferior */
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra de texto para melhor contraste */
         }
-        
+
         /* Subtítulo */
-        .header p {
+        .intro-section p {
             font-size: 1.2rem; /* Tamanho da fonte */
-            color: rgba(255, 255, 255, 0.9); /* Cor do texto com transparência */
+            color: var(--text-muted); /* Cor do texto com transparência */
+            max-width: 600px; /* Limita a largura do texto */
+            margin: 0 auto; /* Centraliza o parágrafo */
         }
-        
+
         /* ===== LISTA DE MEMBROS ===== */
         .team-list {
-            display: flex; /* Ativa o flexbox */
-            flex-direction: column; /* Organiza os itens em coluna */
+            display: grid; /* Usando grid para layout mais flexível */
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Layout responsivo */
             gap: 30px; /* Espaçamento entre os itens */
             margin-bottom: 50px; /* Espaçamento inferior */
         }
-        
+
         /* ===== ITEM DE MEMBRO INDIVIDUAL ===== */
         .member-item {
-            display: flex; /* Ativa o flexbox */
-            align-items: center; /* Centraliza verticalmente os itens */
-            background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+            background: var(--card-bg); /* Fundo semi-transparente */
             backdrop-filter: blur(10px); /* Efeito de desfoque no fundo (glassmorphism) */
             border-radius: 15px; /* Bordas arredondadas */
             overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
-            transition: transform 0.3s, box-shadow 0.3s; /* Transições suaves para hover */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+            box-shadow: var(--shadow); /* Sombra suave */
+            transition: var(--transition); /* Transições suaves para hover */
+            border: 1px solid var(--card-border); /* Borda sutil */
+            display: flex; /* Layout flex para organização interna */
+            flex-direction: column; /* Organiza os elementos em coluna */
+            height: 100%; /* Garante que todos os cards tenham a mesma altura */
         }
-        
+
         /* Efeito ao passar o mouse sobre um membro */
         .member-item:hover {
-            transform: translateY(-5px); /* Move o card para cima */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+            transform: translateY(-10px); /* Move o card para cima */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
             background: rgba(255, 255, 255, 0.15); /* Torna o fundo um pouco mais visível */
         }
-        
-        /* Alterna a direção dos itens (ímpar: esquerda, par: direita) */
-        .member-item:nth-child(odd) {
-            flex-direction: row; /* Imagem à esquerda, texto à direita */
-        }
-        
-        .member-item:nth-child(even) {
-            flex-direction: row-reverse; /* Imagem à direita, texto à esquerda */
-        }
-        
+
         /* ===== FOTO DO MEMBRO ===== */
         .member-photo {
-            flex: 0 0 200px; /* Largura fixa (não cresce, não encolhe) */
             height: 200px; /* Altura fixa */
             display: flex; /* Ativa flexbox para centralização */
             align-items: center; /* Centraliza verticalmente */
             justify-content: center; /* Centraliza horizontalmente */
-            font-size: 3rem; /* Tamanho da letra inicial */
+            font-size: 4rem; /* Tamanho da letra inicial */
             font-weight: bold; /* Peso da fonte */
             color: white; /* Cor do texto */
-            margin: 20px; /* Espaçamento externo */
-            border-radius: 10px; /* Bordas arredondadas */
+            position: relative; /* Para posicionar elementos filhos */
+            overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse */
         }
-        
-        /* Fundos para as fotos dos membros (todas com o mesmo estilo) */
+
+        /* Gradiente de fundo para as fotos com cores diferentes */
         .member-item:nth-child(1) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
         }
         
         .member-item:nth-child(2) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #4ecdc4, #88d9e6);
         }
         
         .member-item:nth-child(3) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #ffd166, #ffdf8e);
         }
         
         .member-item:nth-child(4) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #06d6a0, #4ce3b8);
         }
         
         .member-item:nth-child(5) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #118ab2, #4fbce6);
         }
         
         .member-item:nth-child(6) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #ef476f, #ff7598);
         }
         
         .member-item:nth-child(7) .member-photo {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #7209b7, #9d4edd);
         }
-        
+
+        /* Ícone decorativo na foto */
+        .member-photo::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
         /* ===== INFORMAÇÕES DO MEMBRO ===== */
         .member-info {
             flex: 1; /* Ocupa o espaço restante */
             padding: 25px; /* Espaçamento interno */
+            display: flex; /* Flex para organizar o conteúdo */
+            flex-direction: column; /* Organiza em coluna */
         }
-        
+
         /* Nome do membro */
         .member-name {
-            font-size: 1.8rem; /* Tamanho da fonte */
+            font-size: 1.5rem; /* Tamanho da fonte */
             font-weight: 600; /* Peso da fonte */
             margin-bottom: 5px; /* Espaçamento inferior */
-            color: #ffffff; /* Cor do texto */
+            color: var(--text-light); /* Cor do texto */
         }
-        
+
         /* Cargo/função do membro */
         .member-role {
-            font-size: 1.1rem; /* Tamanho da fonte */
-            color: rgba(255, 255, 255, 0.8); /* Cor do texto com transparência */
+            font-size: 1rem; /* Tamanho da fonte */
+            color: var(--text-muted); /* Cor do texto com transparência */
             margin-bottom: 15px; /* Espaçamento inferior */
             font-weight: 500; /* Peso da fonte */
+            display: flex; /* Para alinhar ícone e texto */
+            align-items: center; /* Centraliza verticalmente */
         }
-        
+
+        /* Ícone antes do cargo */
+        .member-role i {
+            margin-right: 8px; /* Espaçamento entre ícone e texto */
+            color: var(--accent-color); /* Cor do ícone */
+        }
+
         /* Descrição do membro */
         .member-info p {
-            color: rgba(255, 255, 255, 0.9); /* Cor do texto com transparência */
+            color: var(--text-muted); /* Cor do texto com transparência */
+            margin-bottom: 15px; /* Espaçamento inferior */
+            flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
         }
-        
+
+        /* ===== HABILIDADES DO MEMBRO ===== */
+        .member-skills {
+            display: flex; /* Flex para organizar as habilidades */
+            flex-wrap: wrap; /* Permite quebra de linha */
+            gap: 8px; /* Espaçamento entre as habilidades */
+            margin-top: 10px; /* Espaçamento superior */
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente */
+            padding: 5px 10px; /* Espaçamento interno */
+            border-radius: 20px; /* Bordas completamente arredondadas */
+            font-size: 0.8rem; /* Tamanho da fonte reduzido */
+            color: var(--text-light); /* Cor do texto */
+        }
+
         /* ===== SEÇÃO DE CONTATO ===== */
         .contact-section {
-            background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+            background: var(--card-bg); /* Fundo semi-transparente */
             backdrop-filter: blur(10px); /* Efeito de desfoque (glassmorphism) */
             border-radius: 15px; /* Bordas arredondadas */
-            padding: 30px; /* Espaçamento interno */
+            padding: 40px; /* Espaçamento interno */
             text-align: center; /* Centraliza o texto */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            box-shadow: var(--shadow); /* Sombra suave */
             margin-top: 40px; /* Espaçamento superior */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+            border: 1px solid var(--card-border); /* Borda sutil */
+            position: relative; /* Para posicionar elementos filhos */
+            overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse */
         }
-        
+
+        /* Elemento decorativo na seção de contato */
+        .contact-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: -1; /* Coloca atrás do conteúdo */
+        }
+
         /* Título da seção de contato */
         .contact-section h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem; /* Tamanho da fonte */
             margin-bottom: 15px; /* Espaçamento inferior */
-            color: #ffffff; /* Cor do texto */
+            color: var(--text-light); /* Cor do texto */
         }
-        
+
         /* Texto da seção de contato */
         .contact-section p {
             font-size: 1.1rem; /* Tamanho da fonte */
-            margin-bottom: 20px; /* Espaçamento inferior */
-            color: rgba(255, 255, 255, 0.9); /* Cor do texto com transparência */
+            margin-bottom: 25px; /* Espaçamento inferior */
+            color: var(--text-muted); /* Cor do texto com transparência */
+            max-width: 600px; /* Limita a largura do texto */
+            margin-left: auto; /* Centraliza o parágrafo */
+            margin-right: auto; /* Centraliza o parágrafo */
         }
-        
+
         /* ===== BOTÕES DE CONTATO ===== */
+        .contact-buttons {
+            display: flex; /* Flex para organizar os botões */
+            justify-content: center; /* Centraliza os botões */
+            flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+            gap: 15px; /* Espaçamento entre os botões */
+        }
+
         .contact-btn {
-            display: inline-block; /* Exibição em linha com propriedades de bloco */
-            background: #ffffff; /* Fundo branco */
-            color: #6a11cb; /* Texto na cor roxa */
+            display: inline-flex; /* Flex para alinhar ícone e texto */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            background: var(--text-light); /* Fundo branco */
+            color: var(--primary-color); /* Texto na cor roxa */
             padding: 12px 25px; /* Espaçamento interno */
             border-radius: 30px; /* Bordas completamente arredondadas */
             text-decoration: none; /* Remove sublinhado padrão */
             font-weight: 500; /* Peso da fonte */
-            transition: all 0.3s; /* Transição suave para todas as propriedades */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
-            margin: 10px 5px; /* Espaçamento externo */
+            transition: var(--transition); /* Transição suave para todas as propriedades */
+            box-shadow: var(--shadow); /* Sombra suave */
+            gap: 8px; /* Espaçamento entre ícone e texto */
         }
-        
+
         /* Efeito ao passar o mouse sobre os botões */
         .contact-btn:hover {
             background: #f0f0f0; /* Muda a cor de fundo */
-            transform: translateY(-2px); /* Move o botão para cima */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+            transform: translateY(-3px); /* Move o botão para cima */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
         }
-        
-        /* ===== RODAPÉ ===== */
+
+        /* ===== RODAPÉ PADRONIZADO ===== */
         .footer {
+            background: var(--secondary-color); /* Cor de fundo do rodapé */
+            padding: 30px 0; /* Espaçamento interno */
             text-align: center; /* Centraliza o texto */
+            color: var(--text-muted); /* Cor do texto com transparência */
             margin-top: 50px; /* Espaçamento superior */
-            padding: 20px; /* Espaçamento interno */
-            color: rgba(255, 255, 255, 0.7); /* Cor do texto com transparência */
-            font-size: 0.9rem; /* Tamanho da fonte reduzido */
         }
-        
+
+        .footer-content {
+            display: flex; /* Flex para organizar o conteúdo */
+            flex-direction: column; /* Organiza em coluna */
+            align-items: center; /* Centraliza horizontalmente */
+        }
+
+        .footer-logo {
+            font-size: 1.8rem; /* Tamanho da fonte */
+            font-weight: 700; /* Peso da fonte */
+            margin-bottom: 15px; /* Espaçamento inferior */
+            color: var(--text-light); /* Cor do texto */
+        }
+
+        .footer-links {
+            display: flex; /* Flex para organizar os links */
+            list-style: none; /* Remove marcadores de lista */
+            margin: 15px 0; /* Espaçamento externo */
+            flex-wrap: wrap; /* Permite quebra de linha */
+            justify-content: center; /* Centraliza os links */
+        }
+
+        .footer-links li {
+            margin: 0 10px; /* Espaçamento entre itens */
+        }
+
+        .footer-links a {
+            color: var(--text-muted); /* Cor do texto */
+            text-decoration: none; /* Remove sublinhado */
+            transition: var(--transition); /* Transição suave */
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color); /* Cor do texto ao passar o mouse */
+        }
+
+        .footer-social {
+            display: flex; /* Flex para organizar os ícones */
+            margin: 15px 0; /* Espaçamento externo */
+        }
+
+        .social-icon {
+            display: flex; /* Flex para centralização */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            width: 40px; /* Largura fixa */
+            height: 40px; /* Altura fixa */
+            background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+            border-radius: 50%; /* Forma circular */
+            margin: 0 5px; /* Espaçamento entre ícones */
+            color: var(--text-light); /* Cor do ícone */
+            text-decoration: none; /* Remove sublinhado */
+            transition: var(--transition); /* Transição suave */
+        }
+
+        .social-icon:hover {
+            background: var(--accent-color); /* Muda a cor de fundo ao passar o mouse */
+            transform: translateY(-3px); /* Move o ícone para cima */
+        }
+
+        .copyright {
+            margin-top: 15px; /* Espaçamento superior */
+            font-size: 0.9rem; /* Tamanho da fonte reduzido */
+            color: var(--text-muted); /* Cor do texto */
+        }
+
+        /* ===== BOTÃO VOLTAR AO TOPO ===== */
+        .back-to-top {
+            position: fixed; /* Posicionamento fixo na tela */
+            bottom: 20px; /* Distância da parte inferior */
+            right: 20px; /* Distância da direita */
+            width: 50px; /* Largura fixa */
+            height: 50px; /* Altura fixa */
+            background: var(--accent-color); /* Cor de fundo */
+            color: white; /* Cor do ícone */
+            border-radius: 50%; /* Forma circular */
+            display: flex; /* Flex para centralização */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            text-decoration: none; /* Remove sublinhado */
+            box-shadow: var(--shadow); /* Sombra */
+            transition: var(--transition); /* Transição suave */
+            opacity: 0; /* Inicialmente invisível */
+            visibility: hidden; /* Inicialmente invisível */
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+        }
+
+        .back-to-top.visible {
+            opacity: 1; /* Torna visível */
+            visibility: visible; /* Torna visível */
+        }
+
+        .back-to-top:hover {
+            background: #3ac742; /* Muda a cor ao passar o mouse */
+            transform: translateY(-3px); /* Move para cima */
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
         /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 768px) {
-            /* Em dispositivos móveis, os membros ficam em coluna */
-            .member-item {
-                flex-direction: column !important; /* Força direção colunar */
+            /* Ajustes para tablets */
+            .nav-links {
+                display: none;
             }
             
-            /* Ajusta o tamanho das fotos em mobile */
-            .member-photo {
-                width: 150px; /* Largura reduzida */
-                height: 150px; /* Altura reduzida */
-                margin: 20px auto; /* Centraliza e mantém espaçamento */
+            .team-list {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Colunas mais estreitas */
             }
             
             /* Reduz o tamanho do título em mobile */
-            .header h1 {
+            .intro-section h1 {
                 font-size: 2rem; /* Tamanho de fonte menor */
+            }
+            
+            /* Ajusta o padding da seção de contato */
+            .contact-section {
+                padding: 30px 20px; /* Padding reduzido */
             }
             
             /* Organiza os botões em coluna em mobile */
             .contact-buttons {
-                display: flex; /* Ativa flexbox */
                 flex-direction: column; /* Organiza em coluna */
+                align-items: center; /* Centraliza os botões */
             }
             
             /* Ajusta os botões para ocupar toda a largura em mobile */
             .contact-btn {
                 width: 100%; /* Largura total */
-                margin: 5px 0; /* Ajusta o espaçamento */
+                max-width: 300px; /* Largura máxima */
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Ajustes para smartphones pequenos */
+            .team-list {
+                grid-template-columns: 1fr; /* Uma coluna apenas */
+            }
+            
+            .intro-section h1 {
+                font-size: 1.8rem; /* Tamanho de fonte ainda menor */
+            }
+            
+            .member-photo {
+                height: 150px; /* Altura reduzida para fotos */
+                font-size: 3rem; /* Tamanho da letra reduzido */
             }
         }
     </style>
 </head>
 <body>
-    <!-- Container principal -->
-    <div class="container">
-        <!-- Cabeçalho com título -->
-        <div class="header">
-            <h1>Venha conhecer a equipe que criou e desenvolveu o Miaucademy</h1>
-            <p>Nossa equipe de especialistas pronta para te ajudar</p>
+    <!-- ===== CABEÇALHO DO MIAUCADEMY ===== -->
+    <nav class="nav-bar">
+        <div class="logo">
+            <div class="logo-icon">M</div>
+            <span>MiauCademy</span>
         </div>
+        <div class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="#" id="link-questoes">Questões</a>
+            <a href="#" class="active">Suporte</a>
+            <a href="#" id="link-suporte">Suporte</a>
+        </div>
+        <div class="profile" id="link-perfil">
+            <span>Perfil</span>
+            <div class="profile-avatar">U</div>
+        </div>
+    </nav>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Seção de introdução -->
+            <section class="intro-section fade-in-up">
+                <h1>Conheça Nossa Equipe</h1>
+                <p>Profissionais dedicados e apaixonados por educação e tecnologia</p>
+            </section>
+            
+            <!-- Lista de membros da equipe -->
+            <div class="team-list">
+                <!-- Membro 1 - Ana -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">A</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Ana</h2>
+                        <p class="member-role"><i class="fas fa-crown"></i> Líder de Projeto</p>
+                        <p>Responsável pela coordenação geral do projeto e tomada de decisões estratégicas. Garante que todas as partes do projeto estejam alinhadas com a visão e objetivos.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Gestão de Projetos</span>
+                            <span class="skill-tag">Liderança</span>
+                            <span class="skill-tag">Planejamento</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 2 - Davi (Programador de Front-end) -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">D</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Davi</h2>
+                        <p class="member-role"><i class="fas fa-code"></i> Programador de Front-end</p>
+                        <p>Especialista em criar interfaces bonitas, responsivas e com ótima experiência do usuário. Transforma designs em código funcional e acessível.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 3 - Kaua (Programador de Back-end) -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">K</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Kaua</h2>
+                        <p class="member-role"><i class="fas fa-server"></i> Programador de Back-end</p>
+                        <p>Responsável pela lógica de servidor, banco de dados e integrações do sistema. Garante que tudo funcione perfeitamente nos bastidores.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Banco de Dados</span>
+                            <span class="skill-tag">APIs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 4 - Kesia (Programadora de Front-end) -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">K</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Kesia</h2>
+                        <p class="member-role"><i class="fas fa-laptop-code"></i> Programadora de Front-end</p>
+                        <p>Desenvolve interfaces modernas e interativas para melhor experiência do usuário. Foca em criar designs responsivos e acessíveis.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Design Responsivo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 5 - Lorrane (Banco de Pesquisa) -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">L</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Lorrane</h2>
+                        <p class="member-role"><i class="fas fa-search"></i> Banco de Pesquisa</p>
+                        <p>Responsável pela pesquisa e organização de dados e informações para o projeto. Garante que todas as decisões sejam baseadas em dados concretos.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Análise de Dados</span>
+                            <span class="skill-tag">Pesquisa</span>
+                            <span class="skill-tag">Documentação</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 6 - Stephany (Marketing e Programadora de Back-end) -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">S</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Stephany</h2>
+                        <p class="member-role"><i class="fas fa-chart-line"></i> Marketing e Programadora de Back-end</p>
+                        <p>Combina habilidades técnicas com estratégias de marketing para promover o projeto. Conecta o desenvolvimento técnico com as necessidades do mercado.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Marketing Digital</span>
+                            <span class="skill-tag">Back-end</span>
+                            <span class="skill-tag">Estratégia</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 7 - Leticia (Banco de Pesquisa) -->
+                <div class="member-item fade-in-up">
+                    <div class="member-photo">L</div>
+                    <div class="member-info">
+                        <h2 class="member-name">Leticia</h2>
+                        <p class="member-role"><i class="fas fa-book-open"></i> Banco de Pesquisa</p>
+                        <p>Especialista em coleta, análise e organização de dados para fundamentar as decisões do projeto. Garante a qualidade e confiabilidade das informações.</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Metodologia de Pesquisa</span>
+                            <span class="skill-tag">Análise Estatística</span>
+                            <span class="skill-tag">Qualidade de Dados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção de contato geral -->
+            <div class="contact-section fade-in-up">
+                <h2>Quer saber mais sobre nosso trabalho?</h2>
+                <p>Entre em contato conosco para conhecer melhor nossos projetos e como podemos trabalhar juntos</p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/5561981843569" class="contact-btn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://linktr.ee/Miaudemy" class="contact-btn">
+                        <i class="fas fa-link"></i> Linktree
+                    </a>
+                    <a href="mailto:contato@miaucademy.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i> E-mail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== RODAPÉ PADRONIZADO ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-paw"></i> Miaucademy
+                </div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="#">Cursos</a></li>
+                    <li><a href="#">Equipe</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    <p>Miaucademy &copy; 2023 - Todos os direitos reservados</p>
+                    <p>Desenvolvido com <i class="fas fa-heart" style="color: var(--accent-color);"></i> pela nossa equipe</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // ===== FUNCIONALIDADES JAVASCRIPT =====
         
-        <!-- Lista de membros da equipe -->
-        <div class="team-list">
-            <!-- Membro 1 - Ana -->
-            <div class="member-item">
-                <div class="member-photo">A</div>
-                <div class="member-info">
-                    <h2 class="member-name">Ana</h2>
-                    <p class="member-role">Líder de Projeto</p>
-                    <p>Responsável pela coordenação geral do projeto e tomada de decisões estratégicas.</p>
-                </div>
-            </div>
-            
-            <!-- Membro 2 - Davi (Programador de Front-end) -->
-            <div class="member-item">
-                <div class="member-photo">D</div>
-                <div class="member-info">
-                    <h2 class="member-name">Davi</h2>
-                    <p class="member-role">Programador de Front-end</p>
-                    <p>Especialista em criar interfaces bonitas, responsivas e com ótima experiência do usuário.</p>
-                </div>
-            </div>
-            
-            <!-- Membro 3 - Kaua (Programador de Back-end) -->
-            <div class="member-item">
-                <div class="member-photo">K</div>
-                <div class="member-info">
-                    <h2 class="member-name">Kaua</h2>
-                    <p class="member-role">Programador de Back-end</p>
-                    <p>Responsável pela lógica de servidor, banco de dados e integrações do sistema.</p>
-                </div>
-            </div>
-            
-            <!-- Membro 4 - Kesia (Programadora de Front-end) -->
-            <div class="member-item">
-                <div class="member-photo">K</div>
-                <div class="member-info">
-                    <h2 class="member-name">Kesia</h2>
-                    <p class="member-role">Programadora de Front-end</p>
-                    <p>Desenvolve interfaces modernas e interativas para melhor experiência do usuário.</p>
-                </div>
-            </div>
-            
-            <!-- Membro 5 - Lorrane (Banco de Pesquisa) -->
-            <div class="member-item">
-                <div class="member-photo">L</div>
-                <div class="member-info">
-                    <h2 class="member-name">Lorrane</h2>
-                    <p class="member-role">Banco de Pesquisa</p>
-                    <p>Responsável pela pesquisa e organização de dados e informações para o projeto.</p>
-                </div>
-            </div>
-            
-            <!-- Membro 6 - Stephany (Marketing e Programadora de Back-end) -->
-            <div class="member-item">
-                <div class="member-photo">S</div>
-                <div class="member-info">
-                    <h2 class="member-name">Stephany</h2>
-                    <p class="member-role">Marketing e Programadora de Back-end</p>
-                    <p>Combina habilidades técnicas com estratégias de marketing para promover o projeto.</p>
-                </div>
-            </div>
-            
-            <!-- Membro 7 - Leticia (Banco de Pesquisa) -->
-            <div class="member-item">
-                <div class="member-photo">L</div>
-                <div class="member-info">
-                    <h2 class="member-name">Leticia</h2>
-                    <p class="member-role">Banco de Pesquisa</p>
-                    <p>Especialista em coleta, análise e organização de dados para fundamentar as decisões do projeto.</p>
-                </div>
-            </div>
-        </div>
+        // Botão Voltar ao Topo
+        const backToTopButton = document.getElementById('backToTop');
         
-        <!-- Seção de contato geral -->
-        <div class="contact-section">
-            <h2>Quer saber mais sobre nosso trabalho ou entrar em contato?</h2>
-            <p>Acesse nossos links ou entre em contato conosco</p>
-            <div class="contact-buttons">
-                <a href="https://wa.me/5561981843569" class="contact-btn">Contatar via WhatsApp</a>
-                <a href="https://linktr.ee/Miaudemy" class="contact-btn">Acesse nosso Linktree</a>
-            </div>
-        </div>
+        // Mostrar/ocultar o botão baseado na posição de rolagem
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
         
-        <!-- Rodapé -->
-        <div class="footer">
-            <p>Miaucademy &copy; 2023 - Todos os direitos reservados</p>
-        </div>
-    </div>
-</body>
-</html>
+        // Rolagem suave para o topo ao clicar no botão
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animação de entrada para os elementos
+        document.addEventListener('DOMContentLoaded', () => {
+            // Adiciona delay progressivo para a animação de cada card
+            const memberItems = document.querySelectorAll('.member-item');
+            memberItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Adiciona efeito de digitação no título
+            const title = document.querySelector('.intro-section h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            // Inicia o efeito de digitação após um breve delay
+            setTimeout(typeWriter, 500);
+            
+            // Configurar redirecionamento para Questões
+            const linkQuestoes = document.getElementById('link-questoes');
+            
+            // Configurar redirecionamento para Suporte
+            const linkSuporte = document.getElementById('link-suporte');
+            
+            // Configurar redirecionamento para Perfil
+            const linkPerfil = document.getElementById('link-page');
+        })
