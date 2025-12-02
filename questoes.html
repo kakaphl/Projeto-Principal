@@ -10,176 +10,366 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Fontes do design -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* Variáveis de cores do MiauCademy */
+        :root {
+            --roxo-claro: #bea6ff;
+            --roxo-escuro: #8a3ffc;
+            --roxo-mais-escuro: #2e174d;
+            --laranja: #fe9503;
+            --laranja-escuro: #ff6a00;
+            --creme: #fff2df;
+            --rosa: #ca148e;
+            --preto-fundo: #0d051f;
+            --branco: #ffffff;
+            --cinza-claro: rgba(255, 255, 255, 0.8);
+            --cinza-medio: rgba(255, 255, 255, 0.6);
+            --cinza-escuro: rgba(255, 255, 255, 0.4);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(145deg, #4f10a1, #fbfbfc);
-            color: #333;
+            background: linear-gradient(135deg, #0d051f 0%, var(--roxo-mais-escuro) 30%, #1a0a35 70%, var(--roxo-escuro) 100%);
+            color: var(--creme);
             line-height: 1.6;
             min-height: 100vh;
+            padding-top: 80px;
+            position: relative;
+            overflow-x: hidden;
         }
         
+        /* ===== CABEÇALHO DO MIAUCADEMY ===== */
+        .barra-de-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(14, 6, 31, 0.95);
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            border-bottom: 2px solid var(--laranja);
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--roxo-claro), var(--roxo-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--branco);
+            font-size: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .miaucademy {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--branco);
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-right: auto;
+            background: linear-gradient(45deg, var(--creme), var(--roxo-claro), var(--laranja));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Menu de navegação */
+        .perfil-parent, .questes2, .nossa-equipe, .incio, .suporte {
+            color: var(--cinza-claro);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 10px 15px;
+            border-radius: 20px;
+            background: transparent;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .perfil-parent:hover, .questes2:hover, .nossa-equipe:hover, .incio:hover, .suporte:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            color: var(--branco);
+        }
+        
+        .questes2 {
+            background: var(--laranja) !important;
+            color: white !important;
+        }
+        
+        .questes2:hover {
+            background: var(--laranja-escuro) !important;
+            box-shadow: 0 5px 15px rgba(254, 149, 3, 0.3);
+        }
+        
+        .perfil {
+            color: var(--branco);
+            font-weight: 600;
+        }
+        
+        .whatsapp-image-2025-03-31-at-0 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--branco);
+            font-size: 18px;
+            object-fit: cover;
+        }
+        
+        /* Container principal da página de questões */
         .pgina-de-questes {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 90px 20px 20px 20px;
+            padding: 20px;
             display: grid;
             grid-template-columns: 300px 1fr;
-            gap: 25px;
+            gap: 30px;
         }
         
+        /* Container das questões (lado direito) */
         .quadro-das-questes {
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
         }
         
+        /* Barra laranja no topo do container de questões */
         .rectangle-roxo {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 8px;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            border-radius: 15px 15px 0 0;
+            background: linear-gradient(to right, var(--laranja), var(--roxo-claro));
+            border-radius: 25px 25px 0 0;
         }
         
+        /* Enunciado da questão */
         .considerando-a-figura {
             font-size: 18px;
-            line-height: 1.8;
+            line-height: 1.6;
             margin-bottom: 20px;
-            color: #444;
+            color: var(--creme);
             margin-top: 15px;
+            font-weight: 500;
         }
         
+        /* Container das alternativas da questão */
         .aa-partir-da-container {
-            background-color: #f9f9ff;
-            border-radius: 10px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
             margin-top: 20px;
-            border-left: 4px solid #6e8efb;
+            border-left: 4px solid var(--laranja);
         }
         
+        /* Cada alternativa individual */
         .alternativa-item {
             margin-bottom: 15px;
-            padding: 15px;
+            padding-left: 25px;
             position: relative;
-            background-color: white;
-            border-radius: 8px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
             cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid transparent;
+            padding: 12px 0;
         }
         
         .alternativa-item:hover {
-            background-color: #f0f2ff;
-            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 30px;
         }
         
-        .alternativa-item input[type="radio"] {
-            margin-right: 12px;
-            cursor: pointer;
+        .alternativa-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--laranja);
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .alternativa-item:hover::before {
+            border-color: var(--roxo-claro);
+            transform: scale(1.1);
+            background: var(--laranja);
         }
         
         .alternativa-item label {
             cursor: pointer;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--cinza-claro);
         }
         
+        .alternativa-item input[type="radio"] {
+            display: none;
+        }
+        
+        .alternativa-item strong {
+            margin-right: 8px;
+            color: var(--laranja);
+            font-weight: 700;
+        }
+        
+        /* Estados das alternativas */
         .alternativa-item.correta {
-            background-color: #d4edda;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 8px;
+            padding-left: 25px;
+        }
+        
+        .alternativa-item.correta::before {
+            background-color: #28a745;
             border-color: #28a745;
         }
         
+        .alternativa-item.correta label {
+            color: #a3d7b5;
+        }
+        
+        .alternativa-item.correta strong {
+            color: #28a745;
+        }
+        
         .alternativa-item.incorreta {
-            background-color: #f8d7da;
+            background: rgba(220, 53, 69, 0.1);
+            border-radius: 8px;
+            padding-left: 25px;
+        }
+        
+        .alternativa-item.incorreta::before {
+            background-color: #dc3545;
             border-color: #dc3545;
         }
         
+        .alternativa-item.incorreta label {
+            color: #f0a8af;
+        }
+        
+        .alternativa-item.incorreta strong {
+            color: #dc3545;
+        }
+        
+        /* Contador de questões */
         .questao-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
-            font-size: 13px;
-            color: #666;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: var(--cinza-medio);
         }
         
         .questao-numero {
             font-weight: 700;
-            color: #6e8efb;
-            font-size: 16px;
+            color: var(--laranja);
+            font-size: 18px;
         }
         
+        /* Botões de ação */
         .botoes-acao {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
         
         .btn-acao {
             padding: 12px 24px;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 14px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--branco);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .btn-verificar {
-            background: linear-gradient(to right, #28a745, #20c997);
-            color: white;
+            background: linear-gradient(135deg, #28a745, #20c997);
         }
         
         .btn-verificar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+            background: linear-gradient(135deg, #20c997, #28a745);
         }
         
         .btn-explicacao {
-            background: linear-gradient(to right, #17a2b8, #00c9ff);
-            color: white;
+            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
         }
         
         .btn-explicacao:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(23, 162, 184, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(138, 63, 252, 0.4);
+            background: linear-gradient(135deg, var(--roxo-claro), var(--roxo-escuro));
         }
         
         .btn-proxima {
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            color: white;
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
         }
         
         .btn-proxima:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(254, 149, 3, 0.4);
+            background: linear-gradient(135deg, var(--laranja-escuro), var(--laranja));
         }
         
+        /* Explicação box */
         .explicacao-box {
             display: none;
             margin-top: 20px;
-            padding: 20px;
-            background: linear-gradient(to right, #e7f3ff, #f0e7ff);
-            border-left: 4px solid #2196F3;
-            border-radius: 8px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--roxo-claro);
+            border-radius: 15px;
+            color: var(--cinza-claro);
         }
         
         .explicacao-box.show {
@@ -199,18 +389,20 @@
         }
         
         .explicacao-box h4 {
-            color: #2196F3;
+            color: var(--roxo-claro);
             margin-bottom: 12px;
             font-size: 16px;
         }
         
+        /* Resultado feedback */
         .resultado-feedback {
             margin-top: 15px;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 15px;
             font-weight: 600;
             text-align: center;
             display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .resultado-feedback.show {
@@ -224,34 +416,72 @@
         }
         
         .resultado-feedback.acertou {
-            background: linear-gradient(to right, #d4edda, #c3e6cb);
-            color: #155724;
-            border: 2px solid #28a745;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.2), rgba(32, 201, 151, 0.2));
+            color: #a3d7b5;
+            border: 2px solid rgba(40, 167, 69, 0.5);
         }
         
         .resultado-feedback.errou {
-            background: linear-gradient(to right, #f8d7da, #f5c6cb);
-            color: #721c24;
-            border: 2px solid #dc3545;
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(245, 198, 203, 0.2));
+            color: #f0a8af;
+            border: 2px solid rgba(220, 53, 69, 0.5);
         }
         
-        #loading {
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            padding: 40px;
-            grid-column: 1 / -1;
+        /* Tags das questões */
+        .questao-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        .questao-tag {
+            background: rgba(190, 166, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--roxo-claro);
+            border: 1px solid rgba(190, 166, 255, 0.3);
+        }
+        
+        .questao-tag.ano {
+            background: rgba(254, 149, 3, 0.15);
+            color: var(--laranja);
+            border-color: rgba(254, 149, 3, 0.3);
+        }
+        
+        .questao-tag.disciplina {
+            background: rgba(202, 20, 142, 0.15);
+            color: var(--rosa);
+            border-color: rgba(202, 20, 142, 0.3);
+        }
+        
+        .questao-tag.nivel {
+            background: rgba(40, 167, 69, 0.15);
+            color: #28a745;
+            border-color: rgba(40, 167, 69, 0.3);
+        }
+        
+        .questao-tag.banca {
+            background: rgba(255, 106, 0, 0.15);
+            color: var(--laranja-escuro);
+            border-color: rgba(255, 106, 0, 0.3);
+        }
+        
+        /* Título principal "Questões" */
         .questes {
+            font-family: 'Montserrat', sans-serif;
             font-size: 28px;
             font-weight: 800;
-            color: #4a4a4a;
+            color: var(--creme);
             margin-bottom: 20px;
             grid-column: 1 / -1;
             text-align: center;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .questes::after {
@@ -262,70 +492,83 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
+            background: linear-gradient(to right, var(--laranja), var(--roxo-claro));
             border-radius: 2px;
         }
         
+        /* Container dos filtros (lado esquerdo) */
         .qadro-filtrar-questes {
-            background-color: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             align-self: start;
             position: sticky;
             top: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
         }
         
+        /* Barra laranja no topo dos filtros */
         .pgina-de-questes-rectangle-roxo {
             height: 6px;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
+            background: linear-gradient(to right, var(--laranja), var(--roxo-claro));
             border-radius: 3px;
             margin-bottom: 20px;
         }
         
+        /* Botão de filtrar */
         .bt-filtrar {
-            background: linear-gradient(to right, #6e8efb, #a777e3);
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
             padding: 12px 20px;
-            border-radius: 8px;
+            border-radius: 50px;
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .bt-filtrar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(110, 142, 251, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(254, 149, 3, 0.4);
+            background: linear-gradient(135deg, var(--laranja-escuro), var(--laranja));
         }
         
         .filtrar {
-            color: white;
+            color: var(--branco);
             font-weight: bold;
             font-size: 16px;
         }
         
+        /* Container do filtro por banca */
         .conj-banca, .pgina-de-questes-conj-banca, .conj-tipo, .conj-disciplina {
             margin-bottom: 20px;
         }
         
+        /* Botão de seleção de filtro */
         .bt-banca, .pgina-de-questes-bt-banca, .bt-tipo, .bt-disciplina {
             position: relative;
-            background-color: #f5f7ff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #dde1f7;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 5px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            color: var(--cinza-claro);
         }
         
         .bt-banca:hover, .pgina-de-questes-bt-banca:hover, .bt-tipo:hover, .bt-disciplina:hover {
-            background-color: #e8ecff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--laranja);
+            color: var(--laranja);
+            transform: translateY(-2px);
         }
         
         .assunto, .tipo {
             font-size: 14px;
-            color: #6a6a6a;
+            color: var(--cinza-medio);
             margin-bottom: 8px;
             font-weight: 600;
         }
@@ -333,114 +576,67 @@
         .filtrar-questes {
             font-size: 20px;
             font-weight: 700;
-            color: #4a4a4a;
+            color: var(--creme);
             margin-bottom: 20px;
             text-align: center;
+            position: relative;
+            padding-bottom: 10px;
         }
         
-        .barra-de-menu {
-            background-color: white;
-            padding: 15px 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 20px;
+        .filtrar-questes::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1200px;
-            z-index: 1000;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--laranja), var(--roxo-claro));
+            border-radius: 2px;
         }
         
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            background-color: #6e8efb;
-            border-radius: 8px;
+        /* Loading */
+        #loading {
+            text-align: center;
+            color: var(--creme);
+            font-size: 20px;
+            padding: 40px;
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
         }
         
-        .miaucademy {
-            font-size: 24px;
-            font-weight: 800;
-            color: #6e8efb;
-            margin-right: auto;
-        }
-        
-        .perfil-parent {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-        }
-        
-        .perfil-parent:hover {
-            background-color: #f5f7ff;
-        }
-        
-        .perfil {
-            font-size: 16px;
-            font-weight: 600;
-        }
-        
-        .whatsapp-image-2025-03-31-at-0 {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #e0e0e0;
-        }
-        
-        .questes2, .nossa-equipe, .incio, .suporte {
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-        
-        .questes2:hover, .nossa-equipe:hover, .incio:hover, .suporte:hover {
-            background-color: #f5f7ff;
-            color: #6e8efb;
-        }
-        
-        .questes2 {
-            background-color: #6e8efb;
-            color: white;
-        }
-        
-        /* Estilos para dropdowns de filtro */
+        /* Dropdowns de filtro */
         .dropdown-filtro {
             position: fixed;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: rgba(20, 10, 40, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             padding: 15px;
             z-index: 9999;
             max-height: 300px;
             overflow-y: auto;
             min-width: 200px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
             animation: slideDown 0.2s ease;
         }
         
         .dropdown-filtro div {
             padding: 10px 15px;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 8px;
             margin: 5px 0;
             transition: all 0.2s;
+            color: var(--cinza-claro);
         }
         
         .dropdown-filtro div:hover {
-            background-color: #f0f2ff;
+            background: rgba(255, 255, 255, 0.1);
             transform: translateX(5px);
+            color: var(--laranja);
         }
         
         /* Scrollbar personalizada para dropdown */
@@ -449,105 +645,141 @@
         }
         
         .dropdown-filtro::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 3px;
         }
         
         .dropdown-filtro::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
+            background: var(--laranja);
             border-radius: 3px;
         }
         
         .dropdown-filtro::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
+            background: var(--laranja-escuro);
         }
         
-        /* Estilos para tags das questões */
-        .questao-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .questao-tag {
-            background: #e8ecff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        .questao-tag.ano {
-            background: #e8f4ff;
-        }
-        
-        .questao-tag.disciplina {
-            background: #f0e7ff;
-        }
-        
-        .questao-tag.nivel {
-            background: #e7f7e7;
-        }
-        
-        .questao-tag.banca {
-            background: #fff2e8;
-        }
-        
+        /* Media query para tablets (até 900px de largura) */
         @media (max-width: 900px) {
             .pgina-de-questes {
                 grid-template-columns: 1fr;
-                padding-top: 80px;
+                padding-top: 100px;
+                gap: 20px;
             }
             
             .qadro-filtrar-questes {
                 position: static;
+                margin-bottom: 20px;
             }
             
             .barra-de-menu {
-                padding: 10px 15px;
+                padding: 0 15px;
+                height: 70px;
             }
             
             .nossa-equipe, .suporte {
+                display: inline-block;
+            }
+            
+            .perfil-parent span {
                 display: none;
+            }
+            
+            .botoes-acao {
+                flex-direction: column;
+            }
+            
+            .btn-acao {
+                width: 100%;
+                justify-content: center;
             }
         }
         
+        /* Media query para celulares (até 600px de largura) */
         @media (max-width: 600px) {
             .pgina-de-questes {
-                padding-top: 70px;
-                padding-left: 15px;
-                padding-right: 15px;
+                padding: 15px;
+                padding-top: 90px;
             }
             
             .quadro-das-questes {
-                padding: 15px;
+                padding: 20px;
+            }
+            
+            .aa-partir-da-container {
+                padding: 20px;
             }
             
             .barra-de-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 10px;
-                top: 10px;
+                padding: 0 10px;
+                height: 60px;
+                justify-content: space-between;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                margin-right: 10px;
             }
             
             .miaucademy {
-                margin-right: 0;
-                order: -1;
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
+                font-size: 1.2rem;
             }
             
-            .perfil-parent {
-                display: none;
+            .perfil-parent, .questes2, .nossa-equipe, .incio, .suporte {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            
+            .whatsapp-image-2025-03-31-at-0 {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
             
             .questes {
                 font-size: 24px;
             }
+            
+            .perfil-parent span, .nossa-equipe, .suporte {
+                display: none;
+            }
+            
+            .botoes-acao {
+                flex-direction: column;
+            }
+            
+            .btn-acao {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Melhor contraste em telas pequenas */
+            .considerando-a-figura {
+                color: var(--creme);
+                font-size: 16px;
+            }
+            
+            .alternativa-item label {
+                color: var(--cinza-claro);
+                font-size: 15px;
+            }
+        }
+
+        /* Animação de entrada para elementos */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quadro-das-questes, .qadro-filtrar-questes {
+            animation: fadeInUp 0.5s ease-out;
         }
     </style>
 </head>
@@ -660,7 +892,7 @@
                     document.getElementById('questoes-container').innerHTML = 
                         '<div class="quadro-das-questes">' +
                         '<div class="rectangle-roxo"></div>' +
-                        '<h3 style="text-align: center; color: #666; padding: 40px 20px;">' +
+                        '<h3 style="text-align: center; color: #fff2df; padding: 40px 20px;">' +
                         '🔍 Nenhuma questão encontrada com os filtros selecionados.' +
                         '</h3>' +
                         '</div>';
@@ -670,11 +902,11 @@
             } catch (error) {
                 console.error('Erro ao carregar questões:', error);
                 document.getElementById('loading').innerHTML = 
-                    '<div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">' +
+                    '<div style="background: rgba(255, 255, 255, 0.08); padding: 20px; border-radius: 15px; text-align: center;">' +
                     '<h3 style="color: #dc3545;">❌ Erro ao conectar com o servidor</h3>' +
-                    '<p style="color: #666;">Verifique se o servidor Node.js está rodando na porta 3000</p>' +
-                    '<p style="color: #666; font-size: 14px;">' + error.message + '</p>' +
-                    '<p style="color: #666; font-size: 12px; margin-top: 10px;">URL tentada: ' + url + '</p>' +
+                    '<p style="color: #fff2df;">Verifique se o servidor Node.js está rodando na porta 3000</p>' +
+                    '<p style="color: #fff2df; font-size: 14px;">' + error.message + '</p>' +
+                    '<p style="color: #fff2df; font-size: 12px; margin-top: 10px;">URL tentada: ' + url + '</p>' +
                     '</div>';
                 document.getElementById('loading').style.display = 'block';
             }
@@ -687,8 +919,8 @@
                     '<div class="quadro-das-questes">' +
                     '<div class="rectangle-roxo"></div>' +
                     '<div style="padding: 40px; text-align: center;">' +
-                    '<h2 style="color: #6e8efb; margin-bottom: 15px;">🎉 Parabéns!</h2>' +
-                    '<p style="font-size: 18px; color: #666;">Você completou todas as questões!</p>' +
+                    '<h2 style="color: #fe9503; margin-bottom: 15px;">🎉 Parabéns!</h2>' +
+                    '<p style="font-size: 18px; color: #fff2df;">Você completou todas as questões!</p>' +
                     '<button class="btn-acao btn-proxima" onclick="reiniciarQuestoes()" style="margin-top: 20px;">🔄 Recomeçar</button>' +
                     '</div>' +
                     '</div>';
@@ -862,36 +1094,18 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Inicializar filtros com dropdowns
+        // Inicializar filtros com dropdowns simplificados
         function inicializarFiltros() {
-            // Dados para os filtros (você pode personalizar)
-            const disciplinas = [
-                "Matemática", "Português", "História", "Geografia", 
-                "Física", "Química", "Biologia", "Inglês", "Literatura",
-                "Filosofia", "Sociologia", "Artes", "Educação Física"
-            ];
+            // Dados SIMPLIFICADOS para os filtros como você pediu
+            const disciplinas = ["Matemática"];
             
-            const assuntos = [
-                "Álgebra", "Geometria", "Trigonometria", "Aritmética",
-                "Gramática", "Interpretação de Texto", "Redação",
-                "História do Brasil", "História Geral", "Geografia Física",
-                "Geografia Humana", "Mecânica", "Óptica", "Termodinâmica",
-                "Química Orgânica", "Química Inorgânica", "Biologia Celular",
-                "Genética", "Ecologia"
-            ];
+            const assuntos = ["Matemática Básica"];
             
-            const bancas = [
-                "ENEM", "FUVEST", "UNICAMP", "VUNESP", 
-                "CESGRANRIO", "CESPE", "FCC", "CONSULPLAN",
-                "IBFC", "INSTITUTO AOCP", "QUADRIX", "FUNDATEC"
-            ];
+            const bancas = ["ENEM"];
             
-            const tipos = [
-                "Múltipla Escolha", "Discursiva", "Verdadeiro/Falso",
-                "Asserção-Razão", "Certo/Errado"
-            ];
+            const tipos = ["Múltipla Escolha"];
 
-            // Função para criar dropdown
+            // Função para criar dropdown simplificado
             function criarDropdown(botao, opcoes, titulo) {
                 botao.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -910,51 +1124,61 @@
                     tituloEl.textContent = `Selecione ${titulo}`;
                     tituloEl.style.cssText = `
                         font-weight: 600;
-                        color: #6e8efb;
+                        color: var(--laranja);
                         margin-bottom: 10px;
                         padding-bottom: 8px;
-                        border-bottom: 2px solid #f0f0f0;
+                        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
                     `;
                     dropdown.appendChild(tituloEl);
                     
-                    // Adicionar opção "Todos"
-                    const opcaoTodos = document.createElement('div');
-                    opcaoTodos.textContent = 'Selecionar';
-                    opcaoTodos.style.cssText = `
+                    // Adicionar opção "Selecionar"
+                    const opcaoSelecionar = document.createElement('div');
+                    opcaoSelecionar.textContent = 'Selecionar';
+                    opcaoSelecionar.style.cssText = `
                         padding: 10px 15px;
                         cursor: pointer;
-                        border-radius: 6px;
+                        border-radius: 8px;
                         margin: 5px 0;
                         transition: all 0.2s;
-                        background: #f8f9ff;
-                        border: 1px solid #e0e7ff;
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        color: var(--cinza-claro);
                     `;
-                    opcaoTodos.onmouseover = () => opcaoTodos.style.background = '#e8ecff';
-                    opcaoTodos.onmouseout = () => opcaoTodos.style.background = '#f8f9ff';
-                    opcaoTodos.onclick = () => {
+                    opcaoSelecionar.onmouseover = () => {
+                        opcaoSelecionar.style.background = 'rgba(255, 255, 255, 0.1)';
+                        opcaoSelecionar.style.color = 'var(--laranja)';
+                    };
+                    opcaoSelecionar.onmouseout = () => {
+                        opcaoSelecionar.style.background = 'rgba(255, 255, 255, 0.05)';
+                        opcaoSelecionar.style.color = 'var(--cinza-claro)';
+                    };
+                    opcaoSelecionar.onclick = () => {
                         botao.querySelector('.filtrar').textContent = 'Selecionar';
                         dropdown.remove();
                     };
-                    dropdown.appendChild(opcaoTodos);
+                    dropdown.appendChild(opcaoSelecionar);
                     
-                    // Adicionar opções
+                    // Adicionar opções (apenas as simplificadas)
                     opcoes.forEach(opcao => {
                         const div = document.createElement('div');
                         div.textContent = opcao;
                         div.style.cssText = `
                             padding: 10px 15px;
                             cursor: pointer;
-                            border-radius: 6px;
+                            border-radius: 8px;
                             margin: 5px 0;
                             transition: all 0.2s;
+                            color: var(--cinza-claro);
                         `;
                         div.onmouseover = () => {
-                            div.style.background = '#f0f2ff';
+                            div.style.background = 'rgba(255, 255, 255, 0.1)';
                             div.style.transform = 'translateX(5px)';
+                            div.style.color = 'var(--laranja)';
                         };
                         div.onmouseout = () => {
                             div.style.background = '';
                             div.style.transform = '';
+                            div.style.color = '';
                         };
                         div.onclick = () => {
                             botao.querySelector('.filtrar').textContent = opcao;
@@ -982,7 +1206,7 @@
                 });
             }
             
-            // Inicializar dropdowns para cada filtro
+            // Inicializar dropdowns para cada filtro (simplificados)
             criarDropdown(document.querySelector('.bt-disciplina'), disciplinas, 'disciplina');
             criarDropdown(document.querySelector('.bt-banca'), assuntos, 'assunto');
             criarDropdown(document.querySelector('.pgina-de-questes-bt-banca'), bancas, 'banca');

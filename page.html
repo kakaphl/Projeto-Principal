@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Define a codificação de caracteres como UTF-8 para suportar acentos e caracteres especiais -->
     <meta charset="UTF-8">
+    <!-- Configura a viewport para responsividade em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiauCademy - Ranking</title>
+    <!-- Título da página exibido na aba do navegador -->
+    <title>MiauCademy - Página Inicial</title>
+    
+    <!-- Importa fontes do Google Fonts para estilização -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;800&display=swap" rel="stylesheet">
+    
+    <!-- Estilos CSS para a página -->
     <style>
+        /* Define variáveis de cores para usar em toda a página */
         :root {
             --roxo-claro: #bea6ff;
             --roxo-escuro: #8a3ffc;
@@ -15,134 +23,291 @@
             --laranja: #fe9503;
             --laranja-escuro: #ff6a00;
             --creme: #fff2df;
+            --rosa: #ca148e;
+            --preto-fundo: #0d051f;
+            --branco: #ffffff;
+            --cinza-claro: rgba(255, 255, 255, 0.8);
+            --cinza-medio: rgba(255, 255, 255, 0.6);
         }
 
+        /* Remove margens e padding padrão de todos os elementos */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif;
         }
 
+        /* Estilos para o corpo da página */
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(0deg, var(--roxo-escuro), var(--roxo-claro) 74.04%);
-            color: var(--roxo-mais-escuro);
+            background: linear-gradient(135deg, #0d051f 0%, var(--roxo-mais-escuro) 30%, #1a0a35 70%, var(--roxo-escuro) 100%);
+            color: var(--creme);
             min-height: 100vh;
             padding: 100px 20px 50px;
             overflow-x: hidden;
         }
 
+        /* Container principal que centraliza o conteúdo */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
         }
 
+        /* NOVA SEÇÃO: BOAS-VINDAS COM FOTO MOTIVACIONAL */
+        .welcome-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            color: var(--creme);
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro), var(--rosa));
+        }
+
+        /* Título da seção de boas-vindas */
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--creme), var(--roxo-claro), var(--laranja));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container da foto motivacional */
+        .motivational-photo {
+            width: 100%;
+            max-width: 600px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 4px solid var(--laranja);
+            margin: 0 auto 25px;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
+        }
+
+        /* Texto motivacional */
+        .motivational-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: var(--cinza-claro);
+        }
+
+        /* Container das estatísticas pessoais */
+        .personal-stats {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Título das estatísticas pessoais */
+        .stats-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--laranja);
+            text-align: center;
+        }
+
+        /* Grid para organizar as estatísticas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Cada item de estatística */
+        .stat-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Valor numérico da estatística */
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            background: linear-gradient(45deg, var(--laranja), var(--roxo-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+        }
+
+        /* Descrição da estatística */
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--cinza-medio);
+            font-weight: 500;
+        }
+
+        /* Cabeçalho da página */
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: var(--creme);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
+        /* Título principal */
         .header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--creme), var(--roxo-claro), var(--laranja));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
         }
 
+        /* Parágrafo do cabeçalho */
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 600px;
             margin: 0 auto;
+            color: var(--cinza-medio);
+            font-weight: 400;
         }
 
+        /* Seção do ranking de usuários */
         .ranking-section {
-            background: linear-gradient(180deg, #fff, #efe8e8);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
             border-radius: 25px;
-            border: 2px solid var(--roxo-claro);
-            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
+        .ranking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro));
+        }
+
+        /* Título da seção de ranking */
         .ranking-title {
             text-align: center;
             font-size: 1.8rem;
-            color: var(--roxo-escuro);
-            margin-bottom: 20px;
+            color: var(--creme);
+            margin-bottom: 25px;
             font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
+        /* Tabela do ranking */
         .ranking-table {
             width: 100%;
             border-collapse: collapse;
         }
 
+        /* Linhas da tabela */
         .ranking-table tr {
-            border-bottom: 1px solid #e0e0e0;
-            transition: background-color 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .ranking-table tr:hover {
-            background-color: rgba(190, 166, 255, 0.1);
-        }
-
+        /* Células da tabela */
         .ranking-table td {
-            padding: 15px 10px;
+            padding: 18px 15px;
             text-align: left;
         }
 
+        /* Container com informações do usuário */
         .user-info {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
+        /* Avatar circular do usuário */
         .avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background-color: var(--roxo-claro);
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 900;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--laranja);
         }
 
+        /* Nome do usuário */
         .user-name {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: var(--creme);
         }
 
+        /* Título/turma do usuário */
         .user-title {
-            color: var(--roxo-claro);
+            color: var(--laranja);
             font-size: 0.9rem;
             font-weight: 600;
         }
 
+        /* Pontuação do usuário */
         .user-points {
             text-align: right;
-            font-weight: 800;
-            color: var(--roxo-escuro);
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--laranja);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        .user-class {
-            color: var(--roxo-mais-escuro);
-        }
-
+        /* Estilo especial para o primeiro lugar */
         .first-place {
-            background: linear-gradient(90deg, rgba(254, 149, 3, 0.1), rgba(255, 106, 0, 0.1));
-            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(254, 149, 3, 0.15), rgba(255, 106, 0, 0.15));
+            border-radius: 15px;
+            border-left: 5px solid var(--laranja);
         }
 
+        /* Estilo especial para o segundo lugar */
         .second-place {
-            background: linear-gradient(90deg, rgba(190, 166, 255, 0.1), rgba(138, 63, 252, 0.1));
-            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(190, 166, 255, 0.15), rgba(138, 63, 252, 0.15));
+            border-radius: 15px;
+            border-left: 5px solid var(--roxo-claro);
         }
 
+        /* Seção de estatísticas (cartões lado a lado) */
         .stats-section {
             display: flex;
             flex-wrap: wrap;
@@ -151,243 +316,354 @@
             justify-content: center;
         }
 
+        /* Cartão de estatísticas */
         .stats-card {
-            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
-            border-radius: 20px;
-            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 30px;
             flex: 1;
             min-width: 300px;
             max-width: 500px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            color: var(--creme);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
         }
 
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro));
+        }
+
+        /* Título do cartão de estatísticas */
         .stats-title {
             text-align: center;
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 800;
+            color: var(--creme);
         }
 
+        /* Conteúdo do cartão de estatísticas */
         .stats-content {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 30px;
             height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Porcentagem grande no centro */
         .percentage {
-            font-size: 4rem;
-            font-weight: 800;
+            font-size: 4.5rem;
+            font-weight: 900;
             line-height: 1;
             margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--laranja), var(--roxo-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
+        /* Descrição da porcentagem */
         .percentage-desc {
             font-size: 1.2rem;
             text-align: center;
+            color: var(--cinza-medio);
         }
 
+        /* Seção de barras de progresso */
         .progress-section {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 30px;
             flex: 1;
             min-width: 300px;
             max-width: 600px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
         }
 
+        .progress-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro));
+        }
+
+        /* Título da seção de progresso */
         .progress-title {
             text-align: center;
             font-size: 1.8rem;
             margin-bottom: 25px;
-            color: var(--roxo-mais-escuro);
+            color: var(--creme);
             font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
+        /* Cada item de progresso (barra + label) */
         .progress-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
+        /* Label que mostra nome e porcentagem */
         .progress-label {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 700;
-            color: var(--roxo-mais-escuro);
+            color: var(--creme);
         }
 
+        .progress-label span:last-child {
+            color: var(--laranja);
+            font-weight: 800;
+        }
+
+        /* Barra de progresso (fundo) */
         .progress-bar {
             height: 25px;
-            background-color: #e0e0e0;
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Parte preenchida da barra de progresso */
+        .progress-fill {
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Cor para barras de matemática */
+        .math-fill {
+            background: linear-gradient(90deg, var(--roxo-escuro), var(--roxo-claro));
+        }
+
+        /* Cor para barras de português */
+        .portuguese-fill {
+            background: linear-gradient(90deg, var(--laranja), var(--laranja-escuro));
+        }
+
+        /* Seção de notificação */
+        .notification {
+            text-align: center;
+            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 40px;
+            color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
             overflow: hidden;
         }
 
-        .progress-fill {
-            height: 100%;
-            border-radius: 8px;
+        .notification::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--rosa));
         }
 
-        .math-fill {
-            background-color: #522696;
-        }
-
-        .portuguese-fill {
-            background-color: #4b1d89;
-        }
-
-        .notification {
-            text-align: center;
-            background-color: var(--roxo-claro);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 40px;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
+        /* Parágrafo da notificação */
         .notification p {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
+        /* Container dos ícones de email */
         .email-icons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 40px;
+            margin-top: 25px;
         }
 
+        /* Ícone de email individual */
         .email-icon {
-            width: 70px;
-            height: 70px;
-            background-color: var(--roxo-escuro);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--creme);
         }
 
+        /* Botão para filtrar/ver questões */
         .filter-btn {
             display: block;
             margin: 0 auto;
-            padding: 15px 40px;
-            border-radius: 35px;
-            background: linear-gradient(90deg, #ffe066, var(--laranja));
-            border: 3px solid var(--creme);
+            padding: 18px 45px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
+            border: none;
             color: white;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 20px rgba(254, 149, 3, 0.3);
+            min-width: 250px;
         }
 
         .filter-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 25px rgba(254, 149, 3, 0.4);
         }
 
+        .filter-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Seção dos mascotes (gatinhos) */
         .mascots {
             display: flex;
             justify-content: space-between;
             position: relative;
-            margin: 40px 0;
+            margin: 50px 0;
         }
 
+        /* Cada mascote individual */
         .mascot {
             font-size: 5rem;
             z-index: 2;
+            filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
         }
 
+        /* Barra de navegação fixa no topo */
         .nav-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 80px;
-            background-color: var(--roxo-escuro);
+            background: rgba(13, 5, 31, 0.95);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 0 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
+        /* Logo do site */
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
             color: white;
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
+        /* Ícone da logo */
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 16px;
             background: linear-gradient(45deg, var(--roxo-claro), var(--roxo-escuro));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 900;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--laranja);
         }
 
+        /* Links de navegação */
         .nav-links {
             display: flex;
             gap: 25px;
         }
 
+        /* Cada link individual */
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            transition: opacity 0.3s;
-            padding: 10px 15px;
-            border-radius: 20px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            padding: 10px 20px;
+            border-radius: 50px;
         }
 
+        /* Efeito quando passa mouse nos links */
         .nav-links a:hover {
-            opacity: 0.8;
             background: rgba(255, 255, 255, 0.1);
         }
 
+        /* Link ativo/selecionado */
         .nav-links a.active {
-            background: var(--laranja);
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
+            box-shadow: 0 4px 10px rgba(254, 149, 3, 0.3);
         }
 
+        /* Área do perfil do usuário */
         .profile {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             color: white;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 8px 15px;
+            border-radius: 50px;
         }
 
+        .profile:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Avatar do perfil */
         .profile-avatar {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background-color: var(--roxo-claro);
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 900;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--laranja);
         }
 
-        /* Modal de questões */
+        /* Modal (janela) que aparece por cima do conteúdo */
         .modal {
             display: none;
             position: fixed;
@@ -395,323 +671,610 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
         }
 
+        /* Conteúdo do modal */
         .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
+            background: rgba(13, 5, 31, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 25px;
             width: 90%;
-            max-width: 600px;
+            max-width: 700px;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--creme);
         }
 
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro));
+        }
+
+        /* Botão para fechar o modal */
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
             cursor: pointer;
-            color: var(--roxo-escuro);
+            color: var(--laranja);
             background: none;
             border: none;
             font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Título do modal */
         .modal-title {
             text-align: center;
-            color: var(--roxo-escuro);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            color: var(--creme);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--creme), var(--roxo-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Cada questão individual */
         .questao {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: #f9f9f9;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Enunciado da questão */
         .enunciado {
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--creme);
+            font-size: 1.1rem;
+            line-height: 1.5;
         }
 
+        /* Container das alternativas */
         .alternativas {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
+        /* Cada alternativa individual */
         .alternativa {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .alternativa:hover {
-            background-color: #f0f0f0;
+            background: rgba(138, 63, 252, 0.1);
+            border-color: var(--roxo-claro);
         }
 
+        /* Botão para responder questões */
         .btn-responder {
             display: block;
-            margin: 20px auto 0;
-            padding: 10px 25px;
-            background: var(--roxo-escuro);
+            margin: 30px auto 0;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
             color: white;
             border: none;
-            border-radius: 20px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 20px rgba(254, 149, 3, 0.3);
         }
 
+        .btn-responder:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(254, 149, 3, 0.4);
+        }
+
+        /* Media query para telas menores (tablets e celulares) */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            body {
+                padding: 90px 15px 30px;
             }
             
-            .stats-section {
-                flex-direction: column;
+            .nav-bar {
+                padding: 0 20px;
+                height: 70px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-icon {
+                width: 45px;
+                height: 45px;
             }
             
             .nav-links {
                 display: none;
             }
             
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .motivational-photo {
+                height: 200px;
+            }
+            
+            .motivational-text {
+                font-size: 1.1rem;
+            }
+            
+            .stats-section {
+                flex-direction: column;
+            }
+            
+            .stats-card, .progress-section {
+                min-width: 100%;
+                max-width: 100%;
+            }
+            
             .mascots {
                 flex-direction: column;
                 align-items: center;
-                gap: 20px;
+                gap: 30px;
+                margin: 30px 0;
             }
             
             .email-icons {
                 flex-direction: column;
                 align-items: center;
+                gap: 20px;
+            }
+            
+            .email-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .modal-content {
+                padding: 25px;
+                width: 95%;
+            }
+        }
+
+        /* Media query para telas muito pequenas (celulares) */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.7rem;
+            }
+            
+            .welcome-section, .ranking-section, .stats-card, .progress-section, .notification {
+                padding: 25px;
+            }
+            
+            .motivational-photo {
+                height: 180px;
+            }
+            
+            .motivational-text {
+                font-size: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-value {
+                font-size: 2.2rem;
+            }
+            
+            .percentage {
+                font-size: 3.5rem;
+            }
+            
+            .filter-btn {
+                padding: 15px 35px;
+                font-size: 1.2rem;
+                min-width: 220px;
+            }
+            
+            .nav-bar {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+                gap: 10px;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            
+            .profile {
+                font-size: 0.9rem;
+            }
+            
+            .profile-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Barra de navegação fixa no topo -->
     <nav class="nav-bar">
+        <!-- Logo do site -->
         <div class="logo">
-            <div class="logo-icon">M</div>
-            <span>MiauCademy</span>
+            <div class="logo-icon">M</div> <!-- Ícone da logo -->
+            <span>MiauCademy</span> <!-- Texto da logo -->
         </div>
+        
+        <!-- Links de navegação -->
         <div class="nav-links">
-            <a href="#" class="active">Início</a>
-            <a href="#" id="link-questoes">Questões</a>
-            <a href="#">Nossa Equipe</a>
-            <a href="#" id="link-suporte">Suporte</a>
+            <a href="#" class="active">Início</a> <!-- Link ativo -->
+            <a href="#" id="link-questoes">Questões</a> <!-- Link para questões -->
+            <a href="#">Nossa Equipe</a> <!-- Link para equipe -->
+            <a href="#" id="link-suporte">Suporte</a> <!-- Link para suporte -->
         </div>
+        
+        <!-- Perfil do usuário -->
         <div class="profile" id="link-perfil">
-            <span>Perfil</span>
-            <div class="profile-avatar">U</div>
+            <span>Perfil</span> <!-- Texto "Perfil" -->
+            <div class="profile-avatar">U</div> <!-- Avatar do usuário -->
         </div>
     </nav>
 
+    <!-- Container principal do conteúdo -->
     <div class="container">
+        <!-- NOVA SEÇÃO: BOAS-VINDAS COM FOTO MOTIVACIONAL -->
+        <section class="welcome-section">
+            <!-- Título de boas-vindas -->
+            <h2 class="welcome-title">🎓 Bem-vindo de Volta, Estudante! 🐱</h2>
+            
+            <!-- Foto motivacional -->
+            <!-- TROQUE "foto-motivacional.jpg" pela sua imagem -->
+            <img src="foto-motivacional.jpg" alt="Estudando com diversão" class="motivational-photo">
+            
+            <!-- Texto motivacional -->
+            <p class="motivational-text">
+                "Assim como um gatinho curioso explora o mundo, 
+                <strong>cada questão que você responde é uma nova descoberta!</strong> 
+                Continue sua jornada de aprendizado - o conhecimento é a melhor recompensa! ✨"
+            </p>
+            
+            <!-- Estatísticas pessoais do usuário -->
+            <div class="personal-stats">
+                <h3 class="stats-title">📊 Seu Progresso Esta Semana</h3>
+                <div class="stats-grid">
+                    <!-- Questões respondidas -->
+                    <div class="stat-item">
+                        <span class="stat-value">24</span> <!-- Número de questões -->
+                        <span class="stat-label">Questões Respondidas</span> <!-- Descrição -->
+                    </div>
+                    
+                    <!-- Dias estudados -->
+                    <div class="stat-item">
+                        <span class="stat-value">5</span> <!-- Número de dias -->
+                        <span class="stat-label">Dias Estudados</span> <!-- Descrição -->
+                    </div>
+                    
+                    <!-- Pontos ganhos -->
+                    <div class="stat-item">
+                        <span class="stat-value">180</span> <!-- Pontuação -->
+                        <span class="stat-label">Pontos Ganhos</span> <!-- Descrição -->
+                    </div>
+                    
+                    <!-- Sequência atual -->
+                    <div class="stat-item">
+                        <span class="stat-value">3</span> <!-- Dias consecutivos -->
+                        <span class="stat-label">Dias Consecutivos</span> <!-- Descrição -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cabeçalho da seção principal -->
         <div class="header">
+            <!-- Título chamativo -->
             <h1>Ei, não esqueça de conferir</h1>
+            <!-- Subtítulo complementar -->
             <p>as notificações no seu email ok?</p>
         </div>
 
+        <!-- Seção do ranking de usuários -->
         <section class="ranking-section">
+            <!-- Título da seção de ranking -->
             <h2 class="ranking-title">Bem vindo! Veja a pontuação da comunidade</h2>
+            
+            <!-- Tabela do ranking com os melhores alunos -->
             <table class="ranking-table">
+                <!-- Primeiro lugar no ranking -->
                 <tr class="first-place">
                     <td>
                         <div class="user-info">
-                            <div class="avatar">R</div>
+                            <div class="avatar">R</div> <!-- Avatar do Robson -->
                             <div>
-                                <div class="user-name">Robson 👑 REI DAS EXATAS</div>
-                                <div class="user-title">3º C</div>
+                                <div class="user-name">Robson 👑 REI DAS EXATAS</div> <!-- Nome com emoji de coroa -->
+                                <div class="user-title">3º C</div> <!-- Turma do aluno -->
                             </div>
                         </div>
                     </td>
-                    <td class="user-points">680 pts</td>
+                    <td class="user-points">680 pts</td> <!-- Pontuação do primeiro lugar -->
                 </tr>
+                
+                <!-- Segundo lugar no ranking -->
                 <tr class="second-place">
                     <td>
                         <div class="user-info">
-                            <div class="avatar">S</div>
+                            <div class="avatar">S</div> <!-- Avatar da Stephany -->
                             <div>
-                                <div class="user-name">Stephany</div>
-                                <div class="user-title">3º C</div>
+                                <div class="user-name">Stephany</div> <!-- Nome da aluna -->
+                                <div class="user-title">3º C</div> <!-- Turma da aluna -->
                             </div>
                         </div>
                     </td>
-                    <td class="user-points">500 pts</td>
+                    <td class="user-points">500 pts</td> <!-- Pontuação do segundo lugar -->
                 </tr>
+                
+                <!-- Terceiro lugar no ranking -->
                 <tr>
                     <td>
                         <div class="user-info">
-                            <div class="avatar">K</div>
+                            <div class="avatar">K</div> <!-- Avatar da Késia -->
                             <div>
-                                <div class="user-name">Késia</div>
-                                <div class="user-title">3º C</div>
+                                <div class="user-name">Késia</div> <!-- Nome da aluna -->
+                                <div class="user-title">3º C</div> <!-- Turma da aluna -->
                             </div>
                         </div>
                     </td>
-                    <td class="user-points">480 pts</td>
+                    <td class="user-points">480 pts</td> <!-- Pontuação do terceiro lugar -->
                 </tr>
+                
+                <!-- Quarto lugar no ranking -->
                 <tr>
                     <td>
                         <div class="user-info">
-                            <div class="avatar">D</div>
+                            <div class="avatar">D</div> <!-- Avatar do Davi -->
                             <div>
-                                <div class="user-name">Davi</div>
-                                <div class="user-title">3º C</div>
+                                <div class="user-name">Davi</div> <!-- Nome do aluno -->
+                                <div class="user-title">3º C</div> <!-- Turma do aluno -->
                             </div>
                         </div>
                     </td>
-                    <td class="user-points">480 pts</td>
+                    <td class="user-points">480 pts</td> <!-- Pontuação do quarto lugar -->
                 </tr>
+                
+                <!-- Quinto lugar no ranking -->
                 <tr>
                     <td>
                         <div class="user-info">
-                            <div class="avatar">L</div>
+                            <div class="avatar">L</div> <!-- Avatar da Letícia -->
                             <div>
-                                <div class="user-name">Letícia</div>
-                                <div class="user-title">3º C</div>
+                                <div class="user-name">Letícia</div> <!-- Nome da aluna -->
+                                <div class="user-title">3º C</div> <!-- Turma da aluna -->
                             </div>
                         </div>
                     </td>
-                    <td class="user-points">360 pts</td>
+                    <td class="user-points">360 pts</td> <!-- Pontuação do quinto lugar -->
                 </tr>
             </table>
         </section>
 
+        <!-- Seção decorativa com mascotes (gatinhos) -->
         <div class="mascots">
-            <div class="mascot">😺</div>
-            <div class="mascot">😺</div>
+            <div class="mascot">😺</div> <!-- Mascote gatinho 1 -->
+            <div class="mascot">😺</div> <!-- Mascote gatinho 2 -->
         </div>
 
+        <!-- Seção de notificação sobre estatísticas -->
         <section class="notification">
+            <!-- Mensagem incentivando o usuário -->
             <p>Veja as suas estatísticas</p>
+            <!-- Ícones decorativos de email -->
             <div class="email-icons">
-                <div class="email-icon">📧</div>
-                <div class="email-icon">📧</div>
+                <div class="email-icon">📧</div> <!-- Ícone de email 1 -->
+                <div class="email-icon">📧</div> <!-- Ícone de email 2 -->
             </div>
         </section>
 
+        <!-- Seção de estatísticas de Matemática -->
         <section class="stats-section">
+            <!-- Cartão com estatísticas gerais de Matemática -->
             <div class="stats-card">
-                <h3 class="stats-title">Matemática</h3>
+                <h3 class="stats-title">Matemática</h3> <!-- Título da matéria -->
                 <div class="stats-content">
-                    <div class="percentage">75%</div>
-                    <div class="percentage-desc">de acertos</div>
+                    <div class="percentage">75%</div> <!-- Porcentagem de acertos -->
+                    <div class="percentage-desc">de acertos</div> <!-- Descrição da porcentagem -->
                 </div>
             </div>
 
+            <!-- Seção detalhada com barras de progresso por tópico -->
             <div class="progress-section">
-                <h3 class="progress-title">Questões respondidas</h3>
+                <h3 class="progress-title">Questões respondidas</h3> <!-- Título da seção -->
+                
+                <!-- Progresso em Geometria Plana -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Geometria Plana</span>
-                        <span>100%</span>
+                        <span>Geometria Plana</span> <!-- Nome do tópico -->
+                        <span>100%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 100% -->
                         <div class="progress-fill math-fill" style="width: 100%"></div>
                     </div>
                 </div>
+                
+                <!-- Progresso em Matriz -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Matriz</span>
-                        <span>80%</span>
+                        <span>Matriz</span> <!-- Nome do tópico -->
+                        <span>80%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 80% -->
                         <div class="progress-fill math-fill" style="width: 80%"></div>
                     </div>
                 </div>
+                
+                <!-- Progresso em Probabilidade -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Probabilidade</span>
-                        <span>70%</span>
+                        <span>Probabilidade</span> <!-- Nome do tópico -->
+                        <span>70%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 70% -->
                         <div class="progress-fill math-fill" style="width: 70%"></div>
                     </div>
                 </div>
+                
+                <!-- Progresso em Números Complexos -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Números Complexos</span>
-                        <span>40%</span>
+                        <span>Números Complexos</span> <!-- Nome do tópico -->
+                        <span>40%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 40% -->
                         <div class="progress-fill math-fill" style="width: 40%"></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Seção de estatísticas de Português -->
         <section class="stats-section">
+            <!-- Cartão com estatísticas gerais de Português -->
             <div class="stats-card">
-                <h3 class="stats-title">Português</h3>
+                <h3 class="stats-title">Português</h3> <!-- Título da matéria -->
                 <div class="stats-content">
-                    <div class="percentage">62%</div>
-                    <div class="percentage-desc">de acertos</div>
+                    <div class="percentage">62%</div> <!-- Porcentagem de acertos -->
+                    <div class="percentage-desc">de acertos</div> <!-- Descrição da porcentagem -->
                 </div>
             </div>
 
+            <!-- Seção detalhada com barras de progresso por tópico -->
             <div class="progress-section">
-                <h3 class="progress-title">Questões respondidas</h3>
+                <h3 class="progress-title">Questões respondidas</h3> <!-- Título da seção -->
+                
+                <!-- Progresso em Interpretação de Texto -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Interpretação de Texto</span>
-                        <span>80%</span>
+                        <span>Interpretação de Texto</span> <!-- Nome do tópico -->
+                        <span>80%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 80% -->
                         <div class="progress-fill portuguese-fill" style="width: 80%"></div>
                     </div>
                 </div>
+                
+                <!-- Progresso em Gramática -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Gramática</span>
-                        <span>65%</span>
+                        <span>Gramática</span> <!-- Nome do tópico -->
+                        <span>65%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 65% -->
                         <div class="progress-fill portuguese-fill" style="width: 65%"></div>
                     </div>
                 </div>
+                
+                <!-- Progresso em Literatura -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Literatura</span>
-                        <span>50%</span>
+                        <span>Literatura</span> <!-- Nome do tópico -->
+                        <span>50%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 50% -->
                         <div class="progress-fill portuguese-fill" style="width: 50%"></div>
                     </div>
                 </div>
+                
+                <!-- Progresso em Redação -->
                 <div class="progress-item">
                     <div class="progress-label">
-                        <span>Redação</span>
-                        <span>30%</span>
+                        <span>Redação</span> <!-- Nome do tópico -->
+                        <span>30%</span> <!-- Porcentagem de conclusão -->
                     </div>
                     <div class="progress-bar">
+                        <!-- Barra de progresso preenchida 30% -->
                         <div class="progress-fill portuguese-fill" style="width: 30%"></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Botão para acessar todas as questões -->
         <button class="filter-btn" id="btn-questoes">Ver Todas as Questões</button>
     </div>
 
-    <!-- janela de Questões -->
+    <!-- Modal (janela pop-up) com questões de Matemática -->
     <div class="modal" id="modal-questoes">
         <div class="modal-content">
+            <!-- Botão para fechar o modal -->
             <button class="close-modal" id="close-modal">&times;</button>
+            <!-- Título do modal -->
             <h2 class="modal-title">Questões de Matemática</h2>
             
+            <!-- Questão 1 -->
             <div class="questao">
                 <div class="enunciado">1. Qual é o valor de x na equação 2x + 5 = 15?</div>
                 <div class="alternativas">
@@ -722,6 +1285,7 @@
                 </div>
             </div>
             
+            <!-- Questão 2 -->
             <div class="questao">
                 <div class="enunciado">2. Qual é a fórmula de Bhaskara?</div>
                 <div class="alternativas">
@@ -732,13 +1296,15 @@
                 </div>
             </div>
             
+            <!-- Botão para responder as questões -->
             <button class="btn-responder">Responder Questões</button>
         </div>
     </div>
 
     <script>
-        // Efeito de digitação no título
+        // Espera a página carregar completamente antes de executar o código
         document.addEventListener('DOMContentLoaded', function() {
+            // Efeito de digitação no título principal
             const title = document.querySelector('.header h1');
             const originalText = title.textContent;
             title.textContent = '';
@@ -754,64 +1320,79 @@
             
             typeWriter();
             
-            // Configurar redirecionamento para questões
+            // Configurar os elementos para interação
             const linkQuestoes = document.getElementById('link-questoes');
             const btnQuestoes = document.getElementById('btn-questoes');
             const modalQuestoes = document.getElementById('modal-questoes');
             const closeModal = document.getElementById('close-modal');
-            
-            // Adicionar IDs para os links de suporte e perfil
             const linkSuporte = document.getElementById('link-suporte');
             const linkPerfil = document.getElementById('link-perfil');
             
-            // Método 1: Redirecionamento para outra página
+            // Quando clicar no link "Questões" na navegação
             linkQuestoes.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Simulação: em um caso real, isso redirecionaria para outra página
+                e.preventDefault(); // Impede o comportamento padrão do link
+                // Redireciona para a página de questões (simulação)
                 window.location.href = "questoes.html";
             });
 
-            // Redirecionamento para Suporte
+            // Quando clicar no link "Suporte" na navegação
             linkSuporte.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Redireciona para a página de suporte
+                e.preventDefault(); // Impede o comportamento padrão do link
+                // Redireciona para a página de suporte (simulação)
                 window.location.href = "suporte.html";
             });
 
-            // Redirecionamento para Perfil
+            // Quando clicar no link "Perfil" na navegação
             linkPerfil.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Redireciona para a página de perfil
+                e.preventDefault(); // Impede o comportamento padrão do link
+                // Redireciona para a página de perfil (simulação)
                 window.location.href = "perfil.html";
             });
 
-            // Método 2: Abrir janela com questões
+            // Quando clicar no botão "Ver Todas as Questões"
             btnQuestoes.addEventListener('click', function() {
-                modalQuestoes.style.display = 'flex';
+                modalQuestoes.style.display = 'flex'; // Mostra o modal
             });
             
-            // Fechar janela
+            // Quando clicar no botão de fechar o modal
             closeModal.addEventListener('click', function() {
-                modalQuestoes.style.display = 'none';
+                modalQuestoes.style.display = 'none'; // Esconde o modal
             });
             
-            // Fechar janela clicando fora dele
+            // Quando clicar fora do modal (no fundo escuro)
             window.addEventListener('click', function(e) {
                 if (e.target === modalQuestoes) {
-                    modalQuestoes.style.display = 'none';
+                    modalQuestoes.style.display = 'none'; // Esconde o modal
                 }
             });
             
-            // Adicionar interação às alternativas
+            // Adicionar interação às alternativas das questões
             const alternativas = document.querySelectorAll('.alternativa');
             alternativas.forEach(alt => {
                 alt.addEventListener('click', function() {
-                    // Remover seleção anterior
+                    // Remove a seleção anterior de todas as alternativas
                     alternativas.forEach(a => a.style.background = '');
-                    // Selecionar esta alternativa
+                    // Destaca a alternativa clicada
                     this.style.background = 'rgba(138, 63, 252, 0.2)';
                 });
             });
+
+            // Efeito de digitação no texto motivacional (opcional)
+            const motivationalText = document.querySelector('.motivational-text');
+            const motivationalOriginal = motivationalText.textContent;
+            motivationalText.textContent = '';
+            
+            let m = 0;
+            function typeMotivational() {
+                if (m < motivationalOriginal.length) {
+                    motivationalText.textContent += motivationalOriginal.charAt(m);
+                    m++;
+                    setTimeout(typeMotivational, 50); // Mais rápido para texto longo
+                }
+            }
+            
+            // Começa a digitação depois de um delay
+            setTimeout(typeMotivational, 1000);
         });
     </script>
 </body>

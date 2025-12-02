@@ -1,252 +1,891 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Define a codificação de caracteres como UTF-8 para suportar acentos e caracteres especiais -->
+    <!-- Define que vamos usar caracteres especiais (acentos, ç, etc) -->
     <meta charset="UTF-8">
-    <!-- Configura a viewport para responsividade em dispositivos móveis -->
+    <!-- Faz o site ficar bom em celular também -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título da página exibido na aba do navegador -->
-    <title>MiauCademy - Bem-vindo</title>
+    <!-- Título que aparece na aba do navegador -->
+    <title>Miaucademy - Sua Plataforma de Estudos</title>
     
-    <!-- Importa a fonte Montserrat do Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800;900&display=swap">
+    <!-- Fontes do design -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Estilos CSS para a página -->
+    <!-- Começa o CSS (estilo da página) -->
     <style>
-        /* Remove margens e padding padrão do navegador e define a altura mínima da página */
+        /* Variáveis de cores do MiauCademy */
+        :root {
+            --roxo-claro: #bea6ff;
+            --roxo-escuro: #8a3ffc;
+            --roxo-mais-escuro: #2e174d;
+            --laranja: #fe9503;
+            --laranja-escuro: #ff6a00;
+            --creme: #fff2df;
+            --rosa: #ca148e;
+            --preto-fundo: #0d051f;
+            --branco: #ffffff;
+            --cinza-claro: rgba(255, 255, 255, 0.8);
+            --cinza-medio: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Zera as margens e padding que vêm por padrão */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif; /* Define a fonte principal */
         }
         
-        /* Define estilos básicos para o corpo da página */
+        /* Estilo do corpo da página inteira */
         body {
-            font-family: 'Montserrat', sans-serif; /* Define a fonte padrão */
-            line-height: 1.6; /* Define o espaçamento entre linhas */
-            color: #fff2df; /* Define a cor do texto */
-            background: linear-gradient(180deg, #8a3ffc 26.44%, #2e174d 56.25%, #ca148e); /* Gradiente de fundo */
-            min-height: 100vh; /* Garante que o fundo ocupe pelo menos toda a altura da tela */
-            display: flex; /* Usa flexbox para centralizar o conteúdo */
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-            padding: 20px; /* Adiciona espaçamento interno */
+            background: linear-gradient(135deg, #0d051f 0%, var(--roxo-mais-escuro) 30%, #1a0a35 70%, var(--roxo-escuro) 100%);
+            color: var(--creme);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        /* Container principal que centraliza o conteúdo */
+        /* Container principal que segura todo conteúdo */
         .container {
-            max-width: 800px; /* Largura máxima do conteúdo */
-            width: 100%; /* Ocupa toda a largura disponível */
-            text-align: center; /* Centraliza o texto */
-            padding: 40px; /* Espaçamento interno */
-            background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
-            border-radius: 20px; /* Bordas arredondadas */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Sombra suave */
-            backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        /* Estilo para o título principal */
-        .main-title {
-            font-size: 3.5rem; /* Tamanho da fonte responsivo */
-            font-weight: 900; /* Peso da fonte (negrito) */
-            margin-bottom: 20px; /* Espaçamento inferior */
-            text-shadow: 0px 10px 15px rgba(79, 17, 172, 0.36); /* Sombra do texto */
-            line-height: 1.2; /* Espaçamento entre linhas do título */
+        /* Container especial só para a foto */
+        .container-foto {
+            margin-bottom: 30px;
+            padding: 20px;
         }
         
-        /* Estilo para o subtítulo */
-        .subtitle {
-            font-size: 1.5rem; /* Tamanho da fonte responsivo */
-            font-weight: 400; /* Peso da fonte (normal) */
-            margin-bottom: 40px; /* Espaçamento inferior */
-            opacity: 0.9; /* Leve transparência */
+        /* Área onde vai sua foto */
+        .foto-perfil {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--laranja);
+            margin: 0 auto;
+            display: block;
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .foto-perfil:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 20px 40px rgba(254, 149, 3, 0.3);
         }
         
-        /* Container para os botões de ação */
-        .button-container {
-            display: flex; /* Usa flexbox para layout */
-            justify-content: center; /* Centraliza os botões horizontalmente */
-            gap: 20px; /* Espaçamento entre os botões */
-            margin-top: 40px; /* Espaçamento superior */
-            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+        /* Título principal */
+        .titulo {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--creme), var(--roxo-claro), var(--laranja));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
-        /* Estilo base para os botões */
-        .btn {
-            padding: 18px 40px; /* Espaçamento interno */
-            border-radius: 50px; /* Bordas arredondadas */
-            font-size: 1.2rem; /* Tamanho da fonte */
-            font-weight: 800; /* Peso da fonte */
-            cursor: pointer; /* Muda o cursor para indicar que é clicável */
-            transition: all 0.3s ease; /* Transição suave para efeitos hover */
-            text-decoration: none; /* Remove sublinhado de links */
-            display: inline-block; /* Permite definir largura e altura */
-            text-align: center; /* Centraliza o texto dentro do botão */
-            min-width: 200px; /* Largura mínima dos botões */
-            box-shadow: 0px 10px 20px rgba(52, 23, 97, 0.84); /* Sombra do botão */
-            border: none; /* Remove borda padrão */
-            outline: none; /* Remove contorno padrão */
+        /* Subtítulo */
+        .subtitulo {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--cinza-medio);
+            font-weight: 400;
         }
         
-        /* Estilo específico para o botão de cadastro */
-        .btn-primary {
-            background-color: #bea6ff; /* Cor de fundo */
-            color: #fdfdfd; /* Cor do texto */
+        /* Container dos botões */
+        .botoes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
         
-        /* Estilo específico para o botão de entrar */
-        .btn-secondary {
-            background-color: #f6f6f6; /* Cor de fundo */
-            color: #8a3ffc; /* Cor do texto */
+        /* Estilo base dos botões */
+        .botao {
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
         }
         
-        /* Efeito hover para os botões */
-        .btn:hover {
-            transform: translateY(-5px); /* Move o botão para cima ao passar o mouse */
-            box-shadow: 0px 15px 25px rgba(52, 23, 97, 0.94); /* Aumenta a sombra ao passar o mouse */
+        /* Botão laranja (cadastro) */
+        .botao-principal {
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
+            color: var(--branco);
+            box-shadow: 0 8px 20px rgba(254, 149, 3, 0.3);
         }
         
-        /* Efeito de clique para os botões */
-        .btn:active {
-            transform: translateY(0); /* Retorna o botão à posição original ao clicar */
+        /* Botão roxo (entrar) */
+        .botao-secundario {
+            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
+            color: var(--branco);
+            box-shadow: 0 8px 20px rgba(138, 63, 252, 0.3);
         }
         
-        /* Estilo para a imagem decorativa (gato) */
-        .cat-image {
-            width: 200px; /* Largura da imagem */
-            height: auto; /* Mantém a proporção da imagem */
-            margin: 0 auto 30px; /* Centraliza e adiciona espaçamento inferior */
-            display: block; /* Garante que a imagem seja exibida como bloco */
-            filter: drop-shadow(0px 10px 15px rgba(79, 17, 172, 0.36)); /* Sombra da imagem */
+        /* Efeito quando passa mouse nos botões */
+        .botao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .botao-principal:hover {
+            background: linear-gradient(135deg, var(--laranja-escuro), var(--laranja));
+            box-shadow: 0 12px 25px rgba(254, 149, 3, 0.4);
+        }
+
+        .botao-secundario:hover {
+            background: linear-gradient(135deg, var(--roxo-claro), var(--roxo-escuro));
+            box-shadow: 0 12px 25px rgba(138, 63, 252, 0.4);
         }
         
-        /* Media query para telas menores (tablets) */
+        /* Efeito quando clica nos botões */
+        .botao:active {
+            transform: translateY(-2px);
+        }
+
+        /* Efeito de brilho nos botões */
+        .botao::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .botao:hover::before {
+            left: 100%;
+        }
+
+        /* SEÇÃO O QUE É O MIAUCADEMY - MODIFICADA */
+        .sobre-site {
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sobre-site::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro));
+        }
+
+        /* Título da seção sobre o site */
+        .sobre-titulo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--creme);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .sobre-titulo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--laranja), var(--roxo-claro));
+            border-radius: 2px;
+        }
+
+        /* Container dos cards de características */
+        .caracteristicas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        /* Cada card de característica */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 25px;
+            border-radius: 20px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--laranja);
+        }
+
+        /* Efeito quando passa mouse nos cards */
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ícone dos cards */
+        .card-icone {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icone {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Título dos cards */
+        .card-titulo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--laranja);
+        }
+
+        /* Texto dos cards */
+        .card-texto {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--cinza-claro);
+            font-weight: 400;
+        }
+
+        /* NOVA SEÇÃO: SOBRE NOSSA EQUIPE */
+        .sobre-equipe {
+            margin-top: 60px;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(254, 149, 3, 0.2), rgba(138, 63, 252, 0.2));
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sobre-equipe::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro), var(--rosa));
+        }
+
+        /* Título da seção da equipe */
+        .equipe-titulo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: var(--creme);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .equipe-titulo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, var(--laranja), var(--roxo-claro));
+            border-radius: 2px;
+        }
+
+        /* Container da foto do grupo */
+        .foto-grupo-container {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        /* Foto do grupo */
+        .foto-grupo {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+            display: block;
+            background: linear-gradient(45deg, rgba(254, 149, 3, 0.3), rgba(138, 63, 252, 0.3));
+            transition: transform 0.5s ease;
+        }
+
+        .foto-grupo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Texto sobre a equipe */
+        .equipe-texto {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--laranja);
+            color: var(--cinza-claro);
+        }
+
+        /* Destaque no texto */
+        .destaque {
+            color: var(--laranja);
+            font-weight: 700;
+            background: rgba(254, 149, 3, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* Assinatura da equipe */
+        .assinatura {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-top: 30px;
+            color: var(--creme);
+            font-style: italic;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer adicional */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--cinza-medio);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Para tablets */
         @media (max-width: 768px) {
-            .main-title {
-                font-size: 2.5rem; /* Reduz o tamanho da fonte do título principal */
+            .titulo {
+                font-size: 2.2rem;
             }
             
-            .subtitle {
-                font-size: 1.2rem; /* Reduz o tamanho da fonte do subtítulo */
+            .subtitulo {
+                font-size: 1.1rem;
             }
             
-            .btn {
-                font-size: 1rem; /* Reduz o tamanho da fonte dos botões */
-                padding: 15px 30px; /* Reduz o espaçamento interno dos botões */
+            .botao {
+                font-size: 1rem;
+                padding: 14px 30px;
+                min-width: 180px;
+            }
+            
+            .foto-perfil {
+                width: 200px;
+                height: 200px;
             }
             
             .container {
-                padding: 30px 20px; /* Reduz o espaçamento interno do container */
+                padding: 30px;
+            }
+
+            .sobre-titulo {
+                font-size: 1.8rem;
+            }
+
+            .caracteristicas {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .card {
+                max-width: 100%;
+                padding: 25px;
+            }
+
+            .sobre-equipe {
+                padding: 35px;
+                margin-top: 40px;
+            }
+
+            .equipe-titulo {
+                font-size: 1.8rem;
+            }
+
+            .foto-grupo {
+                height: 280px;
+                max-width: 100%;
+            }
+
+            .equipe-texto {
+                font-size: 1rem;
+                padding: 20px;
+            }
+
+            .assinatura {
+                font-size: 1.1rem;
+                padding: 12px 25px;
             }
         }
         
-        /* Media query para telas muito pequenas (celulares) */
+        /* Para celulares */
         @media (max-width: 480px) {
-            .main-title {
-                font-size: 2rem; /* Reduz ainda mais o tamanho da fonte do título principal */
+            .titulo {
+                font-size: 1.9rem;
             }
             
-            .subtitle {
-                font-size: 1rem; /* Reduz ainda mais o tamanho da fonte do subtítulo */
+            .subtitulo {
+                font-size: 1rem;
+                margin-bottom: 25px;
             }
             
-            .btn {
-                font-size: 0.9rem; /* Reduz ainda mais o tamanho da fonte dos botões */
-                padding: 12px 25px; /* Reduz ainda mais o espaçamento interno dos botões */
-                min-width: 160px; /* Reduz a largura mínima dos botões */
+            .botoes {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
             }
             
-            .button-container {
-                flex-direction: column; /* Alinha os botões verticalmente */
-                align-items: center; /* Centraliza os botões */
+            .botao {
+                width: 100%;
+                max-width: 280px;
+                padding: 15px;
             }
             
-            .cat-image {
-                width: 150px; /* Reduz o tamanho da imagem em telas pequenas */
+            .foto-perfil {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .container {
+                padding: 25px 20px;
+            }
+
+            .sobre-site {
+                margin-top: 35px;
+                padding: 25px 20px;
+            }
+
+            .sobre-titulo {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+
+            .card {
+                padding: 20px;
+                min-width: 100%;
+            }
+
+            .card-icone {
+                font-size: 2.3rem;
+            }
+
+            .sobre-equipe {
+                margin-top: 35px;
+                padding: 25px 20px;
+            }
+
+            .equipe-titulo {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+
+            .foto-grupo {
+                height: 220px;
+            }
+
+            .equipe-texto {
+                font-size: 0.95rem;
+                padding: 18px;
+            }
+
+            .assinatura {
+                font-size: 1rem;
+                padding: 10px 20px;
+                margin-top: 20px;
+            }
+        }
+
+        /* Animações para elementos ao rolar */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Container principal que envolve todo o conteúdo -->
+    <!-- Container principal -->
     <div class="container">
-        <!-- Imagem decorativa de um gato (ícone da MiauCademy) -->
-        <svg class="cat-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Cabeça do gato -->
-            <circle cx="50" cy="40" r="30" fill="#fff2df" />
-            <!-- Orelha esquerda -->
-            <polygon points="35,15 45,30 25,30" fill="#fff2df" />
-            <!-- Orelha direita -->
-            <polygon points="65,15 75,30 55,30" fill="#fff2df" />
-            <!-- Olho esquerdo -->
-            <circle cx="40" cy="35" r="5" fill="#8a3ffc" />
-            <!-- Olho direito -->
-            <circle cx="60" cy="35" r="5" fill="#8a3ffc" />
-            <!-- Nariz -->
-            <polygon points="50,45 45,50 55,50" fill="#ca148e" />
-            <!-- Boca -->
-            <path d="M45,55 Q50,60 55,55" stroke="#ca148e" stroke-width="2" fill="none" />
-            <!-- Bigodes -->
-            <line x1="30" y1="45" x2="40" y2="48" stroke="#8a3ffc" stroke-width="2" />
-            <line x1="30" y1="50" x2="40" y2="50" stroke="#8a3ffc" stroke-width="2" />
-            <line x1="30" y1="55" x2="40" y2="52" stroke="#8a3ffc" stroke-width="2" />
-            <line x1="70" y1="45" x2="60" y2="48" stroke="#8a3ffc" stroke-width="2" />
-            <line x1="70" y1="50" x2="60" y2="50" stroke="#8a3ffc" stroke-width="2" />
-            <line x1="70" y1="55" x2="60" y2="52" stroke="#8a3ffc" stroke-width="2" />
-        </svg>
+        <!-- Container especial para a foto -->
+        <div class="container-foto">
+            <!-- Onde vai sua foto -->
+            <!-- TROQUE "sua-foto.jpg" pelo caminho da SUA imagem -->
+            <img src="sua-foto.jpg" alt="MiauCademy Logo" class="foto-perfil">
+        </div>
         
-        <!-- Título principal da página -->
-        <h1 class="main-title">Bem-vindo ao MiauCademy</h1>
+        <!-- Título principal -->
+        <h1 class="titulo">Bem-vindo ao Miaucademy</h1>
         
-        <!-- Subtítulo da página -->
-        <p class="subtitle">Seu ambiente de estudos nunca foi tão divertido!</p>
+        <!-- Subtítulo -->
+        <p class="subtitulo">Transformamos o aprendizado em uma aventura incrível!</p>
         
-        <!-- Container para os botões de ação -->
-        <div class="button-container">
-            <!-- Botão para cadastro (leva para a página de cadastro) -->
-            <a href="page.html" class="btn btn-primary">COMEÇAR AGORA</a>
-            <!-- Botão para login (leva para a página de login) -->
-            <a href="login.html" class="btn btn-secondary">ENTRAR</a>
+        <!-- Área dos botões -->
+        <div class="botoes">
+            <!-- Botão para cadastrar -->
+            <a href="login.html?tab=register" class="botao botao-principal">
+                <i class="fas fa-user-plus"></i> COMEÇAR AGORA
+            </a>
+            <!-- Botão para entrar -->
+            <a href="login.html" class="botao botao-secundario">
+                <i class="fas fa-sign-in-alt"></i> ENTRAR
+            </a>
+        </div>
+
+        <!-- SEÇÃO O QUE É O MIAUCADEMY -->
+        <section class="sobre-site">
+            <!-- Título da seção sobre o site -->
+            <h2 class="sobre-titulo">🚀 Descubra o Miaucademy! 📚</h2>
+            
+            <!-- Container com as características do site -->
+            <div class="caracteristicas">
+                <!-- Card 1: Plataforma Gamificada -->
+                <div class="card">
+                    <div class="card-icone">🎮</div>
+                    <h3 class="card-titulo">Plataforma Gamificada</h3>
+                    <p class="card-texto">
+                        Transformamos o estudo em uma aventura divertida! 
+                        Ganhe pontos, suba de nível e desbloqueie conquistas 
+                        enquanto aprende de forma interativa.
+                    </p>
+                </div>
+                
+                <!-- Card 2: Competição Saudável -->
+                <div class="card">
+                    <div class="card-icone">🏆</div>
+                    <h3 class="card-titulo">Competição Saudável</h3>
+                    <p class="card-texto">
+                        Desafie seus amigos e veja quem chega mais longe! 
+                        Ranking em tempo real, desafios semanais e muito mais 
+                        diversão estudando juntos.
+                    </p>
+                </div>
+                
+                <!-- Card 3: Aprendizado Divertido -->
+                <div class="card">
+                    <div class="card-icone">😺</div>
+                    <h3 class="card-titulo">Aprendizado Divertido</h3>
+                    <p class="card-texto">
+                        Chega de estudo chato! Com quizzes interativos, 
+                        recompensas e desafios gamificados, aprender nunca 
+                        foi tão emocionante e eficiente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: SOBRE NOSSA EQUIPE -->
+        <section class="sobre-equipe">
+            <!-- Título da seção sobre a equipe -->
+            <h2 class="equipe-titulo">👨‍💻 A História Por Trás do Miau 👩‍💻</h2>
+            
+            <!-- Container da foto do grupo -->
+            <div class="foto-grupo-container">
+                <!-- Onde vai a foto do grupo -->
+                <!-- TROQUE "foto-grupo.jpg" pela foto da equipe -->
+                <img src="foto-grupo.jpg" alt="Nossa equipe do CEMI" class="foto-grupo">
+            </div>
+            
+            <!-- Texto sobre a origem do projeto -->
+            <div class="equipe-texto">
+                <!-- Primeiro parágrafo sobre o projeto -->
+                <p>
+                    O <span class="destaque">Miaucademy nasceu nas salas do CEMI</span>, fruto do trabalho de 
+                    <span class="destaque">Desenvolvimento de Software</span> onde unimos tecnologia e educação 
+                    para criar algo realmente especial e inovador.
+                </p>
+                
+                <!-- Segundo parágrafo sobre a motivação -->
+                <p>
+                    Percebemos que muitos alunos tinham dificuldade em manter o foco nos estudos 
+                    tradicionais. Foi então que tivemos a ideia revolucionária: 
+                    <span class="destaque">"E se transformássemos o estudo em algo tão envolvente quanto um jogo?"</span>
+                </p>
+                
+                <!-- Terceiro parágrafo sobre o desenvolvimento -->
+                <p>
+                    Durante meses, nos dedicamos intensamente ao desenvolvimento desta plataforma, 
+                    aplicando tudo que aprendemos sobre programação, design UX/UI e experiência 
+                    do usuário. Cada linha de código foi escrita com um propósito claro: 
+                    <span class="destaque">tornar o aprendizado acessível, divertido e eficaz para todos</span>.
+                </p>
+                
+                <!-- Quarto parágrafo sobre o impacto -->
+                <p>
+                    Hoje, vemos o Miaucademy como mais do que um simples projeto escolar - é nossa 
+                    contribuição genuína para uma <span class="destaque">educação mais moderna, interativa e engajadora</span>, 
+                    onde estudantes podem aprender no seu próprio ritmo, competir saudavelmente e 
+                    <span class="destaque">redescobrir o prazer em aprender</span>.
+                </p>
+            </div>
+            
+            <!-- Assinatura da equipe -->
+            <div class="assinatura">
+                💻 Com carinho, a Equipe de Desenvolvimento do CEMI 🚀
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2023 Miaucademy - Transformando educação através da gamificação</p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">Desenvolvido por estudantes do 3º ano C - CEMI</p>
         </div>
     </div>
 
-    <!-- Script JavaScript para funcionalidades adicionais -->
+    <!-- JavaScript (funcionalidades extras) -->
     <script>
-        // Aguarda o carregamento completo da página antes de executar o código
+        // Espera a página carregar completamente
         document.addEventListener('DOMContentLoaded', function() {
-            // Seleciona todos os botões da página
-            const buttons = document.querySelectorAll('.btn');
+            // Verificar se usuário está logado
+            const userLoggedIn = localStorage.getItem("userLoggedIn");
+            const username = localStorage.getItem("username");
             
-            // Adiciona um evento de clique para cada botão
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Adiciona uma animação de clique
+            if (userLoggedIn === "true" && username) {
+                // Atualizar subtítulo se usuário estiver logado
+                const subtitulo = document.querySelector('.subtitulo');
+                subtitulo.innerHTML = `Bem-vindo de volta, <span style="color: var(--laranja); font-weight: 700;">${username}</span>! Pronto para continuar sua jornada?`;
+                
+                // Mudar botão "Entrar" para "Ir para Questões"
+                const botaoEntrar = document.querySelector('.botao-secundario');
+                if (botaoEntrar) {
+                    botaoEntrar.innerHTML = '<i class="fas fa-book"></i> IR PARA QUESTÕES';
+                    botaoEntrar.href = "PginaDeQuestes.html";
+                }
+            }
+
+            // Pega todos os botões da página
+            const botoes = document.querySelectorAll('.botao');
+            
+            // Para cada botão, adiciona um evento de clique
+            botoes.forEach(botao => {
+                botao.addEventListener('click', function(e) {
+                    // Efeito de clique - fica menor
                     this.style.transform = 'scale(0.95)';
                     
-                    // Remove a animação após um breve período
+                    // Depois de 150ms, volta ao normal
                     setTimeout(() => {
                         this.style.transform = '';
                     }, 150);
                 });
             });
             
-            // Adiciona um efeito de digitação ao título (opcional)
-            const title = document.querySelector('.main-title');
-            const originalText = title.textContent;
-            title.textContent = '';
+            // Efeito de digitação no título
+            const titulo = document.querySelector('.titulo');
+            const textoOriginal = titulo.textContent;
+            titulo.textContent = '';
             
             let i = 0;
-            const typeWriter = () => {
-                if (i < originalText.length) {
-                    title.textContent += originalText.charAt(i);
+            function escreverTexto() {
+                if (i < textoOriginal.length) {
+                    titulo.textContent += textoOriginal.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 100);
+                    setTimeout(escreverTexto, 80);
                 }
-            };
+            }
             
-            // Inicia o efeito de digitação após um breve delay
-            setTimeout(typeWriter, 500);
+            // Começa a escrever depois de 300ms
+            setTimeout(escreverTexto, 300);
+
+            // Efeito de digitação na seção sobre o site
+            const sobreTitulo = document.querySelector('.sobre-titulo');
+            const sobreTextoOriginal = sobreTitulo.textContent;
+            sobreTitulo.textContent = '';
+            
+            let j = 0;
+            function escreverSobreTitulo() {
+                if (j < sobreTextoOriginal.length) {
+                    sobreTitulo.textContent += sobreTextoOriginal.charAt(j);
+                    j++;
+                    setTimeout(escreverSobreTitulo, 60);
+                }
+            }
+            
+            // Começa a escrever depois que o título principal terminar
+            setTimeout(escreverSobreTitulo, 300 + (textoOriginal.length * 80));
+
+            // Efeito de digitação no título da equipe
+            const equipeTitulo = document.querySelector('.equipe-titulo');
+            const equipeTextoOriginal = equipeTitulo.textContent;
+            equipeTitulo.textContent = '';
+            
+            let k = 0;
+            function escreverEquipeTitulo() {
+                if (k < equipeTextoOriginal.length) {
+                    equipeTitulo.textContent += equipeTextoOriginal.charAt(k);
+                    k++;
+                    setTimeout(escreverEquipeTitulo, 50);
+                }
+            }
+            
+            // Começa a escrever depois que os outros títulos terminarem
+            setTimeout(escreverEquipeTitulo, 300 + (textoOriginal.length * 80) + (sobreTextoOriginal.length * 60));
+
+            // Adiciona efeito de aparecimento nos cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 600 + (index * 200));
+            });
+
+            // Efeito de entrada para a seção da equipe
+            const equipeSection = document.querySelector('.sobre-equipe');
+            equipeSection.style.opacity = '0';
+            equipeSection.style.transform = 'translateY(40px)';
+            
+            setTimeout(() => {
+                equipeSection.style.transition = 'all 0.9s ease';
+                equipeSection.style.opacity = '1';
+                equipeSection.style.transform = 'translateY(0)';
+            }, 1500);
+
+            // Adicionar efeito de parallax suave na foto de perfil
+            document.addEventListener('mousemove', (e) => {
+                const fotoPerfil = document.querySelector('.foto-perfil');
+                if (fotoPerfil) {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 10;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                    fotoPerfil.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+                }
+            });
+
+            // Adicionar animação de pulsação nos botões
+            setInterval(() => {
+                const botaoPrincipal = document.querySelector('.botao-principal');
+                if (botaoPrincipal) {
+                    botaoPrincipal.style.boxShadow = '0 8px 20px rgba(254, 149, 3, 0.4)';
+                    setTimeout(() => {
+                        botaoPrincipal.style.boxShadow = '0 8px 20px rgba(254, 149, 3, 0.3)';
+                    }, 500);
+                }
+            }, 3000);
+
+            // Adicionar tooltip nos botões
+            botoes.forEach(botao => {
+                botao.addEventListener('mouseenter', function() {
+                    const texto = this.textContent.trim();
+                    this.setAttribute('title', `Clique para ${texto.toLowerCase()}`);
+                });
+            });
+
+            // Verificar e ajustar imagens
+            const imagens = document.querySelectorAll('img');
+            imagens.forEach(img => {
+                img.addEventListener('error', function() {
+                    if (this.src.includes('sua-foto.jpg')) {
+                        this.src = 'https://via.placeholder.com/220x220/8a3ffc/ffffff?text=MiauCademy';
+                        this.alt = 'Logo MiauCademy';
+                    } else if (this.src.includes('foto-grupo.jpg')) {
+                        this.src = 'https://via.placeholder.com/600x350/fe9503/ffffff?text=Equipe+CEMI';
+                        this.alt = 'Foto da equipe do CEMI';
+                    }
+                });
+            });
         });
+
+        // Função para rolar suavemente para as seções
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>

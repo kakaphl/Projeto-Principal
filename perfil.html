@@ -1,382 +1,878 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Define a codificação de caracteres como UTF-8 para suportar caracteres especiais -->
     <meta charset="UTF-8">
-    <!-- Configura a viewport para responsividade em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título da página que aparece na aba do navegador -->
     <title>Perfil do Usuário - Miaucademy</title>
-    <!-- Importa a fonte Poppins do Google Fonts -->
+    
+    <!-- Fontes do Google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Importa o Font Awesome para usar ícones -->
+    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Remove margens e preenchimentos padrão de todos os elementos */
+        /* Variáveis de cores do MiauCademy */
+        :root {
+            --roxo-claro: #bea6ff;
+            --roxo-escuro: #8a3ffc;
+            --roxo-mais-escuro: #2e174d;
+            --laranja: #fe9503;
+            --laranja-escuro: #ff6a00;
+            --creme: #fff2df;
+            --rosa: #ca148e;
+            --preto-fundo: #0d051f;
+            --branco: #ffffff;
+            --cinza-claro: rgba(255, 255, 255, 0.8);
+            --cinza-medio: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
-            /* Faz com que padding e border sejam incluídos no cálculo de width/height */
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
         
-        /* Estilos para o corpo da página */
+        /* Estilos do corpo */
         body {
-            /* Define a fonte principal */
-            font-family: 'Poppins', sans-serif;
-            /* Cria um gradiente de fundo roxo-azul */
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            /* Cor do texto branco */
-            color: #fff;
-            /* Altura da linha para melhor legibilidade */
+            background: linear-gradient(135deg, #0d051f 0%, var(--roxo-mais-escuro) 30%, #1a0a35 70%, var(--roxo-escuro) 100%);
+            color: var(--creme);
             line-height: 1.6;
-            /* Espaçamento interno ao redor do conteúdo */
-            padding: 20px;
-            /* Garante que o body ocupe pelo menos toda a altura da tela */
             min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* ===== NAVBAR DO MIAUCADEMY ===== */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(13, 5, 31, 0.9);
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.6rem;
+            text-decoration: none;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: linear-gradient(45deg, var(--roxo-claro), var(--roxo-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--laranja);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
+            box-shadow: 0 5px 15px rgba(254, 149, 3, 0.3);
+        }
+
+        .profile-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 50px;
+        }
+
+        .profile-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .profile-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--laranja);
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 25px 60px;
         }
         
-        /* Container principal que centraliza o conteúdo */
-        .container {
-            /* Largura máxima do conteúdo */
-            max-width: 800px;
-            /* Centraliza o container na página */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--creme), var(--roxo-claro), var(--laranja));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            color: var(--cinza-medio);
+            font-size: 1.3rem;
+            font-weight: 400;
+            max-width: 600px;
             margin: 0 auto;
         }
         
-        /* Estilos para o cabeçalho */
-        .header {
-            /* Centraliza o texto */
-            text-align: center;
-            /* Espaçamento abaixo do cabeçalho */
-            margin-bottom: 30px;
-            /* Espaçamento interno */
-            padding: 20px;
-        }
-        
-        /* Estilos para o título principal */
-        .header h1 {
-            /* Tamanho da fonte */
-            font-size: 2rem;
-            /* Cor do texto branco */
-            color: #ffffff;
-            /* Espaçamento abaixo do título */
-            margin-bottom: 10px;
-        }
-        
-        /* Estilos para o parágrafo do cabeçalho */
-        .header p {
-            /* Cor do texto com transparência */
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Estilos para o cartão de perfil */
-        .profile-card {
-            /* Fundo semi-transparente */
-            background: rgba(255, 255, 255, 0.1);
-            /* Bordas arredondadas */
-            border-radius: 15px;
-            /* Espaçamento interno */
-            padding: 25px;
-            /* Espaçamento abaixo do cartão */
-            margin-bottom: 25px;
-            /* Borda sutil */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Estilos para o nome do perfil */
-        .profile-name {
-            /* Tamanho da fonte */
-            font-size: 1.8rem;
-            /* Espaçamento abaixo do nome */
-            margin-bottom: 5px;
-            /* Usa flexbox para alinhar ícone e texto */
+        .profile-main {
             display: flex;
-            /* Centraliza verticalmente */
-            align-items: center;
-        }
-        
-        /* Estilos para o ícone dentro do nome */
-        .profile-name i {
-            /* Espaçamento à direita do ícone */
-            margin-right: 10px;
-            /* Tamanho do ícone */
-            font-size: 1.5rem;
-        }
-        
-        /* Estilos para o cargo/função */
-        .profile-role {
-            /* Cor do texto com transparência */
-            color: rgba(255, 255, 255, 0.8);
-            /* Espaçamento abaixo do cargo */
-            margin-bottom: 20px;
-            /* Recuo à esquerda para alinhar com o nome */
-            padding-left: 35px;
-        }
-        
-        /* Estilos para o divisor visual */
-        .divider {
-            /* Altura da linha */
-            height: 1px;
-            /* Cor de fundo com transparência */
-            background: rgba(255, 255, 255, 0.2);
-            /* Espaçamento acima e abaixo */
-            margin: 15px 0;
-        }
-        
-        /* Estilos para cada grupo de informações */
-        .info-group {
-            /* Espaçamento abaixo de cada grupo */
-            margin-bottom: 20px;
-        }
-        
-        /* Estilos para o título de cada grupo de informações */
-        .info-title {
-            /* Texto em negrito */
-            font-weight: 600;
-            /* Espaçamento abaixo do título */
-            margin-bottom: 8px;
-            /* Usa flexbox para alinhar ícone e texto */
-            display: flex;
-            /* Centraliza verticalmente */
-            align-items: center;
-        }
-        
-        /* Estilos para o ícone dentro do título */
-        .info-title i {
-            /* Espaçamento à direita do ícone */
-            margin-right: 10px;
-        }
-        
-        /* Estilos para o conteúdo de cada grupo de informações */
-        .info-content {
-            /* Recuo à esquerda para alinhar com o título */
-            padding-left: 25px;
-        }
-        
-        /* Estilos para a lista de informações */
-        .info-list {
-            /* Remove os marcadores padrão da lista */
-            list-style-type: none;
-        }
-        
-        /* Estilos para cada item da lista */
-        .info-list li {
-            /* Espaçamento abaixo de cada item */
-            margin-bottom: 8px;
-            /* Usa flexbox para alinhar ícone e texto */
-            display: flex;
-            /* Centraliza verticalmente */
-            align-items: center;
-        }
-        
-        /* Estilos para os ícones dentro da lista */
-        .info-list i {
-            /* Espaçamento à direita do ícone */
-            margin-right: 8px;
-            /* Largura fixa para alinhamento consistente */
-            width: 16px;
-        }
-        
-        /* Estilos para o container de estatísticas */
-        .stats {
-            /* Usa CSS Grid para layout */
-            display: grid;
-            /* Cria 2 colunas de tamanho igual */
-            grid-template-columns: repeat(2, 1fr);
-            /* Espaçamento entre os itens do grid */
-            gap: 15px;
-            /* Espaçamento acima e abaixo */
-            margin: 20px 0;
-        }
-        
-        /* Estilos para cada item de estatística */
-        .stat {
-            /* Fundo semi-transparente */
-            background: rgba(255, 255, 255, 0.05);
-            /* Bordas arredondadas */
-            border-radius: 10px;
-            /* Espaçamento interno */
-            padding: 15px;
-            /* Centraliza o texto */
-            text-align: center;
-        }
-        
-        /* Estilos para o valor da estatística */
-        .stat-value {
-            /* Tamanho maior da fonte */
-            font-size: 1.5rem;
-            /* Texto em negrito */
-            font-weight: 700;
-            /* Espaçamento abaixo do valor */
-            margin-bottom: 5px;
-        }
-        
-        /* Estilos para o rótulo da estatística */
-        .stat-label {
-            /* Tamanho menor da fonte */
-            font-size: 0.9rem;
-            /* Cor do texto com transparência */
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        /* Estilos para o container de botões de ação */
-        .actions {
-            /* Usa flexbox para layout */
-            display: flex;
-            /* Centraliza os botões horizontalmente */
-            justify-content: center;
-            /* Espaçamento entre os botões */
-            gap: 15px;
-            /* Espaçamento acima */
-            margin-top: 25px;
-            /* Permite que os botões quebrem para linha seguinte em telas pequenas */
+            gap: 30px;
             flex-wrap: wrap;
         }
         
-        /* Estilos base para os botões */
-        .btn {
-            /* Usa flexbox para alinhar ícone e texto */
-            display: inline-flex;
-            /* Centraliza verticalmente */
-            align-items: center;
-            /* Fundo semi-transparente */
-            background: rgba(255, 255, 255, 0.1);
-            /* Cor do texto branco */
-            color: #ffffff;
-            /* Espaçamento interno */
-            padding: 10px 20px;
-            /* Bordas completamente arredondadas */
-            border-radius: 30px;
-            /* Remove sublinhado padrão */
-            text-decoration: none;
-            /* Peso da fonte */
-            font-weight: 500;
-            /* Transição suave para efeitos hover */
-            transition: all 0.3s;
-            /* Borda sutil */
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .profile-left {
+            flex: 1;
+            min-width: 300px;
         }
         
-        /* Estilos para o estado hover dos botões */
-        .btn:hover {
-            /* Muda a cor de fundo ao passar o mouse */
-            background: rgba(255, 255, 255, 0.2);
+        .profile-right {
+            flex: 1;
+            min-width: 300px;
         }
         
-        /* Estilos para ícones dentro dos botões */
-        .btn i {
-            /* Espaçamento à direita do ícone */
-            margin-right: 8px;
+        .profile-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro), var(--rosa));
         }
         
-        /* Estilos para o rodapé */
-        .footer {
-            /* Centraliza o texto */
+        .profile-photo-container {
             text-align: center;
-            /* Espaçamento acima */
-            margin-top: 40px;
-            /* Cor do texto com transparência */
-            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
         }
         
-        /* Media query para telas com largura máxima de 768px (tablets e celulares) */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--laranja);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--roxo-claro), var(--rosa));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 20px 40px rgba(254, 149, 3, 0.3);
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--creme);
+            font-weight: 800;
+        }
+        
+        .profile-role {
+            color: var(--laranja);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--roxo-claro), transparent);
+            margin: 25px 0;
+        }
+        
+        .info-group {
+            margin-bottom: 30px;
+        }
+        
+        .info-title {
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: var(--creme);
+            font-size: 1.3rem;
+        }
+        
+        .info-title i {
+            margin-right: 15px;
+            color: var(--laranja);
+            font-size: 1.4rem;
+        }
+        
+        .info-content {
+            padding-left: 40px;
+        }
+        
+        .info-list {
+            list-style-type: none;
+        }
+        
+        .info-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+            color: var(--cinza-claro);
+            font-weight: 500;
+        }
+        
+        .info-list li:hover {
+            transform: translateX(5px);
+        }
+        
+        .info-list i {
+            margin-right: 12px;
+            width: 22px;
+            color: var(--roxo-claro);
+            font-size: 1.2rem;
+        }
+        
+        .profile-stats {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--laranja), var(--roxo-claro));
+        }
+        
+        .stats-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--creme);
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--laranja), var(--roxo-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--cinza-claro);
+            font-weight: 600;
+        }
+        
+        .achievements {
+            margin-top: 35px;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .achievement {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .achievement:hover {
+            transform: scale(1.08);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .achievement i {
+            font-size: 2.5rem;
+            color: var(--laranja);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .achievement-name {
+            font-size: 0.9rem;
+            color: var(--creme);
+            font-weight: 700;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
+            color: white;
+            padding: 16px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 10px 25px rgba(254, 149, 3, 0.3);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            min-width: 180px;
+            justify-content: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(254, 149, 3, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--cinza-medio);
+            font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsividade */
         @media (max-width: 768px) {
-            /* Muda o layout das estatísticas para uma coluna */
-            .stats {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 30px 20px 40px;
             }
             
-            /* Muda a direção dos botões para coluna */
-            .actions {
+            .nav-bar {
+                padding: 0 20px;
+                height: 70px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .profile-main {
                 flex-direction: column;
             }
             
-            /* Faz os botões ocuparem toda a largura disponível */
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .btn {
                 width: 100%;
-                /* Centraliza o conteúdo dos botões */
-                justify-content: center;
+                max-width: 300px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .profile-nav span {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px 30px;
+            }
+            
+            .nav-bar {
+                padding: 0 15px;
+                height: 65px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+                gap: 10px;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+            
+            .profile-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .header h1 {
+                font-size: 1.9rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .profile-card, .profile-stats {
+                padding: 25px;
+            }
+            
+            .profile-photo {
+                width: 140px;
+                height: 140px;
+                font-size: 3rem;
+            }
+            
+            .profile-name {
+                font-size: 1.7rem;
+            }
+            
+            .profile-role {
+                font-size: 1.1rem;
+            }
+            
+            .info-content {
+                padding-left: 30px;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 15px 25px;
+                min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Container principal que envolve todo o conteúdo -->
+    <!-- NAVBAR DO MIAUCADEMY -->
+    <nav class="nav-bar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">M</div>
+            <span>MiauCademy</span>
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="questoes.html">Questões</a>
+            <a href="equipe.html">Nossa Equipe</a>
+            <a href="suporte.html">Suporte</a>
+            <a href="perfil.html" class="active">Perfil</a>
+        </div>
+        
+        <div class="profile-nav" id="profile-nav">
+            <span>Ana Silva</span>
+            <div class="profile-avatar">A</div>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
-        <!-- Cabeçalho com título e descrição -->
         <div class="header">
-            <h1>Meu Perfil - Miaucademy</h1>
-            <p>Gerencie suas informações e preferências</p>
+            <h1>🐱 Meu Perfil Miaucademy 🐱</h1>
+            <p>Gerencie suas informações, estatísticas e conquistas!</p>
         </div>
         
-        <!-- Cartão principal com informações do perfil -->
-        <div class="profile-card">
-            <!-- Nome do usuário com ícone -->
-            <h2 class="profile-name"><i class="fas fa-user"></i>Ana Silva</h2>
-            <!-- Cargo/função do usuário -->
-            <p class="profile-role">Líder de Projeto & Desenvolvedora Sênior</p>
-            
-            <!-- Divisor visual para separar seções -->
-            <div class="divider"></div>
-            
-            <!-- Seção de informações de contato -->
-            <div class="info-group">
-                <h3 class="info-title"><i class="fas fa-address-card"></i>Informações de Contato</h3>
-                <div class="info-content">
-                    <ul class="info-list">
-                        <li><i class="fas fa-envelope"></i>ana.silva@miaucademy.com</li>
-                        <li><i class="fas fa-phone"></i>(61) 98220-6144</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Brasília, DF</li>
-                    </ul>
+        <div class="profile-main">
+            <div class="profile-left">
+                <div class="profile-card">
+                    <div class="profile-photo-container">
+                        <!-- Imagem de placeholder - substitua pelo caminho real -->
+                        <div class="profile-photo">A</div>
+                    </div>
+                    
+                    <h2 class="profile-name">Ana Silva</h2>
+                    <p class="profile-role">🎓 Estudante Dedicada | 3º Ano C</p>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="info-group">
+                        <h3 class="info-title"><i class="fas fa-address-card"></i>Informações de Contato</h3>
+                        <div class="info-content">
+                            <ul class="info-list">
+                                <li><i class="fas fa-envelope"></i>ana.silva@escola.com</li>
+                                <li><i class="fas fa-phone"></i>(61) 98220-6144</li>
+                                <li><i class="fas fa-map-marker-alt"></i>Brasília, DF</li>
+                                <li><i class="fas fa-school"></i>CEMI - 3º Ano C</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="info-group">
+                        <h3 class="info-title"><i class="fas fa-user-cog"></i>Informações da Conta</h3>
+                        <div class="info-content">
+                            <ul class="info-list">
+                                <li><i class="fas fa-user-tag"></i>Plano: Premium</li>
+                                <li><i class="fas fa-calendar-alt"></i>Membro desde: 10/03/2023</li>
+                                <li><i class="fas fa-id-badge"></i>ID: MA-78942</li>
+                                <li><i class="fas fa-star"></i>Nível: 15</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Seção de informações profissionais -->
-            <div class="info-group">
-                <h3 class="info-title"><i class="fas fa-briefcase"></i>Informações Profissionais</h3>
-                <div class="info-content">
-                    <ul class="info-list">
-                        <li><i class="fas fa-building"></i>Miaucademy Ltda.</li>
-                        <li><i class="fas fa-clock"></i>Integral (40h semanais)</li>
-                        <li><i class="fas fa-calendar-alt"></i>Desde: 10/03/2020</li>
-                        <li><i class="fas fa-id-badge"></i>ID: MA-78942</li>
-                    </ul>
+            <div class="profile-right">
+                <div class="profile-stats">
+                    <h3 class="stats-title">📊 Minhas Estatísticas</h3>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">480</div>
+                            <div class="stat-label">Pontuação Total</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Questões Respondidas</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-value">42</div>
+                            <div class="stat-label">Dias Ativos</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-value">#3</div>
+                            <div class="stat-label">Posição no Ranking</div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="achievements">
+                        <h3 class="info-title"><i class="fas fa-trophy"></i>Minhas Conquistas</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement">
+                                <i class="fas fa-medal"></i>
+                                <div class="achievement-name">Top 5</div>
+                            </div>
+                            
+                            <div class="achievement">
+                                <i class="fas fa-fire"></i>
+                                <div class="achievement-name">7 Dias Seguidos</div>
+                            </div>
+                            
+                            <div class="achievement">
+                                <i class="fas fa-brain"></i>
+                                <div class="achievement-name">100 Questões</div>
+                            </div>
+                            
+                            <div class="achievement">
+                                <i class="fas fa-rocket"></i>
+                                <div class="achievement-name">Nível 10</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Seção de estatísticas -->
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-value">42</div>
-                    <div class="stat-label">Projetos Concluídos</div>
+                
+                <div class="actions">
+                    <a href="#" class="btn"><i class="fas fa-edit"></i>Editar Perfil</a>
+                    <a href="#" class="btn"><i class="fas fa-cog"></i>Configurações</a>
+                    <a href="#" class="btn"><i class="fas fa-share-alt"></i>Compartilhar</a>
                 </div>
-                <div class="stat">
-                    <div class="stat-value">98%</div>
-                    <div class="stat-label">Avaliação</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">Anos de Experiência</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">127</div>
-                    <div class="stat-label">Tasks Concluídas</div>
-                </div>
-            </div>
-            
-            <!-- Seção de botões de ação -->
-            <div class="actions">
-                <a href="#" class="btn"><i class="fas fa-edit"></i>Editar Perfil</a>
-                <a href="#" class="btn"><i class="fas fa-cog"></i>Configurações</a>
-                <a href="#" class="btn"><i class="fas fa-share-alt"></i>Compartilhar</a>
             </div>
         </div>
         
-        <!-- Rodapé da página -->
         <div class="footer">
-            <p>Miaucademy &copy; 2023 - Todos os direitos reservados</p>
+            <p>Miaucademy &copy; 2024 - Transformando o estudo em diversão! 🐱</p>
         </div>
     </div>
+
+    <script>
+        // Script para funcionalidades da página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página de perfil carregada!');
+            
+            // Efeito de digitação no título
+            const title = document.querySelector('.header h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Iniciar efeito após um breve delay
+            setTimeout(typeWriter, 300);
+            
+            // Adicionar funcionalidade ao clique no perfil da navbar
+            const profileNav = document.getElementById('profile-nav');
+            if (profileNav) {
+                profileNav.addEventListener('click', function() {
+                    // Se já estamos na página de perfil, apenas rolar para o topo
+                    if (window.location.pathname.includes('perfil')) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Se não estamos na página de perfil, navegar para ela
+                        window.location.href = 'perfil.html';
+                    }
+                });
+            }
+            
+            // Adicionar interatividade aos itens de estatística
+            const statItems = document.querySelectorAll('.stat-item');
+            statItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                    
+                    // Exibir detalhes da estatística clicada
+                    const label = this.querySelector('.stat-label').textContent;
+                    const value = this.querySelector('.stat-value').textContent;
+                    console.log(`Estatística clicada: ${label} = ${value}`);
+                });
+            });
+            
+            // Funcionalidade dos botões de ação
+            const actionButtons = document.querySelectorAll('.btn');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const buttonText = this.textContent.trim();
+                    
+                    if (buttonText.includes('Editar Perfil')) {
+                        alert('Funcionalidade de edição de perfil em desenvolvimento!');
+                        // Aqui normalmente abriria um modal de edição
+                    } else if (buttonText.includes('Configurações')) {
+                        alert('Configurações da conta - em breve!');
+                        // Aqui normalmente navegaria para página de configurações
+                    } else if (buttonText.includes('Compartilhar')) {
+                        // Simular compartilhamento
+                        if (navigator.share) {
+                            navigator.share({
+                                title: 'Meu Perfil Miaucademy',
+                                text: 'Confira meu perfil no Miaucademy! 🐱🎓',
+                                url: window.location.href
+                            });
+                        } else {
+                            alert('Link do perfil copiado para área de transferência!');
+                            // Em produção, usaria a Clipboard API
+                        }
+                    }
+                });
+            });
+            
+            // Verificar se as páginas de destino existem
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Se for um link interno e a página não existir, prevenir navegação
+                    if (href && !href.startsWith('http') && href !== '#' && href !== 'index.html') {
+                        // Esta verificação seria feita no servidor em um caso real
+                        console.log(`Tentando acessar: ${href}`);
+                    }
+                });
+            });
+            
+            // Animar elementos na entrada
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.profile-card, .profile-stats, .stat-item');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 50) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Inicializar animações
+            const animatedElements = document.querySelectorAll('.profile-card, .profile-stats, .stat-item');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s, transform 0.5s';
+            });
+            
+            // Disparar animações
+            setTimeout(animateOnScroll, 300);
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
 </body>
-</html>
+</html> 
